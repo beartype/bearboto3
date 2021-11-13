@@ -20,3 +20,9 @@ moto = {extras = ["all"], version = "^2.2.14"}
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.message_control]
+max-line-size = 120
+
+[tool.black]
+line-length = 120
