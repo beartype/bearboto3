@@ -48,7 +48,14 @@ You will get the benefit of both the IDE integrations provided by the stub libra
 Each AWS service should get its own module (file) that the types are defined in.
 
 ### Figuring out the types
-To figure out the corresponding `boto3` type, you must execute python code to create an object of the type you are looking for. Then, examine the value of the `boto3_obj.__class__.__name__` attribute to get the type. This value is what is used by the custom annotated types to perform type comparisons/checking.
+To figure out the corresponding `boto3` type, you must execute python code to create an object of the type you are looking for, then examine the value of the class name attribute to get the type: 
+
+```python
+myobj = boto3.client('service')
+print(myobj.__class__.__name__)
+```
+
+This value is what is used by the custom annotated types to perform type comparisons/checking.
 
 ## Contributing
 If you are interested in contributing, thank you! The more the merrier! 
