@@ -10,7 +10,7 @@ Using the approach pioneered in [this issue](https://github.com/beartype/beartyp
 
 ## Installation/Use
 
-**Note:** Only python >=3.5.2 is supported, as the `typing.TYPE_CHECKING` constant was not introduced prior.
+**Note:** Only python >=3.6.2 is supported.
 
 Install with `pip`:
 
