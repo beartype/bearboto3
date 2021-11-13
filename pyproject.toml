@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "beartype-boto3"
+name = "bearboto3"
 version = "0.1.0"
 description = ""
 authors = ["Paul <dev@studiop.page>"]
