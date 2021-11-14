@@ -1,111 +1,89 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from mypy_boto3_s3 import (
-        BucketExistsWaiter,
-        BucketNotExistsWaiter,
-        Client,
-        ListMultipartUploadsPaginator,
-        ListObjectVersionsPaginator,
-        ListObjectsPaginator,
-        ListObjectsV2Paginator,
-        ListPartsPaginator,
-        ObjectExistsWaiter,
-        ObjectNotExistsWaiter,
-        S3Client,
-        S3ServiceResource,
-        ServiceResource,
-    )
+    from mypy_boto3_s3 import (BucketExistsWaiter, BucketNotExistsWaiter,
+                               ListMultipartUploadsPaginator,
+                               ListObjectsPaginator, ListObjectsV2Paginator,
+                               ListObjectVersionsPaginator, ListPartsPaginator,
+                               ObjectExistsWaiter, ObjectNotExistsWaiter,
+                               S3Client, S3ServiceResource)
     from mypy_boto3_s3.service_resource import (
-        S3ServiceResource,
-        Bucket,
-        BucketAcl,
-        BucketCors,
-        BucketLifecycle,
-        BucketLifecycleConfiguration,
-        BucketLogging,
-        BucketNotification,
-        BucketPolicy,
-        BucketRequestPayment,
-        BucketTagging,
-        BucketVersioning,
-        BucketWebsite,
-        MultipartUpload,
-        MultipartUploadPart,
-        Object,
-        ObjectAcl,
-        ObjectSummary,
-        ObjectVersion,
-        ServiceResourceBucketsCollection,
-        BucketMultipartUploadsCollection,
-        BucketObjectVersionsCollection,
-        BucketObjectsCollection,
-        MultipartUploadPartsCollection,
-    )
+        Bucket, BucketAcl, BucketCors, BucketLifecycle,
+        BucketLifecycleConfiguration, BucketLogging,
+        BucketMultipartUploadsCollection, BucketNotification,
+        BucketObjectsCollection, BucketObjectVersionsCollection, BucketPolicy,
+        BucketRequestPayment, BucketTagging, BucketVersioning, BucketWebsite,
+        MultipartUpload, MultipartUploadPart, MultipartUploadPartsCollection,
+        Object, ObjectAcl, ObjectSummary, ObjectVersion, S3ServiceResource,
+        ServiceResourceBucketsCollection)
 else:
     from beartype.vale import IsAttr, IsEqual
+    from boto3.resources.base import ServiceResource
+    from boto3.resources.collection import ResourceCollection
+    from botocore.client import BaseClient
+    from botocore.paginate import Paginator
+    from botocore.waiter import Waiter
+
     from bearboto3 import Annotated
 
-    BucketExistsWaiter = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.BucketExists"]]]]
+    BucketExistsWaiter = Annotated[Waiter, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.BucketExists"]]]]
     BucketNotExistsWaiter = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.BucketNotExists"]]]
+        Waiter, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.BucketNotExists"]]]
     ]
     ListMultipartUploadsPaginator = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListMultipartUploads"]]]
+        Paginator, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListMultipartUploads"]]]
     ]
     ListObjectVersionsPaginator = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjectVersions"]]]
+        Paginator, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjectVersions"]]]
     ]
     ListObjectsPaginator = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjects"]]]
+        Paginator, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjects"]]]
     ]
     ListObjectsV2Paginator = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjectsV2"]]]
+        Paginator, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListObjectsV2"]]]
     ]
-    ListPartsPaginator = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListParts"]]]]
-    ObjectExistsWaiter = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.ObjectExists"]]]]
+    ListPartsPaginator = Annotated[Paginator, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Paginator.ListParts"]]]]
+    ObjectExistsWaiter = Annotated[Waiter, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.ObjectExists"]]]]
     ObjectNotExistsWaiter = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.ObjectNotExists"]]]
+        Waiter, IsAttr["__class__", IsAttr["__name__", IsEqual["S3.Waiter.ObjectNotExists"]]]
     ]
-    S3Client = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["S3"]]]]
-    Client = S3Client
-    S3ServiceResource = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ServiceResource"]]]]
-    ServiceResource = S3ServiceResource
+    S3Client = Annotated[BaseClient, IsAttr["__class__", IsAttr["__name__", IsEqual["S3"]]]]
+    S3ServiceResource = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ServiceResource"]]]]
 
-    Bucket = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Bucket"]]]]
-    BucketAcl = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketAcl"]]]]
-    BucketCors = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketCors"]]]]
-    BucketLifecycle = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLifecycle"]]]]
+    Bucket = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Bucket"]]]]
+    BucketAcl = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketAcl"]]]]
+    BucketCors = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketCors"]]]]
+    BucketLifecycle = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLifecycle"]]]]
     BucketLifecycleConfiguration = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLifecycleConfiguration"]]]
+        ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLifecycleConfiguration"]]]
     ]
-    BucketLogging = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLogging"]]]]
-    BucketNotification = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketNotification"]]]]
-    BucketPolicy = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketPolicy"]]]]
+    BucketLogging = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketLogging"]]]]
+    BucketNotification = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketNotification"]]]]
+    BucketPolicy = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketPolicy"]]]]
     BucketRequestPayment = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketRequestPayment"]]]
+        ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketRequestPayment"]]]
     ]
-    BucketTagging = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketTagging"]]]]
-    BucketVersioning = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketVersioning"]]]]
-    BucketWebsite = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketWebsite"]]]]
-    MultipartUpload = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUpload"]]]]
-    MultipartUploadPart = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUploadPart"]]]]
-    Object = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Object"]]]]
-    ObjectAcl = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectAcl"]]]]
-    ObjectSummary = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectSummary"]]]]
-    ObjectVersion = Annotated[object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectVersion"]]]]
+    BucketTagging = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketTagging"]]]]
+    BucketVersioning = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketVersioning"]]]]
+    BucketWebsite = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketWebsite"]]]]
+    MultipartUpload = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUpload"]]]]
+    MultipartUploadPart = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUploadPart"]]]]
+    Object = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Object"]]]]
+    ObjectAcl = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectAcl"]]]]
+    ObjectSummary = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectSummary"]]]]
+    ObjectVersion = Annotated[ServiceResource, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ObjectVersion"]]]]
     ServiceResourceBucketsCollection = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.ServiceResourceBucketsCollection"]]]
+        ResourceCollection, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.bucketsCollection"]]]
     ]
     BucketMultipartUploadsCollection = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketMultipartUploadsCollection"]]]
+        ResourceCollection, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Bucket.multipart_uploadsCollection"]]]
     ]
     BucketObjectVersionsCollection = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketObjectVersionsCollection"]]]
+        ResourceCollection, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Bucket.object_versionsCollection"]]]
     ]
     BucketObjectsCollection = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.BucketObjectsCollection"]]]
+        ResourceCollection, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.Bucket.objectsCollection"]]]
     ]
     MultipartUploadPartsCollection = Annotated[
-        object, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUploadPartsCollection"]]]
+        ResourceCollection, IsAttr["__class__", IsAttr["__name__", IsEqual["s3.MultipartUpload.partsCollection"]]]
     ]
