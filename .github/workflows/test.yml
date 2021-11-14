@@ -6,23 +6,23 @@ on:
   pull_request:
     branches:
       - main
+env:
+  MIN_PYTHON_VER: 3.6.2
+  PYTHON_VER_SPLIT: 3.9
+  LATEST_PYTHON_VER: 3.10.0
+  CODE_COV_PERCENT: 90
+  POETRY_VERSION: 1.1.11
+  OS_VERSION: ubuntu-latest
 
 jobs:
   test:
-    env:
-      MIN_PYTHON_VER: 3.6.2
-      PYTHON_VER_SPLIT: 3.9
-      LATEST_PYTHON_VER: 3.10.0
-      CODE_COV_PERCENT: 90
-      POETRY_VERSION: 1.1.11
-      OS_VERSION: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version:
-          - ${{ env.MIN_PYTHON_VER }}
-          - ${{ env.PYTHON_VER_SPLIT }}
-          - ${{ env.LATEST_PYTHON_VER }}
+          - 3.6.2
+          - 3.9
+          - 3.10.0
     runs-on: ${{ env.OS_VERSION }}
     steps:
       - name: Clone repo
