@@ -21,9 +21,9 @@ jobs:
       matrix:
         python-version:
           [
-            "${{ env.MIN_PYTHON_VER }}",
-            "${{ env.PYTHON_VER_SPLIT }}",
-            "${{ env.LATEST_PYTHON_VER }}",
+            ${{ env.MIN_PYTHON_VER }},
+            ${{ env.PYTHON_VER_SPLIT }},
+            ${{ env.LATEST_PYTHON_VER }},
           ]
     runs-on: ${{ env.OS_VERSION }}
     steps:
