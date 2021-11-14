@@ -4,6 +4,9 @@ from bearboto3.s3 import (BucketMultipartUploadsCollection,
                           MultipartUploadPartsCollection,
                           ServiceResourceBucketsCollection)
 from beartype import beartype
+from beartype.roar import (BeartypeCallHintPepParamException,
+                           BeartypeCallHintPepReturnException,
+                           BeartypeDecorHintPep484585Exception)
 from tests.utils import random_str
 
 

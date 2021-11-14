@@ -2,6 +2,9 @@ from bearboto3.s3 import (ListMultipartUploadsPaginator, ListObjectsPaginator,
                           ListObjectsV2Paginator, ListObjectVersionsPaginator,
                           ListPartsPaginator)
 from beartype import beartype
+from beartype.roar import (BeartypeCallHintPepParamException,
+                           BeartypeCallHintPepReturnException,
+                           BeartypeDecorHintPep484585Exception)
 
 
 def test_list_multipart_uploads_paginator_pass(s3_client):

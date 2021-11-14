@@ -1,6 +1,9 @@
 from bearboto3.s3 import (BucketExistsWaiter, BucketNotExistsWaiter,
                           ObjectExistsWaiter, ObjectNotExistsWaiter)
 from beartype import beartype
+from beartype.roar import (BeartypeCallHintPepParamException,
+                           BeartypeCallHintPepReturnException,
+                           BeartypeDecorHintPep484585Exception)
 
 
 def test_bucket_exists_waiter_pass(s3_client):
