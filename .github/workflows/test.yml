@@ -1,0 +1,45 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  MIN_PYTHON_VER: 3.6.2
+  PYTHON_VER_SPLIT: 3.9
+  LATEST_PYTHON_VER: 3.10.0
+  CODE_COV_PERCENT: 90
+  POETRY_VERSION: 1.1.11
+  OS_VERSION: ubuntu-latest
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          [
+            "${{ env.MIN_PYTHON_VER }}",
+            "${{ env.PYTHON_VER_SPLIT }}",
+            "${{ env.LATEST_PYTHON_VER }}",
+          ]
+    runs-on: ${{ env.OS_VERSION }}
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+      - name: Setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup poetry ${{ env.POETRY_VERSION }}
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+      - name: Set virutalenv
+        run: poetry use ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: poetry install
+      - name: Run unit tests
+        run: poetry run pytest --cov=bearboto3 --cov-report=term-missing --cov-fail-under=${{ env.CODE_COV_PERCENT }}
