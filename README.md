@@ -10,6 +10,8 @@ Using the approach pioneered in [this issue](https://github.com/beartype/beartyp
 
 ## Installation/Use
 
+See the [list of services](https://github.com/paulhutchings/bearboto3/#supported-aws-services) to see what is currently supported.
+
 **Note:** Only python >=3.6.2 is supported.
 
 Install with `pip`:
@@ -24,11 +26,11 @@ Then in your code, import the specific types you need:
 
 ```python
 from beartype import beartype
-from bearboto3.s3 import S3, Bucket
+from bearboto3.s3 import S3Client, Bucket
 import boto3
 
 @beartype
-def example(s3: S3) -> Bucket:
+def example(s3: S3Client) -> Bucket:
     return s3.create_bucket(Bucket='mybucket')
 
 s3_client = boto3.client('s3')
@@ -37,7 +39,65 @@ bucket = example(s3_client)
 
 You will get the benefit of both the IDE integrations provided by the stub libraries, as well as being able to type-check your code with runtime checkers.
 
-### Supported AWS Services
+## Contributing
+
+If you are interested in contributing, thank you! The more the merrier!
+
+AWS and the SDK have a lot of services, which means a lot of types to add support for. Creating a PR for a given service is the best way to help this project grow and allow everyone to reap the benefits of type-hinting and runtime type-checking!
+
+### Dev Setup
+
+- Install [poetry](https://python-poetry.org/)
+- Navigate to the project folder and run `poetry install` to setup the virtualenv
+- Configure your IDE to use the virtualenv (you can run `poetry env info` to get the path if it's not auto-detected)
+- Access the virtualenv via `poetry shell`
+- ???
+- Profit$$$
+
+Each AWS service should get its own module (file) that the types are defined in.
+
+### Figuring out the types
+
+To figure out the corresponding `boto3` type, you can _generally_ use the type indicated in the boto3 docs, in the sense that they will follow a pattern. For example, the `Bucket` type is listed as [`S3.Bucket`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Bucket) in the docs, while the actual type reported by python is `s3.Bucket` (note the lowercase). In this scenario, any of the types listed as `S3.*` map to `s3.*`, saving time from having to manually examine the types. If this approach failes, you must execute python code to create an object of the type you are looking for, then examine the value of the class name attribute to get the type:
+
+```python
+# Suggested helper function if you are having to grab multiple types
+def gettype(obj):
+    return obj.__class__.__name__
+
+resource = boto3.resource('s3')
+gettype(resource.Bucket('foo'))
+# 's3.Bucket'
+```
+
+This value is what is used by the custom annotated types to perform type comparisons/checking.
+
+My advice is to use the types listed in the boto3 docs as a starting point, and then leverage unit tests to tease out any inconsistencies.
+
+### Testing
+
+This project uses pytest as the unit testing framework. Each type should have a test that can simply consist of an empty function decorated with `beartype` that takes in the given type as an argument, and is then called:
+
+```python
+def test_bucket(s3_resource):
+    @beartype
+    def func(bucket: Bucket):
+        pass
+    func(s3_resource.Bucket('foo'))
+```
+
+[`Moto`](https://github.com/spulec/moto) is used to mock the boto3 library. There is an existing pytest fixture called `aws_setup` that mocks the needed boto3 aws variables and is globally available in all files in the `test/` folder (you don't need to import it). It is also recommended to create pytest fixtures for the client and resource of the AWS service you are working with:
+
+```python
+@pytest.fixture
+def s3_resource(aws_setup):
+    with mock_s3():
+        yield boto3.resource('s3')
+```
+
+You can then request the fixture in your tests and ensure you have the nessecary mocked services for testing.
+
+## Supported AWS Services
 
 - [ ] AccessAnalyzer
 - [ ] Account
@@ -321,31 +381,3 @@ You will get the benefit of both the IDE integrations provided by the stub libra
 - [ ] WorkMailMessageFlow
 - [ ] WorkSpaces
 - [ ] XRay
-
-## Developing
-
-- Install [poetry](https://python-poetry.org/)
-- Navigate to the project folder and run `poetry install` to setup the virtualenv
-- Configure your IDE to use the virtualenv (you can run `poetry env info` to get the path if it's not auto-detected)
-- Access the virtualenv via `poetry shell`
-- ???
-- Profit$$$
-
-Each AWS service should get its own module (file) that the types are defined in.
-
-### Figuring out the types
-
-To figure out the corresponding `boto3` type, you must execute python code to create an object of the type you are looking for, then examine the value of the class name attribute to get the type:
-
-```python
-myobj = boto3.client('service')
-print(myobj.__class__.__name__)
-```
-
-This value is what is used by the custom annotated types to perform type comparisons/checking.
-
-## Contributing
-
-If you are interested in contributing, thank you! The more the merrier!
-
-AWS and the SDK have a lot of services, which means a lot of types to add support for. Creating a PR for a given service is the best way to help this project grow and allow everyone to reap the benefits of type-hinting and runtime type-checking!
