@@ -7,7 +7,7 @@ on:
     branches:
       - main
 env:
-  MIN_PYTHON_VER: 3.6.2
+  MIN_PYTHON_VER: 3.6.7
   PYTHON_VER_SPLIT: 3.9
   LATEST_PYTHON_VER: 3.10.0
   CODE_COV_PERCENT: 90
@@ -36,7 +36,7 @@ jobs:
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
       - name: Set virutalenv
-        run: poetry use ${{ matrix.python-version }}
+        run: poetry env use ${{ matrix.python-version }}
       - name: Install dependencies
         run: poetry install
       - name: Run unit tests

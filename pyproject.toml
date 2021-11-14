@@ -5,7 +5,7 @@ description = ""
 authors = ["Paul <dev@studiop.page>"]
 
 [tool.poetry.dependencies]
-python = "^3.6.2"
+python = "^3.6.7"
 beartype = "^0.9.1"
 boto3-stubs = {extras = ["all"], version = "^1.20.5"}
 
