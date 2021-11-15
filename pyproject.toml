@@ -7,14 +7,14 @@ authors = ["Paul <dev@studiop.page>"]
 [tool.poetry.dependencies]
 python = "^3.6.7"
 beartype = "^0.9.1"
-boto3-stubs = {extras = ["all"], version = "^1.20.5"}
+boto3 = "^1.20.5"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-boto3 = "^1.20.5"
 moto = {extras = ["all"], version = "^2.2.14"}
+boto3-stubs = {extras = ["all"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
 
 
@@ -28,6 +28,11 @@ max-line-size = 120
 disable = [
     "missing-module-docstring",
     "missing-function-docstring"
+]
+
+[tool.pylint.MASTER]
+ignore-patterns = [
+    "tests/**/*.py"
 ]
 
 [tool.black]
