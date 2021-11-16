@@ -33,11 +33,11 @@ on the test:
 #     @beartype
 #     def func() -> FooType:
 #         return pass_fixture
-#     param = func()
+#     result = func()
 
 # def test_foo_type_return_fail(fail_fixture):
 #     with pytest.raises((BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)):
 #         @beartype
 #         def func() -> FooType:
 #             return fail_fixture
-#         param = func()
+#         result = func()

@@ -331,7 +331,7 @@ You can then request the fixture in your tests and ensure you have the nessecary
 - [ ] Route53RecoveryControlConfig
 - [ ] Route53RecoveryReadiness
 - [ ] Route53Resolver
-- [ ] S3 (WIP)
+- [x] S3
 - [ ] S3Control
 - [ ] S3Outposts
 - [ ] SageMaker

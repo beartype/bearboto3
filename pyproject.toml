@@ -17,23 +17,12 @@ moto = {extras = ["all"], version = "^2.2.14"}
 boto3-stubs = {extras = ["all"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
 
-
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pylint.messages_control]
-max-line-size = 120
-
 disable = [
     "missing-module-docstring",
     "missing-function-docstring"
 ]
-
-[tool.pylint.MASTER]
-ignore-patterns = [
-    "tests/**/*.py"
-]
-
-[tool.black]
-line-length = 120
