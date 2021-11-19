@@ -1,0 +1,59 @@
+name: Pull Request
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  MIN_PYTHON_VER: 3.6.7
+  PYTHON_VER_SPLIT: 3.9.0
+  LATEST_PYTHON_VER: 3.10.0
+  POETRY_VERSION: 1.1.11
+  OS_VERSION: ubuntu-latest
+
+jobs:
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - 3.6.7
+          - 3.9.0
+          - 3.10.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+
+      - name: Setup environment
+        uses: ./.github/actions/setup_env
+        with:
+          python-version: ${{ matrix.python-version }}
+          poetry-version: ${{ env.POETRY_VERSION }}
+
+      - name: Lint code
+        run: poetry run pylint bearboto3
+
+  test:
+    needs: lint
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - 3.6.7
+          - 3.9.0
+          - 3.10.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+
+      - name: Setup environment
+        uses: ./.github/actions/setup_env
+        with:
+          python-version: ${{ matrix.python-version }}
+          poetry-version: ${{ env.POETRY_VERSION }}
+
+      - name: Run unit tests
+        run: poetry run pytest

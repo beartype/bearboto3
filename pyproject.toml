@@ -13,16 +13,39 @@ boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-moto = {extras = ["all"], version = "^2.2.14"}
-boto3-stubs = {extras = ["all"], version = "^1.20.5"}
+moto = {extras = ["s3"], version = "^2.2.14"}
+boto3-stubs = {extras = ["s3"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
+coverage = {extras = ["toml"], version = "^6.1.2"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.master]
+fail-under = 8
 
 [tool.pylint.messages_control]
 disable = [
     "missing-module-docstring",
     "missing-function-docstring"
 ]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+addopts = [
+    "--cov",
+    "--cov-config=pyproject.toml",
+    "--cov-report=term-missing"
+]
+
+[tool.coverage.run]
+branch = true
+source = [
+    "bearboto3"
+]
+
+[tool.coverage.report]
+fail_under = 90
