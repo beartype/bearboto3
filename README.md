@@ -68,7 +68,10 @@ To figure out the corresponding `boto3` type and annotate it, you need 2 things:
   - `botocore.waiter.Waiter`
 - The class name, which is shown by calling `type` on the object, or by accessing its `__class__.__name__` attribute.
 
-You can _generally_ use the type indicated in the boto3 docs for the class name as a starting point. Some types, like the waiters and paginators, you can copy the class name given in the docs (ex. the class name of `ObjectExistsWaiter` is `S3.Waiter.ObjectExists` exactly as listed in the docs). Others, like many of the service resource based classes (like `Bucket`) are _almost_ identical (e.g. `Bucket` is actually `s3.Bucket` - note the lowercase vs the docs). And still others (like the collections) will use underscores, camelcase, or other conventions: - `BucketObjectsCollection` (`Bucket.objects.all()`) is `s3.Bucket.objectsCollection`, _**not**_ `list(ObjectSummary)` like the docs say. - `BucketObjectVersionsCollection` (`Bucket.object_versions.all()`) is `s3.Bucket.object_versionsCollection`
+You can _generally_ use the type indicated in the boto3 docs for the class name as a starting point. Some types, like the waiters and paginators, you can copy the class name given in the docs (ex. the class name of `ObjectExistsWaiter` is `S3.Waiter.ObjectExists` exactly as listed in the docs). Others, like many of the service resource based classes (like `Bucket`) are _almost_ identical (e.g. `Bucket` is actually `s3.Bucket` - note the lowercase vs the docs). And still others (like the collections) will use underscores, camelcase, or other conventions:
+
+- `BucketObjectsCollection` (`Bucket.objects.all()`) is `s3.Bucket.objectsCollection`, _**not**_ `list(ObjectSummary)` like the docs say.
+- `BucketObjectVersionsCollection` (`Bucket.object_versions.all()`) is `s3.Bucket.object_versionsCollection`
 
 You get the idea. I recommend starting with the types exactly as they are from the docs, and then use your unit tests to highlight any inconsistencies. You can also check the types manually by running some snippet of code to create the object in question, then examine the type.
 
