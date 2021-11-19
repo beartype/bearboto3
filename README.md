@@ -2,7 +2,7 @@
 
 This project provides support for using the [boto3](https://github.com/boto/boto3/) library (AWS Python SDK) and associated stub libraries such as [boto3-stubs](https://pypi.org/project/boto3-stubs/) together with [beartype](https://github.com/beartype/beartype/) for runtime type-checking.
 
-Since boto3 uses a data-drive factory model to create class types at runtime, you cannot annotate them without support of stub libraries such as `boto3-stubs`. However, if you are using a runtime type-checker such as `beartype`, type validation will since the types technically do not match (even though they represent the same object schema). It is possible to define custom types and annotate with them, but you lose access to the various IDE integrations (such as autocomplete) that you get with the static type stub libraries.
+Since boto3 uses a data-drive factory model to create class types at runtime, you cannot annotate them without support of stub libraries such as `boto3-stubs`. However, if you are using a runtime type-checker such as `beartype`, type validation will fail since the types technically do not match (even though they represent the same object schema). It is possible to define custom types and annotate with them, but you lose access to the various IDE integrations (such as autocomplete) that you get with the static type stub libraries.
 
 _Behold..._
 
@@ -12,7 +12,7 @@ Using the approach pioneered in [this issue](https://github.com/beartype/beartyp
 
 See the [list of services](https://github.com/paulhutchings/bearboto3/#supported-aws-services) to see what is currently supported.
 
-**Note:** Only python >=3.6.2 is supported.
+**Note:** Only python >=3.6.7 is supported.
 
 Install with `pip`:
 
@@ -37,7 +37,7 @@ s3_client = boto3.client('s3')
 bucket = example(s3_client)
 ```
 
-You will get the benefit of both the IDE integrations provided by the stub libraries, as well as being able to type-check your code with runtime checkers.
+You will be able to have your salmon and eat it too!
 
 ## Contributing
 
@@ -58,35 +58,44 @@ Each AWS service should get its own module (file) that the types are defined in.
 
 ### Figuring out the types
 
-To figure out the corresponding `boto3` type, you can _generally_ use the type indicated in the boto3 docs, in the sense that they will follow a pattern. For example, the `Bucket` type is listed as [`S3.Bucket`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Bucket) in the docs, while the actual type reported by python is `s3.Bucket` (note the lowercase). In this scenario, any of the types listed as `S3.*` map to `s3.*`, saving time from having to manually examine the types. If this approach failes, you must execute python code to create an object of the type you are looking for, then examine the value of the class name attribute to get the type:
+To figure out the corresponding `boto3` type and annotate it, you need 2 things:
+
+- The base class type that the object inherits from (yes, despite the nefarious factory nonsense going on, there are still statically-existing (though empty) base classes that everything else in boto inherits from). Typically, this will be one of the following:
+  - `boto3.resources.base.ServiceResource`
+  - `boto3.resources.collection.ResourceCollection`
+  - `botocore.client.BaseClient`
+  - `botocore.paginate.Paginator`
+  - `botocore.waiter.Waiter`
+- The class name, which is shown by calling `type` on the object, or by accessing its `__class__.__name__` attribute.
+
+You can _generally_ use the type indicated in the boto3 docs for the class name as a starting point. Some types, like the waiters and paginators, you can copy the class name given in the docs (ex. the class name of `ObjectExistsWaiter` is `S3.Waiter.ObjectExists` exactly as listed in the docs). Others, like many of the service resource based classes (like `Bucket`) are _almost_ identical (e.g. `Bucket` is actually `s3.Bucket` - note the lowercase vs the docs). And still others (like the collections) will use underscores, camelcase, or other conventions: - `BucketObjectsCollection` (`Bucket.objects.all()`) is `s3.Bucket.objectsCollection`, _**not**_ `list(ObjectSummary)` like the docs say. - `BucketObjectVersionsCollection` (`Bucket.object_versions.all()`) is `s3.Bucket.object_versionsCollection`
+
+You get the idea. I recommend starting with the types exactly as they are from the docs, and then use your unit tests to highlight any inconsistencies. You can also check the types manually by running some snippet of code to create the object in question, then examine the type.
 
 ```python
 # Suggested helper function if you are having to grab multiple types
-def gettype(obj):
+def get_type(obj):
     return obj.__class__.__name__
 
 resource = boto3.resource('s3')
-gettype(resource.Bucket('foo'))
+get_type(resource.Bucket('foo'))
 # 's3.Bucket'
 ```
 
-This value is what is used by the custom annotated types to perform type comparisons/checking.
+## Testing
 
-My advice is to use the types listed in the boto3 docs as a starting point, and then leverage unit tests to tease out any inconsistencies.
+This project uses pytest as the unit testing framework. By default, pytest is configured to run and produce a coverage report, all you need to do is run `pytest` (if using VS Code, I recommend setting `--no-cov` in `python.testing.pytestArgs` in your `settings.json` otherwise the code coverage settings will likely cause the test discovery and IDE integration to fail.
 
-### Testing
+### Creating tests
 
-This project uses pytest as the unit testing framework. Each type should have a test that can simply consist of an empty function decorated with `beartype` that takes in the given type as an argument, and is then called:
+Each type should have the following scenarios covered:
 
-```python
-def test_bucket(s3_resource):
-    @beartype
-    def func(bucket: Bucket):
-        pass
-    func(s3_resource.Bucket('foo'))
-```
+- Passing the type as an argument correctly
+- Passing in a similar type (that is of the same base class) that is incorrect that should throw an error
+- Returning the type from a function correctly
+- Returning a similar type (that is of the same base class) that is incorrect from a function that should throw an error
 
-[`Moto`](https://github.com/spulec/moto) is used to mock the boto3 library. There is an existing pytest fixture called `aws_setup` that mocks the needed boto3 aws variables and is globally available in all files in the `test/` folder (you don't need to import it). It is also recommended to create pytest fixtures for the client and resource of the AWS service you are working with:
+[`Moto`](https://github.com/spulec/moto) is used to mock the boto3 library. There is an existing pytest fixture called `aws_setup` that mocks the needed boto3 aws variables and is globally available in all files in the `tests/` folder (you don't need to import it). It is also recommended to create pytest fixtures for the client and resource of the AWS service you are working with:
 
 ```python
 @pytest.fixture
@@ -95,7 +104,7 @@ def s3_resource(aws_setup):
         yield boto3.resource('s3')
 ```
 
-You can then request the fixture in your tests and ensure you have the nessecary mocked services for testing.
+You can then request the fixture in your tests and ensure you have the necessary mocked services for testing.
 
 ## Supported AWS Services
 
