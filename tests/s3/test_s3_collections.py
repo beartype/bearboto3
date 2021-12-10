@@ -1,10 +1,10 @@
 import pytest
 from bearboto3.s3 import (
-    BucketMultipartUploadsCollection,
-    BucketObjectsCollection,
-    BucketObjectVersionsCollection,
-    MultipartUploadPartsCollection,
     ServiceResourceBucketsCollection,
+    BucketMultipartUploadsCollection,
+    BucketObjectVersionsCollection,
+    BucketObjectsCollection,
+    MultipartUploadPartsCollection,
 )
 from beartype import beartype
 from beartype.roar import (
@@ -12,22 +12,22 @@ from beartype.roar import (
     BeartypeCallHintPepReturnException,
     BeartypeDecorHintPep484585Exception,
 )
-from tests.utils import random_str
+
 
 # ============================
-# BUCKETS
+# ServiceResourceBucketsCollection
 # ============================
 
 
-def test_buckets_collection_arg_pass(gen_buckets_collection):
+def test_buckets_arg_pass(gen_service_resource_buckets_collection):
     @beartype
-    def func(collection: ServiceResourceBucketsCollection):
+    def func(param: ServiceResourceBucketsCollection):
         pass
 
-    func(gen_buckets_collection)
+    func(gen_service_resource_buckets_collection)
 
 
-def test_buckets_collection_arg_fail(gen_bucket_objects_collection):
+def test_buckets_arg_fail(gen_bucket_objects_collection):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
@@ -37,15 +37,15 @@ def test_buckets_collection_arg_fail(gen_bucket_objects_collection):
         func(gen_bucket_objects_collection)
 
 
-def test_buckets_collection_return_pass(gen_buckets_collection):
+def test_buckets_return_pass(gen_service_resource_buckets_collection):
     @beartype
     def func() -> ServiceResourceBucketsCollection:
-        return gen_buckets_collection
+        return gen_service_resource_buckets_collection
 
-    param = func()
+    func()
 
 
-def test_buckets_collection_return_fail(gen_bucket_objects_collection):
+def test_buckets_return_fail(gen_bucket_objects_collection):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
@@ -54,170 +54,66 @@ def test_buckets_collection_return_fail(gen_bucket_objects_collection):
         def func() -> ServiceResourceBucketsCollection:
             return gen_bucket_objects_collection
 
-        param = func()
+        func()
 
 
 # ============================
-# BUCKET MULTIPART UPLOADS
+# BucketMultipartUploadsCollection
 # ============================
 
 
-def test_bucket_multipart_uploads_collection_arg_pass(
-    gen_bucket_multipart_uploads_collection,
-):
+def test_multipart_uploads_arg_pass(gen_bucket_multipart_uploads_collection):
     @beartype
-    def func(collection: BucketMultipartUploadsCollection):
+    def func(param: BucketMultipartUploadsCollection):
         pass
 
     func(gen_bucket_multipart_uploads_collection)
 
 
-def test_bucket_multipart_uploads_collection_arg_fail(
-    gen_multipart_upload_parts_collection,
-):
+def test_multipart_uploads_arg_fail(gen_bucket_object_versions_collection):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
         def func(param: BucketMultipartUploadsCollection):
             pass
 
-        func(gen_multipart_upload_parts_collection)
+        func(gen_bucket_object_versions_collection)
 
 
-def test_bucket_multipart_uploads_collection_return_pass(
-    gen_bucket_multipart_uploads_collection,
-):
+def test_multipart_uploads_return_pass(gen_bucket_multipart_uploads_collection):
     @beartype
     def func() -> BucketMultipartUploadsCollection:
         return gen_bucket_multipart_uploads_collection
 
-    param = func()
+    func()
 
 
-def test_bucket_multipart_uploads_collection_return_fail(
-    gen_multipart_upload_parts_collection,
-):
+def test_multipart_uploads_return_fail(gen_bucket_object_versions_collection):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> BucketMultipartUploadsCollection:
-            return gen_multipart_upload_parts_collection
-
-        param = func()
-
-
-# ============================
-# MULTIPART UPLOAD PARTS
-# ============================
-
-
-def test_multipart_upload_parts_collection_arg_pass(
-    gen_multipart_upload_parts_collection,
-):
-    @beartype
-    def func(collection: MultipartUploadPartsCollection):
-        pass
-
-    func(gen_multipart_upload_parts_collection)
-
-
-def test_multipart_upload_parts_collection_arg_fail(
-    gen_bucket_multipart_uploads_collection,
-):
-    with pytest.raises(BeartypeCallHintPepParamException):
-
-        @beartype
-        def func(param: MultipartUploadPartsCollection):
-            pass
-
-        func(gen_bucket_multipart_uploads_collection)
-
-
-def test_multipart_upload_parts_collection_return_pass(
-    gen_multipart_upload_parts_collection,
-):
-    @beartype
-    def func() -> MultipartUploadPartsCollection:
-        return gen_multipart_upload_parts_collection
-
-    param = func()
-
-
-def test_multipart_upload_parts_collection_return_fail(
-    gen_bucket_multipart_uploads_collection,
-):
-    with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
-    ):
-
-        @beartype
-        def func() -> MultipartUploadPartsCollection:
-            return gen_bucket_multipart_uploads_collection
-
-        param = func()
-
-
-# ============================
-# BUCKET OBJECTS
-# ============================
-
-
-def test_bucket_objects_collection_arg_pass(gen_bucket_objects_collection):
-    @beartype
-    def func(collection: BucketObjectsCollection):
-        pass
-
-    func(gen_bucket_objects_collection)
-
-
-def test_bucket_objects_collection_arg_fail(gen_bucket_object_versions_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
-
-        @beartype
-        def func(param: BucketObjectsCollection):
-            pass
-
-        func(gen_bucket_object_versions_collection)
-
-
-def test_bucket_objects_collection_return_pass(gen_bucket_objects_collection):
-    @beartype
-    def func() -> BucketObjectsCollection:
-        return gen_bucket_objects_collection
-
-    param = func()
-
-
-def test_bucket_objects_collection_return_fail(gen_bucket_object_versions_collection):
-    with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
-    ):
-
-        @beartype
-        def func() -> BucketObjectsCollection:
             return gen_bucket_object_versions_collection
 
-        param = func()
+        func()
 
 
 # ============================
-# BUCKET OBJECT VERSIONS
+# BucketObjectVersionsCollection
 # ============================
 
 
-def test_bucket_object_versions_collection_arg_pass(
-    gen_bucket_object_versions_collection,
-):
+def test_object_versions_arg_pass(gen_bucket_object_versions_collection):
     @beartype
-    def func(collection: BucketObjectVersionsCollection):
+    def func(param: BucketObjectVersionsCollection):
         pass
 
     func(gen_bucket_object_versions_collection)
 
 
-def test_bucket_object_versions_collection_arg_fail(gen_bucket_objects_collection):
+def test_object_versions_arg_fail(gen_bucket_objects_collection):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
@@ -227,17 +123,15 @@ def test_bucket_object_versions_collection_arg_fail(gen_bucket_objects_collectio
         func(gen_bucket_objects_collection)
 
 
-def test_bucket_object_versions_collection_return_pass(
-    gen_bucket_object_versions_collection,
-):
+def test_object_versions_return_pass(gen_bucket_object_versions_collection):
     @beartype
     def func() -> BucketObjectVersionsCollection:
         return gen_bucket_object_versions_collection
 
-    param = func()
+    func()
 
 
-def test_bucket_object_versions_collection_return_fail(gen_bucket_objects_collection):
+def test_object_versions_return_fail(gen_bucket_objects_collection):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
@@ -246,4 +140,90 @@ def test_bucket_object_versions_collection_return_fail(gen_bucket_objects_collec
         def func() -> BucketObjectVersionsCollection:
             return gen_bucket_objects_collection
 
-        param = func()
+        func()
+
+
+# ============================
+# BucketObjectsCollection
+# ============================
+
+
+def test_objects_arg_pass(gen_bucket_objects_collection):
+    @beartype
+    def func(param: BucketObjectsCollection):
+        pass
+
+    func(gen_bucket_objects_collection)
+
+
+def test_objects_arg_fail(gen_service_resource_buckets_collection):
+    with pytest.raises(BeartypeCallHintPepParamException):
+
+        @beartype
+        def func(param: BucketObjectsCollection):
+            pass
+
+        func(gen_service_resource_buckets_collection)
+
+
+def test_objects_return_pass(gen_bucket_objects_collection):
+    @beartype
+    def func() -> BucketObjectsCollection:
+        return gen_bucket_objects_collection
+
+    func()
+
+
+def test_objects_return_fail(gen_service_resource_buckets_collection):
+    with pytest.raises(
+        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+    ):
+
+        @beartype
+        def func() -> BucketObjectsCollection:
+            return gen_service_resource_buckets_collection
+
+        func()
+
+
+# ============================
+# MultipartUploadPartsCollection
+# ============================
+
+
+def test_parts_arg_pass(gen_multipart_upload_parts_collection):
+    @beartype
+    def func(param: MultipartUploadPartsCollection):
+        pass
+
+    func(gen_multipart_upload_parts_collection)
+
+
+def test_parts_arg_fail(gen_bucket_object_versions_collection):
+    with pytest.raises(BeartypeCallHintPepParamException):
+
+        @beartype
+        def func(param: MultipartUploadPartsCollection):
+            pass
+
+        func(gen_bucket_object_versions_collection)
+
+
+def test_parts_return_pass(gen_multipart_upload_parts_collection):
+    @beartype
+    def func() -> MultipartUploadPartsCollection:
+        return gen_multipart_upload_parts_collection
+
+    func()
+
+
+def test_parts_return_fail(gen_bucket_object_versions_collection):
+    with pytest.raises(
+        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+    ):
+
+        @beartype
+        def func() -> MultipartUploadPartsCollection:
+            return gen_bucket_object_versions_collection
+
+        func()

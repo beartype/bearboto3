@@ -1,0 +1,56 @@
+import pytest
+from bearboto3.{{ service }} import (
+    {% for item in items %}
+    {{ item['stub_class'] }},
+    {% endfor %}
+)
+from beartype import beartype
+from beartype.roar import (BeartypeCallHintPepParamException,
+                           BeartypeCallHintPepReturnException,
+                           BeartypeDecorHintPep484585Exception)
+
+{% for item in items %}
+
+# ============================
+# {{ item['stub_class'] }}
+# ============================
+
+
+def test_{{ item['snake_name'] }}_arg_pass({{ item['fixture_name'] }}):
+    @beartype
+    def func(param: {{ item['stub_class'] }}):
+        pass
+
+    func({{ item['fixture_name'] }})
+
+
+def test_{{ item['snake_name'] }}_arg_fail({{ item['fail_fixture_name'] }}):
+    with pytest.raises(BeartypeCallHintPepParamException):
+
+        @beartype
+        def func(param: {{ item['stub_class'] }}):
+            pass
+
+        func({{ item['fail_fixture_name'] }})
+
+
+def test_{{ item['snake_name'] }}_return_pass({{ item['fixture_name'] }}):
+    @beartype
+    def func() -> {{ item['stub_class'] }}:
+        return {{ item['fixture_name'] }}
+
+    func()
+
+
+def test_{{ item['snake_name'] }}_return_fail({{ item['fail_fixture_name'] }}):
+    with pytest.raises(
+        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+    ):
+
+        @beartype
+        def func() -> {{ item['stub_class'] }}:
+            return {{ item['fail_fixture_name'] }}
+
+        func()
+
+{% endfor %}

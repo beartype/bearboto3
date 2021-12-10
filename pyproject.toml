@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "bearboto3"
-version = "0.1.0"
+version = "0.0.2"
 description = ""
 authors = ["Paul <dev@studiop.page>"]
 
 [tool.poetry.dependencies]
-python = "^3.6.7"
+python = "^3.7"
 beartype = "^0.9.1"
 boto3 = "^1.20.5"
 
@@ -13,22 +13,30 @@ boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-moto = {extras = ["s3"], version = "^2.2.14"}
-boto3-stubs = {extras = ["s3"], version = "^1.20.5"}
+moto = {extras = ["s3", "ec2"], version = "^2.2.14"}
+boto3-stubs = {extras = ["s3", "ec2"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
 coverage = {extras = ["toml"], version = "^6.1.2"}
+Jinja2 = "^3.0.3"
+pytest-xdist = "^2.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pylint.master]
-fail-under = 8
+fail-under = 9
+pyversion = 3.7
+max-line-length = 120
+ignore = [
+    "tests"
+]
 
 [tool.pylint.messages_control]
 disable = [
     "missing-module-docstring",
-    "missing-function-docstring"
+    "missing-function-docstring",
+    "redefined-outer-name"
 ]
 
 [tool.pytest.ini_options]
@@ -38,7 +46,8 @@ testpaths = [
 addopts = [
     "--cov",
     "--cov-config=pyproject.toml",
-    "--cov-report=term-missing"
+    "--cov-report=term-missing",
+    "--numprocesses=4"
 ]
 
 [tool.coverage.run]
@@ -46,6 +55,12 @@ branch = true
 source = [
     "bearboto3"
 ]
+omit = [
+    'bearboto3/__init__.py'
+]
 
 [tool.coverage.report]
-fail_under = 90
+fail_under = 100
+exclude_lines = [
+    'if TYPE_CHECKING:'
+]

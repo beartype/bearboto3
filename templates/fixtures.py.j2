@@ -1,0 +1,58 @@
+import boto3
+import pytest
+from moto import mock_{{ service }}
+from tests.utils import random_str
+
+@pytest.fixture
+def {{ client_fixture_name }}(aws_setup):
+    with mock_{{ service }}():
+        yield boto3.client("{{ service }}")
+
+{% if has_resources %}
+@pytest.fixture
+def {{ service_resource_fixture_name }}(aws_setup):
+    with mock_{{ service }}():
+        yield boto3.resource("{{ service }}")
+{% endif %}
+
+# ============================
+# WAITER
+# ============================
+
+{% for item in waiters %}
+@pytest.fixture
+def {{ item["fixture_name"]}}({{ client_fixture_name }}):
+    return {{ client_fixture_name }}.get_waiter("{{ item['snake_name'] }}")
+{% endfor %}
+
+# ============================
+# PAGINATOR
+# ============================
+
+{% for item in paginators %}
+@pytest.fixture
+def {{ item["fixture_name"]}}({{ client_fixture_name }}):
+    return {{ client_fixture_name }}.get_paginator("{{ item['snake_name'] }}")
+{% endfor %}
+
+{% if has_resources %}
+# ============================
+# RESOURCES
+# ============================
+
+{% for item in resources %}
+@pytest.fixture
+def {{ item["fixture_name"]}}({{ service_resource_fixture_name }}):
+    return {{ service_resource_fixture_name }}.{{ item['stub_class'] }}({{ item['constructor_args'] }})
+{% endfor %}
+
+# ============================
+# COLLECTIONS
+# ============================
+
+{% for item in collections %}
+@pytest.fixture
+def {{ item["fixture_name"]}}({{ item["parent_fixture_name"] }}):
+    return {{ item["parent_fixture_name"] }}.{{ item["snake_name"]}}.all()
+{% endfor %}
+{% endif %}

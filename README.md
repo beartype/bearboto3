@@ -33,8 +33,8 @@ import boto3
 def example(s3: S3Client) -> Bucket:
     return s3.create_bucket(Bucket='mybucket')
 
-s3_client = boto3.client('s3')
-bucket = example(s3_client)
+gen_s3_client = boto3.client('s3')
+bucket = example(gen_s3_client)
 ```
 
 You will be able to have your salmon and eat it too!
@@ -68,6 +68,19 @@ To figure out the corresponding `boto3` type and annotate it, you need 2 things:
   - `botocore.waiter.Waiter`
 - The class name, which is shown by calling `type` on the object, or by accessing its `__class__.__name__` attribute.
 
+#### The automated way
+Use the scripts provided in the `tools` folder to automate the process. The scripts will parse the JSON schema from boto and extract the necessary data for annotating the classes to work with beartype, as well as creating the test suites through the use of jinja2 templates.
+
+A typical workflow will look like this:
+
+1. `tools/map_classes.py --service ec2`
+2. `tools/annotate_classes.py --service ec2`
+3. `tools/create_fixtures.py --service ec2`
+4. `tools/create_tests.py --service ec2`
+
+Note that the scripts may not be perfect, but should vastly cut down the amount of manual work needed. Very little (if anything) should need to be tweaked in order for the tests to pass after running the scripts if adding a new service.
+
+#### The manual way
 You can _generally_ use the type indicated in the boto3 docs for the class name as a starting point. Some types, like the waiters and paginators, you can copy the class name given in the docs (ex. the class name of `ObjectExistsWaiter` is `S3.Waiter.ObjectExists` exactly as listed in the docs). Others, like many of the service resource based classes (like `Bucket`) are _almost_ identical (e.g. `Bucket` is actually `s3.Bucket` - note the lowercase vs the docs). And still others (like the collections) will use underscores, camelcase, or other conventions:
 
 - `BucketObjectsCollection` (`Bucket.objects.all()`) is `s3.Bucket.objectsCollection`, _**not**_ `list(ObjectSummary)` like the docs say.
@@ -102,7 +115,7 @@ Each type should have the following scenarios covered:
 
 ```python
 @pytest.fixture
-def s3_resource(aws_setup):
+def gen_s3_resource(aws_setup):
     with mock_s3():
         yield boto3.resource('s3')
 ```

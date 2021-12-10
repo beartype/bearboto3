@@ -12,173 +12,174 @@ from beartype.roar import (
     BeartypeDecorHintPep484585Exception,
 )
 
+
 # ============================
-# BUCKET EXISTS
+# BucketExistsWaiter
 # ============================
 
 
-def test_bucket_exists_waiter_arg_pass(gen_bucket_exists_waiter):
+def test_bucket_exists_arg_pass(gen_bucket_exists_waiter):
     @beartype
-    def func(waiter: BucketExistsWaiter):
+    def func(param: BucketExistsWaiter):
         pass
 
     func(gen_bucket_exists_waiter)
 
 
-def test_bucket_exists_waiter_arg_fail(gen_bucket_not_exists_waiter):
+def test_bucket_exists_arg_fail(gen_object_exists_waiter):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(waiter: BucketExistsWaiter):
+        def func(param: BucketExistsWaiter):
             pass
 
-        func(gen_bucket_not_exists_waiter)
+        func(gen_object_exists_waiter)
 
 
-def test_bucket_exists_waiter_return_pass(gen_bucket_exists_waiter):
+def test_bucket_exists_return_pass(gen_bucket_exists_waiter):
     @beartype
     def func() -> BucketExistsWaiter:
         return gen_bucket_exists_waiter
 
-    waiter = func()
+    func()
 
 
-def test_bucket_exists_waiter_return_fail(gen_bucket_not_exists_waiter):
+def test_bucket_exists_return_fail(gen_object_exists_waiter):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> BucketExistsWaiter:
-            return gen_bucket_not_exists_waiter
+            return gen_object_exists_waiter
 
-        waiter = func()
+        func()
 
 
 # ============================
-# BUCKET NOT EXISTS
+# BucketNotExistsWaiter
 # ============================
 
 
-def test_bucket_not_exists_waiter_arg_pass(gen_bucket_not_exists_waiter):
+def test_bucket_not_exists_arg_pass(gen_bucket_not_exists_waiter):
     @beartype
-    def func(waiter: BucketNotExistsWaiter):
+    def func(param: BucketNotExistsWaiter):
         pass
 
     func(gen_bucket_not_exists_waiter)
 
 
-def test_bucket_not_exists_waiter_arg_fail(gen_bucket_exists_waiter):
+def test_bucket_not_exists_arg_fail(gen_object_not_exists_waiter):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(waiter: BucketNotExistsWaiter):
+        def func(param: BucketNotExistsWaiter):
             pass
 
-        func(gen_bucket_exists_waiter)
+        func(gen_object_not_exists_waiter)
 
 
-def test_bucket_not_exists_waiter_return_pass(gen_bucket_not_exists_waiter):
+def test_bucket_not_exists_return_pass(gen_bucket_not_exists_waiter):
     @beartype
     def func() -> BucketNotExistsWaiter:
         return gen_bucket_not_exists_waiter
 
-    waiter = func()
+    func()
 
 
-def test_bucket_not_exists_waiter_return_fail(gen_bucket_exists_waiter):
+def test_bucket_not_exists_return_fail(gen_object_not_exists_waiter):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> BucketNotExistsWaiter:
-            return gen_bucket_exists_waiter
+            return gen_object_not_exists_waiter
 
-        waiter = func()
+        func()
 
 
 # ============================
-# OBJECT EXISTS
+# ObjectExistsWaiter
 # ============================
 
 
-def test_object_exists_waiter_arg_pass(gen_object_exists_waiter):
+def test_object_exists_arg_pass(gen_object_exists_waiter):
     @beartype
-    def func(waiter: ObjectExistsWaiter):
+    def func(param: ObjectExistsWaiter):
         pass
 
     func(gen_object_exists_waiter)
 
 
-def test_object_exists_waiter_arg_fail(gen_object_not_exists_waiter):
+def test_object_exists_arg_fail(gen_bucket_exists_waiter):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(waiter: ObjectExistsWaiter):
+        def func(param: ObjectExistsWaiter):
             pass
 
-        func(gen_object_not_exists_waiter)
+        func(gen_bucket_exists_waiter)
 
 
-def test_object_exists_waiter_return_pass(gen_object_exists_waiter):
+def test_object_exists_return_pass(gen_object_exists_waiter):
     @beartype
     def func() -> ObjectExistsWaiter:
         return gen_object_exists_waiter
 
-    waiter = func()
+    func()
 
 
-def test_object_exists_waiter_return_fail(gen_object_not_exists_waiter):
+def test_object_exists_return_fail(gen_bucket_exists_waiter):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ObjectExistsWaiter:
-            return gen_object_not_exists_waiter
+            return gen_bucket_exists_waiter
 
-        waiter = func()
+        func()
 
 
 # ============================
-# OBJECT NOT EXISTS
+# ObjectNotExistsWaiter
 # ============================
 
 
-def test_object_not_exists_waiter_arg_pass(gen_object_not_exists_waiter):
+def test_object_not_exists_arg_pass(gen_object_not_exists_waiter):
     @beartype
-    def func(waiter: ObjectNotExistsWaiter):
+    def func(param: ObjectNotExistsWaiter):
         pass
 
     func(gen_object_not_exists_waiter)
 
 
-def test_object_not_exists_waiter_arg_fail(gen_object_exists_waiter):
+def test_object_not_exists_arg_fail(gen_bucket_not_exists_waiter):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(waiter: ObjectNotExistsWaiter):
+        def func(param: ObjectNotExistsWaiter):
             pass
 
-        func(gen_object_exists_waiter)
+        func(gen_bucket_not_exists_waiter)
 
 
-def test_object_not_exists_waiter_return_pass(gen_object_not_exists_waiter):
+def test_object_not_exists_return_pass(gen_object_not_exists_waiter):
     @beartype
     def func() -> ObjectNotExistsWaiter:
         return gen_object_not_exists_waiter
 
-    waiter = func()
+    func()
 
 
-def test_object_not_exists_waiter_return_fail(gen_object_exists_waiter):
+def test_object_not_exists_return_fail(gen_bucket_not_exists_waiter):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ObjectNotExistsWaiter:
-            return gen_object_exists_waiter
+            return gen_bucket_not_exists_waiter
 
-        waiter = func()
+        func()

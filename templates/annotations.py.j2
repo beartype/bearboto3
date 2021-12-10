@@ -1,0 +1,31 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from mypy_boto3_{{ service }} import (
+        {% for item in client_types %}
+        {{ item }},
+        {% endfor %}
+    )
+    {% if has_resources %}
+    from mypy_boto3_{{ service }}.service_resource import (
+        {% for item in resource_types %}
+        {{ item }},
+        {% endfor %}
+    )
+    {% endif %}
+else:
+    from beartype.vale import IsAttr, IsEqual
+    {% if has_resources %}
+    from boto3.resources.base import ServiceResource
+    from boto3.resources.collection import ResourceCollection
+    {% endif %}
+    from botocore.client import BaseClient
+    from botocore.paginate import Paginator
+    from botocore.waiter import Waiter
+
+    from bearboto3 import Annotated
+
+    {% for item in classes %}
+    {{ item["stub_class"] }} = Annotated[{{ item["base_class"] }}, IsAttr["__class__", IsAttr["__name__", IsEqual["{{ item['boto_class'] }}"]]]]
+
+    {% endfor %}

@@ -6,9 +6,6 @@ on:
   workflow_dispatch:
 
 env:
-  MIN_PYTHON_VER: 3.6.7
-  PYTHON_VER_SPLIT: 3.9.0
-  LATEST_PYTHON_VER: 3.10.0
   POETRY_VERSION: 1.1.11
   OS_VERSION: ubuntu-latest
 
@@ -18,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version:
-          - 3.6.7
+          - 3.7.12
           - 3.9.0
           - 3.10.0
     runs-on: ubuntu-latest
@@ -41,7 +38,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version:
-          - 3.6.7
+          - 3.7.12
           - 3.9.0
           - 3.10.0
     runs-on: ubuntu-latest

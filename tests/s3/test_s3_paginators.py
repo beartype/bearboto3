@@ -1,9 +1,9 @@
 import pytest
 from bearboto3.s3 import (
     ListMultipartUploadsPaginator,
+    ListObjectVersionsPaginator,
     ListObjectsPaginator,
     ListObjectsV2Paginator,
-    ListObjectVersionsPaginator,
     ListPartsPaginator,
 )
 from beartype import beartype
@@ -13,222 +13,217 @@ from beartype.roar import (
     BeartypeDecorHintPep484585Exception,
 )
 
+
 # ============================
-# MULTIPART
+# ListMultipartUploadsPaginator
 # ============================
 
 
-def test_list_multipart_uploads_paginator_pass(gen_list_multipart_uploads_paginator):
+def test_list_multipart_uploads_arg_pass(gen_list_multipart_uploads_paginator):
     @beartype
-    def func(paginator: ListMultipartUploadsPaginator):
+    def func(param: ListMultipartUploadsPaginator):
         pass
 
     func(gen_list_multipart_uploads_paginator)
 
 
-def test_list_multipart_uploads_paginator_arg_fail(get_list_object_versions_paginator):
+def test_list_multipart_uploads_arg_fail(gen_list_objects_v2_paginator):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(paginator: ListMultipartUploadsPaginator):
+        def func(param: ListMultipartUploadsPaginator):
             pass
 
-        func(get_list_object_versions_paginator)
+        func(gen_list_objects_v2_paginator)
 
 
-def test_list_multipart_uploads_paginator_return_pass(
-    gen_list_multipart_uploads_paginator,
-):
+def test_list_multipart_uploads_return_pass(gen_list_multipart_uploads_paginator):
     @beartype
     def func() -> ListMultipartUploadsPaginator:
         return gen_list_multipart_uploads_paginator
 
-    paginator = func()
+    func()
 
 
-def test_list_multipart_uploads_paginator_return_fail(
-    get_list_object_versions_paginator,
-):
+def test_list_multipart_uploads_return_fail(gen_list_objects_v2_paginator):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ListMultipartUploadsPaginator:
-            return get_list_object_versions_paginator
+            return gen_list_objects_v2_paginator
 
-        paginator = func()
+        func()
 
 
 # ============================
-# OBJECT VERSIONS
+# ListObjectVersionsPaginator
 # ============================
 
 
-def test_list_object_versions_paginator_pass(get_list_object_versions_paginator):
+def test_list_object_versions_arg_pass(gen_list_object_versions_paginator):
     @beartype
-    def func(paginator: ListObjectVersionsPaginator):
+    def func(param: ListObjectVersionsPaginator):
         pass
 
-    func(get_list_object_versions_paginator)
+    func(gen_list_object_versions_paginator)
 
 
-def test_list_object_versions_paginator_arg_fail(gen_list_multipart_uploads_paginator):
+def test_list_object_versions_arg_fail(gen_list_objects_v2_paginator):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(paginator: ListObjectVersionsPaginator):
+        def func(param: ListObjectVersionsPaginator):
             pass
 
-        func(gen_list_multipart_uploads_paginator)
+        func(gen_list_objects_v2_paginator)
 
 
-def test_list_object_versions_paginator_return_pass(get_list_object_versions_paginator):
+def test_list_object_versions_return_pass(gen_list_object_versions_paginator):
     @beartype
     def func() -> ListObjectVersionsPaginator:
-        return get_list_object_versions_paginator
+        return gen_list_object_versions_paginator
 
-    paginator = func()
+    func()
 
 
-def test_list_object_versions_paginator_return_fail(
-    gen_list_multipart_uploads_paginator,
-):
+def test_list_object_versions_return_fail(gen_list_objects_v2_paginator):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ListObjectVersionsPaginator:
-            return gen_list_multipart_uploads_paginator
+            return gen_list_objects_v2_paginator
 
-        paginator = func()
+        func()
 
 
 # ============================
-# LIST OBJECTS
+# ListObjectsPaginator
 # ============================
 
 
-def test_list_objects_paginator_pass(gen_list_objects_paginator):
+def test_list_objects_arg_pass(gen_list_objects_paginator):
     @beartype
-    def func(paginator: ListObjectsPaginator):
+    def func(param: ListObjectsPaginator):
         pass
 
     func(gen_list_objects_paginator)
 
 
-def test_list_objects_paginator_arg_fail(gen_list_objects_v2_paginator):
+def test_list_objects_arg_fail(gen_list_multipart_uploads_paginator):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(paginator: ListObjectsPaginator):
+        def func(param: ListObjectsPaginator):
             pass
 
-        func(gen_list_objects_v2_paginator)
+        func(gen_list_multipart_uploads_paginator)
 
 
-def test_list_objects_paginator_return_pass(gen_list_objects_paginator):
+def test_list_objects_return_pass(gen_list_objects_paginator):
     @beartype
     def func() -> ListObjectsPaginator:
         return gen_list_objects_paginator
 
-    paginator = func()
+    func()
 
 
-def test_list_objects_paginator_return_fail(gen_list_objects_v2_paginator):
+def test_list_objects_return_fail(gen_list_multipart_uploads_paginator):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ListObjectsPaginator:
-            return gen_list_objects_v2_paginator
+            return gen_list_multipart_uploads_paginator
 
-        paginator = func()
+        func()
 
 
 # ============================
-# LIST OBJECTS V2
+# ListObjectsV2Paginator
 # ============================
 
 
-def test_list_objects_v2_paginator_pass(gen_list_objects_v2_paginator):
+def test_list_objects_v2_arg_pass(gen_list_objects_v2_paginator):
     @beartype
-    def func(paginator: ListObjectsV2Paginator):
+    def func(param: ListObjectsV2Paginator):
         pass
 
     func(gen_list_objects_v2_paginator)
 
 
-def test_list_objects_v2_paginator_arg_fail(gen_list_objects_paginator):
+def test_list_objects_v2_arg_fail(gen_list_object_versions_paginator):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(paginator: ListObjectsV2Paginator):
+        def func(param: ListObjectsV2Paginator):
             pass
 
-        func(gen_list_objects_paginator)
+        func(gen_list_object_versions_paginator)
 
 
-def test_list_objects_v2_paginator_return_pass(gen_list_objects_v2_paginator):
+def test_list_objects_v2_return_pass(gen_list_objects_v2_paginator):
     @beartype
     def func() -> ListObjectsV2Paginator:
         return gen_list_objects_v2_paginator
 
-    paginator = func()
+    func()
 
 
-def test_list_objects_v2_paginator_return_fail(gen_list_objects_paginator):
+def test_list_objects_v2_return_fail(gen_list_object_versions_paginator):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ListObjectsV2Paginator:
-            return gen_list_objects_paginator
+            return gen_list_object_versions_paginator
 
-        paginator = func()
+        func()
 
 
 # ============================
-# LIST PARTS
+# ListPartsPaginator
 # ============================
 
 
-def test_list_parts_paginator_pass(gen_list_parts_paginator):
+def test_list_parts_arg_pass(gen_list_parts_paginator):
     @beartype
-    def func(paginator: ListPartsPaginator):
+    def func(param: ListPartsPaginator):
         pass
 
     func(gen_list_parts_paginator)
 
 
-def test_list_parts_paginator_arg_fail(gen_list_objects_paginator):
+def test_list_parts_arg_fail(gen_list_object_versions_paginator):
     with pytest.raises(BeartypeCallHintPepParamException):
 
         @beartype
-        def func(paginator: ListPartsPaginator):
+        def func(param: ListPartsPaginator):
             pass
 
-        func(gen_list_objects_paginator)
+        func(gen_list_object_versions_paginator)
 
 
-def test_list_parts_paginator_return_pass(gen_list_parts_paginator):
+def test_list_parts_return_pass(gen_list_parts_paginator):
     @beartype
     def func() -> ListPartsPaginator:
         return gen_list_parts_paginator
 
-    paginator = func()
+    func()
 
 
-def test_list_parts_paginator_return_fail(gen_list_objects_paginator):
+def test_list_parts_return_fail(gen_list_object_versions_paginator):
     with pytest.raises(
         (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
         def func() -> ListPartsPaginator:
-            return gen_list_objects_paginator
+            return gen_list_object_versions_paginator
 
-        paginator = func()
+        func()
