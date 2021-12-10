@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import inspect
 import json
@@ -34,8 +36,7 @@ PAGINATORS_FILE_NAME = "paginators-1.json"
 WAITERS_FILE_NAME = "waiters-2.json"
 READ = "r"
 WRITE = "w"
-SERVICE_NAME_PASCAL = args.service.upper()
-SERVICE_NAME_SNAKE = xform_name(args.service)
+SERVICE_MODEL_FILE_NAME = "service-2.json"
 CONSTRUCTOR_ARGS_KEY = "identifiers"
 DATA_FILE_NAME = f"{args.service}_data.json"
 
@@ -46,6 +47,24 @@ def get_latest_version(folder: Path) -> Path:
     return folder.joinpath(latest_version)
 
 
+here = Path(__file__).parent
+boto3_path = Path(inspect.getfile(boto3)).parent
+botocore_path = Path(inspect.getfile(botocore)).parent
+
+
+resource_data_folder = boto3_path.joinpath(DATA_FOLDER).joinpath(args.service)
+client_data_folder = botocore_path.joinpath(DATA_FOLDER).joinpath(args.service)
+
+schema_folder = get_latest_version(client_data_folder)
+
+service_model_file = schema_folder.joinpath(SERVICE_MODEL_FILE_NAME)
+with service_model_file.open(READ, encoding=UTF_8) as file:
+    service_model = json.load(file)
+
+SERVICE_ABBREVIATION = service_model["metadata"]["serviceAbbreviation"]
+SERVICE_ABBREVIATION_LOWER = SERVICE_ABBREVIATION.lower()
+
+
 def get_waiters(folder: Path) -> List[Dict[str, str]]:
     waiters_file = folder.joinpath(WAITERS_FILE_NAME)
     with waiters_file.open(READ, encoding=UTF_8) as file:
@@ -54,7 +73,7 @@ def get_waiters(folder: Path) -> List[Dict[str, str]]:
     return [
         {
             "stub_class": f"{waiter}{WAITER_BASE_CLASS}",
-            "boto_class": f"{SERVICE_NAME_PASCAL}.{WAITER_BASE_CLASS}.{waiter}",
+            "boto_class": f"{SERVICE_ABBREVIATION}.{WAITER_BASE_CLASS}.{waiter}",
             "base_class": WAITER_BASE_CLASS,
             "fixture_name": f"gen_{xform_name(waiter)}_waiter",
             "snake_name": xform_name(waiter),
@@ -71,7 +90,7 @@ def get_paginators(folder: Path) -> List[Dict[str, str]]:
     return [
         {
             "stub_class": f"{paginator}{PAGINATOR_BASE_CLASS}",
-            "boto_class": f"{SERVICE_NAME_PASCAL}.{PAGINATOR_BASE_CLASS}.{paginator}",
+            "boto_class": f"{SERVICE_ABBREVIATION}.{PAGINATOR_BASE_CLASS}.{paginator}",
             "base_class": PAGINATOR_BASE_CLASS,
             "fixture_name": f"gen_{xform_name(paginator)}_paginator",
             "snake_name": xform_name(paginator),
@@ -86,7 +105,7 @@ def get_collections(
     return [
         {
             "stub_class": f"{parent['stub_class']}{collection}{COLLECTION_SUFFIX}",
-            "boto_class": f"{SERVICE_NAME_SNAKE}.{parent['stub_class']}.{xform_name(collection)}{COLLECTION_SUFFIX}",
+            "boto_class": f"{SERVICE_ABBREVIATION_LOWER}.{parent['stub_class']}.{xform_name(collection)}{COLLECTION_SUFFIX}",
             "base_class": COLLECTION_BASE_CLASS,
             "fixture_name": f"gen_{parent['snake_name']}_{xform_name(collection)}_collection",
             "snake_name": xform_name(collection),
@@ -106,7 +125,7 @@ def get_resource(key: str, resource_definition: Dict) -> tuple:
     # Handle the resource object
     item = {
         "stub_class": key,
-        "boto_class": f"{SERVICE_NAME_SNAKE}.{key}",
+        "boto_class": f"{SERVICE_ABBREVIATION_LOWER}.{key}",
         "base_class": RESOURCE_BASE_CLASS,
         "fixture_name": f"gen_{xform_name(key)}",
         "snake_name": xform_name(key),
@@ -131,11 +150,11 @@ def get_resources(folder: Path) -> Dict:
     # Handle service resource
     result = {
         "service_resource": {
-            "stub_class": f"{SERVICE_NAME_PASCAL}{RESOURCE_BASE_CLASS}",
-            "boto_class": f"{SERVICE_NAME_SNAKE}.{RESOURCE_BASE_CLASS}",
+            "stub_class": f"{SERVICE_ABBREVIATION}{RESOURCE_BASE_CLASS}",
+            "boto_class": f"{SERVICE_ABBREVIATION_LOWER}.{RESOURCE_BASE_CLASS}",
             "base_class": RESOURCE_BASE_CLASS,
-            "fixture_name": f"gen_{SERVICE_NAME_SNAKE}_resource",
-            "snake_name": f"{SERVICE_NAME_SNAKE}_resource",
+            "fixture_name": f"gen_{SERVICE_ABBREVIATION_LOWER}_resource",
+            "snake_name": f"{SERVICE_ABBREVIATION_LOWER}_resource",
         },
         "collections": [],
         "resources": [],
@@ -147,7 +166,7 @@ def get_resources(folder: Path) -> Dict:
         result["collections"] += [
             {
                 "stub_class": f"{RESOURCE_BASE_CLASS}{collection}{COLLECTION_SUFFIX}",
-                "boto_class": f"{SERVICE_NAME_SNAKE}.{xform_name(collection)}{COLLECTION_SUFFIX}",
+                "boto_class": f"{SERVICE_ABBREVIATION_LOWER}.{xform_name(collection)}{COLLECTION_SUFFIX}",
                 "base_class": COLLECTION_BASE_CLASS,
                 "fixture_name": f"gen_service_resource_{xform_name(collection)}_collection",
                 "snake_name": xform_name(collection),
@@ -165,30 +184,19 @@ def get_resources(folder: Path) -> Dict:
     return result
 
 
-here = Path(__file__).parent
-boto3_path = Path(inspect.getfile(boto3)).parent
-botocore_path = Path(inspect.getfile(botocore)).parent
-
-
-resource_data_folder = boto3_path.joinpath(DATA_FOLDER).joinpath(args.service)
-client_data_folder = botocore_path.joinpath(DATA_FOLDER).joinpath(args.service)
-
-
 HAS_RESOURCES = resource_data_folder.exists()
 data = {
     "client": {
-        "stub_class": f"{SERVICE_NAME_PASCAL}Client",
-        "boto_class": SERVICE_NAME_PASCAL,
+        "stub_class": f"{SERVICE_ABBREVIATION}Client",
+        "boto_class": SERVICE_ABBREVIATION,
         "base_class": CLIENT_BASE_CLASS,
-        "fixture_name": f"gen_{SERVICE_NAME_SNAKE}_client",
-        "snake_name": f"{SERVICE_NAME_SNAKE}_client",
+        "fixture_name": f"gen_{SERVICE_ABBREVIATION_LOWER}_client",
+        "snake_name": f"{SERVICE_ABBREVIATION_LOWER}_client",
     },
     "paginators": [],
     "waiters": [],
 }
 
-
-schema_folder = get_latest_version(client_data_folder)
 
 data["paginators"] += get_paginators(schema_folder)
 data["waiters"] += get_waiters(schema_folder)

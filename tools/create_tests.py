@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import json
 import os
@@ -35,7 +37,7 @@ here = Path(__file__).parent
 def get_random_service():
     # Since the random service may also need to provide a service resource,
     # It's easier to just hard-code the available ones here as they come up.
-    services = ["s3", "ec2"]
+    services = ["s3", "ec2", "dynamodb"]
     not_this_service = [item for item in services if item != args.service]
     return random.choice(not_this_service)
 
@@ -43,7 +45,10 @@ def get_random_service():
 def map_fixtures(items):
     for item in items:
         not_this_item = [other for other in items if other is not item]
-        random_item = random.choice(not_this_item)
+        # Some services (like dynamodb), only have 1 resource. Therefore, we must add the fail fixture by hand from another service.
+        random_item = (
+            random.choice(not_this_item) if not_this_item else {"fixture_name": ""}
+        )
         item["fail_fixture_name"] = random_item["fixture_name"]
 
 

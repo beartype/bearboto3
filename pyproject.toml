@@ -7,14 +7,14 @@ authors = ["Paul <dev@studiop.page>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 beartype = "^0.9.1"
-boto3 = "^1.20.5"
 
 [tool.poetry.dev-dependencies]
+boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-moto = {extras = ["s3", "ec2"], version = "^2.2.14"}
-boto3-stubs = {extras = ["s3", "ec2"], version = "^1.20.5"}
+moto = {extras = ["s3", "ec2", "dynamodb"], version = "^2.2.14"}
+boto3-stubs = {extras = ["s3", "ec2", "dynamodb"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
 coverage = {extras = ["toml"], version = "^6.1.2"}
 Jinja2 = "^3.0.3"
@@ -36,7 +36,9 @@ ignore = [
 disable = [
     "missing-module-docstring",
     "missing-function-docstring",
-    "redefined-outer-name"
+    "redefined-outer-name",
+    "too-many-lines",
+    "duplicate-code"
 ]
 
 [tool.pytest.ini_options]
