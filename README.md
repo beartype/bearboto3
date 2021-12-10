@@ -281,7 +281,7 @@ You can then request the fixture in your tests and ensure you have the necessary
 - [ ] KinesisVideoSignalingChannels
 - [ ] KMS
 - [ ] LakeFormation
-- [ ] Lambda
+- [x] Lambda
 - [ ] LexModelBuildingService
 - [ ] LexModelsV2
 - [ ] LexRuntimeService

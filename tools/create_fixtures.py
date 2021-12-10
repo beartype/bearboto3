@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import keyword
 from pathlib import Path
 
 import black
@@ -27,6 +28,9 @@ WRITE = "w"
 TEMPLATE_FOLDER = "templates"
 TEMPLATE_FILE_NAME = "fixtures.py.j2"
 TEST_FOLDER = "tests"
+SAFE_SERVICE_NAME = (
+    f"{args.service}_" if keyword.iskeyword(args.service) else args.service
+)
 FIXTURES_FILE_NAME = f"{args.service}_fixtures.py"
 
 here = Path(__file__).parent
@@ -56,7 +60,7 @@ if HAS_RESOURCES:
     kwargs["collections"] = data["collections"]
 
 
-output_folder = here.parent.joinpath(TEST_FOLDER).joinpath(args.service)
+output_folder = here.parent.joinpath(TEST_FOLDER).joinpath(SAFE_SERVICE_NAME)
 output_folder.mkdir(parents=True, exist_ok=True)
 output_file = output_folder.joinpath(FIXTURES_FILE_NAME)
 

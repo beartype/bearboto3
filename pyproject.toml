@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bearboto3"
-version = "0.0.2"
+version = "0.0.4"
 description = ""
 authors = ["Paul <dev@studiop.page>"]
 
@@ -13,12 +13,13 @@ boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-moto = {extras = ["s3", "ec2", "dynamodb"], version = "^2.2.14"}
-boto3-stubs = {extras = ["s3", "ec2", "dynamodb"], version = "^1.20.5"}
+moto = {extras = ["s3", "ec2", "dynamodb", "lambda"], version = "^2.2.14"}
+boto3-stubs = {extras = ["s3", "ec2", "dynamodb", "lambda"], version = "^1.20.5"}
 pytest-cov = "^3.0.0"
 coverage = {extras = ["toml"], version = "^6.1.2"}
 Jinja2 = "^3.0.3"
 pytest-xdist = "^2.4.0"
+docker = "^5.0.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

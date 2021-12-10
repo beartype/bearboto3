@@ -2,7 +2,7 @@
 
 import argparse
 import json
-import os
+import keyword
 import random
 from pathlib import Path
 
@@ -30,6 +30,9 @@ TEMPLATE_FOLDER = "templates"
 TEMPLATE_FILE_NAME = "tests.py.j2"
 TEST_FOLDER = "tests"
 TEST_FILE_NAME_PREFIX = f"test_{args.service}"
+SAFE_SERVICE_NAME = (
+    f"{args.service}_" if keyword.iskeyword(args.service) else args.service
+)
 
 here = Path(__file__).parent
 
@@ -45,7 +48,8 @@ def get_random_service():
 def map_fixtures(items):
     for item in items:
         not_this_item = [other for other in items if other is not item]
-        # Some services (like dynamodb), only have 1 resource. Therefore, we must add the fail fixture by hand from another service.
+        # Some services (like dynamodb), only have 1 resource.
+        # Therefore, we must add the fail fixture by hand from another service.
         random_item = (
             random.choice(not_this_item) if not_this_item else {"fixture_name": ""}
         )
@@ -55,7 +59,7 @@ def map_fixtures(items):
 def create_tests(category, items, folder):
     output_file = folder.joinpath(f"{TEST_FILE_NAME_PREFIX}_{category}.py")
     with output_file.open(WRITE, encoding=UTF_8) as file:
-        template.stream(service=args.service, items=items).dump(file)
+        template.stream(service=SAFE_SERVICE_NAME, items=items).dump(file)
 
     black.format_file_in_place(
         output_file, fast=False, write_back=black.WriteBack.YES, mode=black.FileMode()
@@ -73,7 +77,7 @@ with data_file.open(READ, encoding=UTF_8) as file:
 
 HAS_RESOURCES = RESOURCES_KEY in data
 
-output_folder = here.parent.joinpath(TEST_FOLDER).joinpath(args.service)
+output_folder = here.parent.joinpath(TEST_FOLDER).joinpath(SAFE_SERVICE_NAME)
 output_folder.mkdir(parents=True, exist_ok=True)
 
 # Handle clients

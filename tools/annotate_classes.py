@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import keyword
 from operator import itemgetter
 from pathlib import Path
 
@@ -27,7 +28,10 @@ READ = "r"
 WRITE = "w"
 TEMPLATE_FOLDER = "templates"
 TEMPLATE_FILE_NAME = "annotations.py.j2"
-CLASSES_FILE_NAME = f"{args.service}.py"
+SAFE_SERVICE_NAME = (
+    f"{args.service}_" if keyword.iskeyword(args.service) else args.service
+)
+CLASSES_FILE_NAME = f"{SAFE_SERVICE_NAME}.py"
 
 
 here = Path(__file__).parent

@@ -61,7 +61,7 @@ service_model_file = schema_folder.joinpath(SERVICE_MODEL_FILE_NAME)
 with service_model_file.open(READ, encoding=UTF_8) as file:
     service_model = json.load(file)
 
-SERVICE_ABBREVIATION = service_model["metadata"]["serviceAbbreviation"]
+SERVICE_ABBREVIATION = service_model["metadata"]["serviceId"]
 SERVICE_ABBREVIATION_LOWER = SERVICE_ABBREVIATION.lower()
 
 
