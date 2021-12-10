@@ -12,7 +12,8 @@ Using the approach pioneered in [this issue](https://github.com/beartype/beartyp
 
 See the [list of services](https://github.com/paulhutchings/bearboto3/#supported-aws-services) to see what is currently supported.
 
-**Note:** Only python >=3.6.7 is supported.
+### Supported python versions:
+- `>= 3.7`
 
 Install with `pip`:
 
@@ -33,8 +34,8 @@ import boto3
 def example(s3: S3Client) -> Bucket:
     return s3.create_bucket(Bucket='mybucket')
 
-gen_s3_client = boto3.client('s3')
-bucket = example(gen_s3_client)
+s3_client = boto3.client('s3')
+bucket = example(s3_client)
 ```
 
 You will be able to have your salmon and eat it too!
@@ -210,7 +211,7 @@ You can then request the fixture in your tests and ensure you have the necessary
 - [ ] DynamoDB
 - [ ] DynamoDBStreams
 - [ ] EBS
-- [ ] EC2
+- [x] EC2
 - [ ] EC2InstanceConnect
 - [ ] ECR
 - [ ] ECRPublic
