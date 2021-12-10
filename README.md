@@ -208,7 +208,7 @@ You can then request the fixture in your tests and ensure you have the necessary
 - [ ] DirectoryService
 - [ ] DLM
 - [ ] DocDB
-- [ ] DynamoDB
+- [x] DynamoDB
 - [ ] DynamoDBStreams
 - [ ] EBS
 - [x] EC2
