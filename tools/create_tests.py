@@ -21,7 +21,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 DATA_FOLDER = "data"
-RESOURCES_KEY = "resources"
 DATA_FILE_NAME = f"{args.service}_data.json"
 UTF_8 = "utf-8"
 READ = "r"
@@ -75,7 +74,9 @@ data_file = data_folder.joinpath(DATA_FILE_NAME)
 with data_file.open(READ, encoding=UTF_8) as file:
     data = json.load(file)
 
-HAS_RESOURCES = RESOURCES_KEY in data
+HAS_RESOURCES = "resources" in data
+HAS_WAITERS = "waiters" in data
+HAS_PAGINATORS = "paginators" in data
 
 output_folder = here.parent.joinpath(TEST_FOLDER).joinpath(SAFE_SERVICE_NAME)
 output_folder.mkdir(parents=True, exist_ok=True)
@@ -95,7 +96,11 @@ if HAS_RESOURCES:
 create_tests("clients", items, output_folder)
 
 # Handle other classes
-categories = ["waiters", "paginators"]
+categories = []
+if HAS_PAGINATORS:
+    categories.append("paginators")
+if HAS_WAITERS:
+    categories.append("wiaters")
 if HAS_RESOURCES:
     categories += ["resources", "collections"]
 

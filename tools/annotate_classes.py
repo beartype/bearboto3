@@ -21,7 +21,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 DATA_FOLDER = "data"
-RESOURCES_KEY = "resources"
 DATA_FILE_NAME = f"{args.service}_data.json"
 UTF_8 = "utf-8"
 READ = "r"
@@ -47,23 +46,30 @@ data_file = data_folder.joinpath(DATA_FILE_NAME)
 with data_file.open(READ, encoding=UTF_8) as file:
     data = json.load(file)
 
-HAS_RESOURCES = RESOURCES_KEY in data
+HAS_RESOURCES = "resources" in data
+HAS_WAITERS = "waiters" in data
+HAS_PAGINATORS = "paginators" in data
 
 
-client_types = sorted(
-    [item["stub_class"] for item in data["waiters"]]
-    + [item["stub_class"] for item in data["paginators"]]
-    + [data["client"]["stub_class"]]
-)
+client_types = [data["client"]["stub_class"]]
+if HAS_PAGINATORS:
+    client_types += [item["stub_class"] for item in data["paginators"]]
+if HAS_WAITERS:
+    client_types += [item["stub_class"] for item in data["waiters"]]
+
 if HAS_RESOURCES:
-    resource_types = sorted(
-        [item["stub_class"] for item in data["resources"]]
+    resource_types = (
+        [data["service_resource"]["stub_class"]]
+        + [item["stub_class"] for item in data["resources"]]
         + [item["stub_class"] for item in data["collections"]]
-        + [data["service_resource"]["stub_class"]]
     )
 
 
-items = [data["client"], *data["waiters"], *data["paginators"]]
+items = [data["client"]]
+if HAS_WAITERS:
+    items += data["waiters"]
+if HAS_PAGINATORS:
+    items += data["paginators"]
 if HAS_RESOURCES:
     items += data["resources"]
     items += data["collections"]
@@ -73,11 +79,11 @@ if HAS_RESOURCES:
 kwargs = {
     "classes": sorted(items, key=itemgetter("stub_class")),
     "service": args.service,
-    "client_types": client_types,
+    "client_types": sorted(client_types),
     "has_resources": HAS_RESOURCES,
 }
 if HAS_RESOURCES:
-    kwargs["resource_types"] = resource_types
+    kwargs["resource_types"] = sorted(resource_types)
 
 output_file = here.parent.joinpath("bearboto3").joinpath(CLASSES_FILE_NAME)
 with output_file.open(WRITE, encoding=UTF_8) as file:

@@ -15,6 +15,7 @@ def {{ service_resource_fixture_name }}(aws_setup):
         yield boto3.resource("{{ service }}")
 {% endif %}
 
+{% if has_waiters %}
 # ============================
 # WAITER
 # ============================
@@ -24,7 +25,9 @@ def {{ service_resource_fixture_name }}(aws_setup):
 def {{ item["fixture_name"]}}({{ client_fixture_name }}):
     return {{ client_fixture_name }}.get_waiter("{{ item['snake_name'] }}")
 {% endfor %}
+{% endif %}
 
+{% if has_paginators %}
 # ============================
 # PAGINATOR
 # ============================
@@ -34,6 +37,7 @@ def {{ item["fixture_name"]}}({{ client_fixture_name }}):
 def {{ item["fixture_name"]}}({{ client_fixture_name }}):
     return {{ client_fixture_name }}.get_paginator("{{ item['snake_name'] }}")
 {% endfor %}
+{% endif %}
 
 {% if has_resources %}
 # ============================

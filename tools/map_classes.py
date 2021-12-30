@@ -65,10 +65,9 @@ SERVICE_ABBREVIATION = service_model["metadata"]["serviceId"]
 SERVICE_ABBREVIATION_LOWER = SERVICE_ABBREVIATION.lower()
 
 
-def get_waiters(folder: Path) -> List[Dict[str, str]]:
-    waiters_file = folder.joinpath(WAITERS_FILE_NAME)
-    with waiters_file.open(READ, encoding=UTF_8) as file:
-        waiters_json = json.load(file)
+def get_waiters(file: Path) -> List[Dict[str, str]]:
+    with file.open(READ, encoding=UTF_8) as fp:
+        waiters_json = json.load(fp)
 
     return [
         {
@@ -82,10 +81,9 @@ def get_waiters(folder: Path) -> List[Dict[str, str]]:
     ]
 
 
-def get_paginators(folder: Path) -> List[Dict[str, str]]:
-    paginators_file = folder.joinpath(PAGINATORS_FILE_NAME)
-    with paginators_file.open(READ, encoding=UTF_8) as file:
-        paginators_json = json.load(file)
+def get_paginators(file: Path) -> List[Dict[str, str]]:
+    with file.open(READ, encoding=UTF_8) as fp:
+        paginators_json = json.load(fp)
 
     return [
         {
@@ -192,14 +190,16 @@ data = {
         "base_class": CLIENT_BASE_CLASS,
         "fixture_name": f"gen_{SERVICE_ABBREVIATION_LOWER}_client",
         "snake_name": f"{SERVICE_ABBREVIATION_LOWER}_client",
-    },
-    "paginators": [],
-    "waiters": [],
+    }
 }
 
+waiters_file = schema_folder.joinpath(WAITERS_FILE_NAME)
+paginators_file = schema_folder.joinpath(PAGINATORS_FILE_NAME)
 
-data["paginators"] += get_paginators(schema_folder)
-data["waiters"] += get_waiters(schema_folder)
+if paginators_file.exists():
+    data["paginators"] = get_paginators(paginators_file)
+if waiters_file.exists():
+    data["waiters"] = get_waiters(waiters_file)
 
 if HAS_RESOURCES:
     schema_folder = get_latest_version(resource_data_folder)

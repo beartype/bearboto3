@@ -20,7 +20,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 DATA_FOLDER = "data"
-RESOURCES_KEY = "resources"
 DATA_FILE_NAME = f"{args.service}_data.json"
 UTF_8 = "utf-8"
 READ = "r"
@@ -44,16 +43,22 @@ data_file = data_folder.joinpath(DATA_FILE_NAME)
 with data_file.open(READ, encoding=UTF_8) as file:
     data = json.load(file)
 
-HAS_RESOURCES = RESOURCES_KEY in data
+HAS_RESOURCES = "resources" in data
+HAS_WAITERS = "waiters" in data
+HAS_PAGINATORS = "paginators" in data
 
 kwargs = {
     "has_resources": HAS_RESOURCES,
+    "has_waiters": HAS_WAITERS,
+    "has_paginators": HAS_PAGINATORS,
     "client_fixture_name": data["client"]["fixture_name"],
-    "paginators": data["paginators"],
-    "waiters": data["waiters"],
     "service": args.service,
 }
 
+if HAS_WAITERS:
+    kwargs["waiters"] = data["waiters"]
+if HAS_PAGINATORS:
+    kwargs["paginators"] = data["paginators"]
 if HAS_RESOURCES:
     kwargs["service_resource_fixture_name"] = data["service_resource"]["fixture_name"]
     kwargs["resources"] = data["resources"]
