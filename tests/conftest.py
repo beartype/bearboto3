@@ -5,6 +5,7 @@ import pytest
 import utils
 from dynamodb.dynamodb_fixtures import *
 from ec2.ec2_fixtures import *
+from iam.iam_fixtures import *
 from lambda_.lambda_fixtures import *
 from s3.s3_fixtures import *
 from sqs.sqs_fixtures import *
