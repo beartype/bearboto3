@@ -249,7 +249,7 @@ You can then request the fixture in your tests and ensure you have the necessary
 - [ ] Health
 - [ ] HealthLake
 - [ ] Honeycode
-- [ ] IAM
+- [x] IAM
 - [ ] IdentityStore
 - [ ] imagebuilder
 - [ ] ImportExport
@@ -382,7 +382,7 @@ You can then request the fixture in your tests and ensure you have the necessary
 - [ ] Snowball
 - [ ] SnowDeviceManagement
 - [ ] SNS
-- [ ] SQS
+- [x] SQS
 - [ ] SSF
 - [ ] SSM
 - [ ] SSMContacts
