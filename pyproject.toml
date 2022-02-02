@@ -6,9 +6,10 @@ authors = ["Paul <dev@studiop.page>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+beartype = "^0.9.0"
+boto3-stubs = {extras = ["all"], version = "^1.20.26", optional = true}
 
 [tool.poetry.dev-dependencies]
-beartype = "^0.9.0"
 boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
@@ -20,6 +21,9 @@ coverage = {extras = ["toml"], version = "^6.1.2"}
 Jinja2 = "^3.0.3"
 pytest-xdist = "^2.4.0"
 docker = "^5.0.3"
+
+[tool.poetry.extras]
+stubs = ["boto3-stubs"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
