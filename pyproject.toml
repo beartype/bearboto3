@@ -1,14 +1,21 @@
 [tool.poetry]
 name = "bearboto3"
-version = "0.0.6"
+version = "0.1.0"
 description = ""
 authors = ["Paul <dev@studiop.page>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+beartype = "^0.9.0"
+s3-stubs = {extras = ["s3"], version = "^1.20.26", optional = true}
+ec2-stubs = {extras = ["ec2"], version = "^1.20.26", optional = true}
+dynamodb-stubs = {extras = ["dynamodb"], version = "^1.20.26", optional = true}
+sns-stubs = {extras = ["sns"], version = "^1.20.26", optional = true}
+sqs-stubs = {extras = ["sqs"], version = "^1.20.26", optional = true}
+iam-stubs = {extras = ["iam"], version = "^1.20.26", optional = true}
+lambda-stubs = {extras = ["lambda"], version = "^1.20.26", optional = true}
 
 [tool.poetry.dev-dependencies]
-beartype = "^0.9.1"
 boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
@@ -20,6 +27,15 @@ coverage = {extras = ["toml"], version = "^6.1.2"}
 Jinja2 = "^3.0.3"
 pytest-xdist = "^2.4.0"
 docker = "^5.0.3"
+
+[tool.poetry.extras]
+s3 = ["s3-stubs"]
+ec2 = ["ec2-stubs"]
+dynamodb = ["dynamodb-stubs"]
+sns = ["sns-stubs"]
+sqs = ["sqs-stubs"]
+iam = ["iam-stubs"]
+lambda = ["lambda-stubs"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
