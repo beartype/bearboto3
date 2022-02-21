@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "bearboto3"
 version = "0.1.0"
-description = ""
-authors = ["Paul <dev@studiop.page>"]
+description = "Facilitates using beartype runtime type-checking with the AWS SDK"
+authors = ["Paul Hutchings <dev@studiop.page>"]
+maintainers = ["Paul Hutchings <dev@studiop.page>"]
+readme = "README.md"
+homepage = "https://github.com/beartype/bearboto3"
 
 [tool.poetry.dependencies]
 python = "^3.7"
