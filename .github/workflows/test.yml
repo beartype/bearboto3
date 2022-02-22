@@ -16,7 +16,7 @@ jobs:
           - '3.9'
           - '3.10'
     runs-on: ubuntu-latest
-    container: ghcr.io/paulhutchings/bearboto3:${{ matrix.python-version }}
+    container: ghcr.io/beartype/bearboto3:${{ matrix.python-version }}
     steps:
       - name: Clone repo
         uses: actions/checkout@v2
