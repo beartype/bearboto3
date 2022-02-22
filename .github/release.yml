@@ -1,0 +1,17 @@
+name: Release
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Clone repo
+      uses: actions/checkout@v2
+    
+    - name: Publish to PyPi
+      uses: JRubics/poetry-publish@v1.10
+      with:
+        pypi_token: ${{ secrets.PYPI_TOKEN }}
