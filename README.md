@@ -1,5 +1,7 @@
 # bearboto3
 
+[![Test](https://github.com/beartype/bearboto3/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/beartype/bearboto3/actions/workflows/test.yml) ![PyPI - Downloads](https://img.shields.io/pypi/dw/bearboto3)
+
 This project provides support for using the [boto3](https://github.com/boto/boto3/) library (AWS Python SDK) and associated stub libraries such as [boto3-stubs](https://pypi.org/project/boto3-stubs/) together with [beartype](https://github.com/beartype/beartype/) for runtime type-checking.
 
 Since boto3 uses a data-driven factory model to create class types at runtime, you cannot annotate them without support of stub libraries such as `boto3-stubs`. However, if you are using a runtime type-checker such as `beartype`, type validation will fail since the types technically do not match (even though they represent the same object schema).
