@@ -1,6 +1,8 @@
 name: Build
 on:
   push:
+    branches-ignore:
+      - 'main'
     paths:
       - 'Dockerfile'
       - 'poetry.lock'
@@ -45,7 +47,7 @@ jobs:
           context: .
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ghcr.io/paulhutchings/bearboto3:${{ matrix.python-version }}
+          tags: ghcr.io/beartype/bearboto3:${{ matrix.python-version }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           build-args: |
