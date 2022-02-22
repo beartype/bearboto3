@@ -3,7 +3,7 @@ name = "bearboto3"
 version = "0.1.1"
 description = "Facilitates using beartype runtime type-checking with the AWS SDK"
 authors = ["Paul Hutchings <dev@studiop.page>"]
-maintainers = ["Paul Hutchings <dev@studiop.page>"]
+license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/beartype/bearboto3"
 
