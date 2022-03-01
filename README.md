@@ -1,6 +1,6 @@
 # bearboto3
 
-[![Test](https://github.com/beartype/bearboto3/actions/workflows/test.yml/badge.svg)](https://github.com/beartype/bearboto3/actions/workflows/test.yml) ![PyPI - Downloads](https://img.shields.io/pypi/dw/bearboto3)
+[![Test](https://github.com/beartype/bearboto3/actions/workflows/test.yml/badge.svg)](https://github.com/beartype/bearboto3/actions/workflows/test.yml) ![PyPI - Downloads](https://img.shields.io/pypi/dm/bearboto3)
 
 This project provides support for using the [boto3](https://github.com/boto/boto3/) library (AWS Python SDK) and associated stub libraries such as [boto3-stubs](https://pypi.org/project/boto3-stubs/) together with [beartype](https://github.com/beartype/beartype/) for runtime type-checking.
 
