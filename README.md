@@ -12,7 +12,7 @@ this project makes use of the [`typing.TYPE_CHECKING`](https://docs.python.org/3
 
 ## Installation/Use
 
-See the [list of services](services.md) to see what is currently implemented.
+See the [list of services](https://github.com/beartype/bearboto3/services.md) to see what is currently implemented.
 
 ### Supported python versions:
 - `>= 3.7`
@@ -51,9 +51,15 @@ but **NOTE** this will install the type stubs as _runtime_ dependencies given th
 
 Future work includes being able to isolate installing `bearboto3` runtime type definitions per service, like you are able to specify with `moto` and `boto3-stubs`.
 
+## Versioning
+
+For the most part this project will try to adhere to semantic versioning. The first `1.0.0` release will come when type checking for all of the AWS services have been finished. `0.x.0` releases will contain type checking for new services, and `0.x.x` releases will contain any fixes on the existing implemented services.
+
+If the community disagrees with this approach and would like to propose an alternative, please feel free to start a discussion or open an issue.
+
 ## Contributing
 
-See [contributing](contributing.md)
+See [contributing](https://github.com/beartype/bearboto3/CONTRIBUTING.md)
 
 ## Acknowledgements
 
