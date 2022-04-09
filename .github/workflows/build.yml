@@ -22,7 +22,7 @@ jobs:
     with:
       dockerfile: Dockerfile
       image-name: bearboto3
-      pyproject-path: pyproject.toml
+      pyproject-path: .
 
   build-integration:
     needs: build-base
@@ -30,4 +30,4 @@ jobs:
     with:
       dockerfile: Dockerfile
       image-name: bearboto3-int
-      pyproject-path: integration/pyproject.toml
+      pyproject-path: integration/
