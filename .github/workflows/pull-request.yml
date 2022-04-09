@@ -39,8 +39,5 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v3
 
-      - name: Update locally installed project
-        run: poetry install --no-dev
-
       - name: Run unit tests
         run: pytest
