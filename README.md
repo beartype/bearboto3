@@ -12,7 +12,7 @@ this project makes use of the [`typing.TYPE_CHECKING`](https://docs.python.org/3
 
 ## Installation/Use
 
-See the [list of services](https://github.com/beartype/bearboto3/services.md) to see what is currently implemented.
+See the [list of services](https://github.com/beartype/bearboto3/blob/main/services.md) to see what is currently implemented.
 
 ### Supported python versions:
 - `>= 3.7`
@@ -59,7 +59,7 @@ If the community disagrees with this approach and would like to propose an alter
 
 ## Contributing
 
-See [contributing](https://github.com/beartype/bearboto3/CONTRIBUTING.md)
+See [contributing](https://github.com/beartype/bearboto3/blob/main/CONTRIBUTING.md)
 
 ## Acknowledgements
 
