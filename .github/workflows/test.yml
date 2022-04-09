@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint_and_test:
+  lint:
     strategy:
       fail-fast: false
       matrix:
@@ -23,6 +23,21 @@ jobs:
 
       - name: Lint code
         run: pylint bearboto3
-      
+
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - '3.7'
+          - '3.8'
+          - '3.9'
+          - '3.10'
+    runs-on: ubuntu-latest
+    container: ghcr.io/beartype/bearboto3:${{ matrix.python-version }}
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+
       - name: Run unit tests
         run: pytest
