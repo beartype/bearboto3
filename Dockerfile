@@ -1,17 +1,9 @@
 ARG PYTHON_VERSION
 
-FROM python:${PYTHON_VERSION}
+FROM ghcr.io/beartype/bearboto3-base:${PYTHON_VERSION}
 
-ARG WORKDIR=/__w/bearboto3/bearboto3
+ARG PYPROJECT_PATH
 
-RUN pip3 install poetry
+COPY ${PYPROJECT_PATH} ${WORKDIR}
 
-COPY . ${WORKDIR}
-
-WORKDIR ${WORKDIR}
-
-VOLUME ${WORKDIR}
-
-RUN poetry config virtualenvs.create false
-
-RUN poetry install --remove-untracked
+RUN poetry install

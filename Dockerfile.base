@@ -1,0 +1,13 @@
+ARG PYTHON_VERSION
+
+FROM python:${PYTHON_VERSION}
+
+ARG WORKDIR=/__w/bearboto3/bearboto3
+
+RUN pip3 install poetry
+
+RUN poetry config virtualenvs.create false
+
+WORKDIR ${WORKDIR}
+
+VOLUME ${WORKDIR}
