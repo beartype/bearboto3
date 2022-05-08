@@ -9,7 +9,7 @@ jobs:
     container:
       image: alpine
       volumes:
-        - /home/runner:/tmp
+        - myvol:/tmp
     defaults:
       run:
         working-directory: /tmp
@@ -18,3 +18,4 @@ jobs:
       - run: pwd
       - run: ls -la
       - run: cat /etc/os-release
+      - run: echo hello > hello.txt
