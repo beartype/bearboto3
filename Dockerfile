@@ -7,4 +7,6 @@ ARG WORKDIR=/__w/bearboto3/bearboto3
 
 COPY ${PYPROJECT_PATH}/pyproject.toml ${WORKDIR}/
 
+WORKDIR ${WORKDIR}
+
 RUN poetry install
