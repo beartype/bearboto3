@@ -19,3 +19,17 @@ jobs:
       - run: ls -la
       - run: cat /etc/os-release
       - run: echo hello > hello.txt
+  scratch2:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine
+      volumes:
+        - myvol:/tmp
+    defaults:
+      run:
+        working-directory: /tmp
+    steps:
+      - run: echo $GITHUB_WORKSPACE
+      - run: pwd
+      - run: ls -la
+      - run: cat hello.txt
