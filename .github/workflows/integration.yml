@@ -20,16 +20,12 @@ jobs:
           - '3.10'
         beartype-version:
           - 0.9
-          - 0.10
+          - '0.10'
         stubs:
           - ''
           - '[s3,ec2]'
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/beartype/bearboto3-int:${{ matrix.python-version }}
-    defaults:
-      run:
-        working-directory: ./integration
+    container: ghcr.io/beartype/bearboto3-int:${{ matrix.python-version }}
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
@@ -41,4 +37,4 @@ jobs:
         run: poetry add git+https://github.com/beartype/bearboto3.git#main${{ matrix.stubs }}
       
       - name: Run integration project
-        run: python3 integration.py
+        run: poetry run python3 integration.py

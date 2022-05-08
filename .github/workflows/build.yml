@@ -30,4 +30,4 @@ jobs:
     with:
       dockerfile: Dockerfile
       image-name: bearboto3-int
-      pyproject-path: integration/
+      pyproject-path: integration
