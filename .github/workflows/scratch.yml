@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: python:3.7-slim
+    defaults:
+      run:
+        working-directory: ./integration
     steps:
       - run: echo $GITHUB_WORKSPACE
       - run: pwd
