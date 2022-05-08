@@ -58,6 +58,7 @@ jobs:
           build-args: |
             PYTHON_VERSION=${{ matrix.python-version }}
             PYPROJECT_PATH=${{ inputs.pyproject-path }}
+            WORKDIR=$GITHUB_WORKSPACE
 
       - name: Move cache
         run: |

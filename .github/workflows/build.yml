@@ -7,6 +7,8 @@ on:
       - Dockerfile
       - Dockerfile.base
       - poetry.lock
+      - .github/workflows/docker.yml
+      - .github/workflows/build.yml
   workflow_dispatch:
 
 jobs:
