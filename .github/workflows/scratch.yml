@@ -6,11 +6,13 @@ on:
 jobs:
   scratch:
     runs-on: ubuntu-latest
-    # container:
-    #   image: alpine
-    # defaults:
-    #   run:
-    #     working-directory: /
+    container:
+      image: alpine
+      volumes:
+        - /home/runner:/tmp
+    defaults:
+      run:
+        working-directory: /tmp
     steps:
       - run: echo $GITHUB_WORKSPACE
       - run: pwd
