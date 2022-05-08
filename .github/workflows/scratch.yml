@@ -7,7 +7,7 @@ jobs:
   scratch:
     runs-on: ubuntu-latest
     container:
-      image: python:3.7-slim
+      image: alpine
     defaults:
       run:
         working-directory: /
