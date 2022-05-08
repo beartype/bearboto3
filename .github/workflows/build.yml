@@ -18,13 +18,13 @@ jobs:
       dockerfile: Dockerfile.base
       image-name: bearboto3-base
 
-  build-project:
-    needs: build-base
-    uses: ./.github/workflows/docker.yml
-    with:
-      dockerfile: Dockerfile
-      image-name: bearboto3
-      pyproject-path: .
+  # build-project:
+  #   needs: build-base
+  #   uses: ./.github/workflows/docker.yml
+  #   with:
+  #     dockerfile: Dockerfile
+  #     image-name: bearboto3
+  #     pyproject-path: .
 
   build-integration:
     needs: build-base
