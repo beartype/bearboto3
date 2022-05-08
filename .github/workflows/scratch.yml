@@ -21,6 +21,7 @@ jobs:
       - run: echo hello > hello.txt
   scratch2:
     runs-on: ubuntu-latest
+    needs: scratch
     container:
       image: alpine
       volumes:
