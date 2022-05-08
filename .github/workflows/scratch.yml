@@ -10,7 +10,7 @@ jobs:
       image: python:3.7-slim
     defaults:
       run:
-        working-directory: ./integration
+        working-directory: /
     steps:
       - run: echo $GITHUB_WORKSPACE
       - run: pwd
