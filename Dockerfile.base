@@ -2,6 +2,9 @@ ARG PYTHON_VERSION
 
 FROM python:${PYTHON_VERSION}
 
+ARG WORKDIR=/__w/bearboto3/bearboto3
+WORKDIR ${WORKDIR}
+
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 
 RUN pip3 install poetry
