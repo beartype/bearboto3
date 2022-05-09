@@ -1,6 +1,6 @@
 ARG PYTHON_VERSION
 
-FROM python-slim:${PYTHON_VERSION}
+FROM python:${PYTHON_VERSION}-slim
 
 ARG WORKDIR=/__w/bearboto3/bearboto3
 WORKDIR ${WORKDIR}
