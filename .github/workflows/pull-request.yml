@@ -31,9 +31,6 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v3
 
-      - name: Update local install
-        run: poetry install
-
       - name: Lint code
         run: pylint bearboto3
 
@@ -51,9 +48,6 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-
-      - name: Update local install
-        run: poetry install
 
       - name: Run unit tests
         run: pytest
