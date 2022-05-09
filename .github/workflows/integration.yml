@@ -37,7 +37,7 @@ jobs:
         run: poetry add beartype@^${{ matrix.beartype-version }}
       
       - name: Install bearboto3 (and optionally install stub extras)
-        run: poetry add git+https://github.com/beartype/bearboto3.git#main${{ matrix.stubs }}
+        run: poetry add 'git+https://github.com/beartype/bearboto3.git#main${{ matrix.stubs }}'
       
       - name: Run integration project
         run: python3 integration.py
