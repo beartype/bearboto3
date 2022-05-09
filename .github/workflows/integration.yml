@@ -7,9 +7,6 @@ on:
       - closed
   workflow_dispatch:
 
-env:
-  INTEGRATION_FOLDER: integration
-
 jobs:
   integration:
     if: github.event.pull_request.merged == true
@@ -35,7 +32,6 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-        working-directory: .
       
       - name: Install beartype ${{ matrix.beartype-version }}
         run: poetry add beartype@^${{ matrix.beartype-version }}
