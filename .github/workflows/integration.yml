@@ -30,18 +30,16 @@ jobs:
       run:
         working-directory: integration
     steps:
+        # Checkout always clones to $GITHUB_WORKSPACE so not affected by workdir setting
       - name: Clone repo
         uses: actions/checkout@v3
-      
+
+        # WORKDIR takes affect starting here
       - name: Install beartype ${{ matrix.beartype-version }}
         run: poetry add beartype@^${{ matrix.beartype-version }}
 
-      - name: Build wheel
-        run: poetry build --format wheel
-        working-directory: .
-
       - name: Install bearboto3 (and optionally install stub extras)
-        run: poetry add ../dist/*.whl${{ matrix.stubs }}
-      
+        run: poetry add git+https://github.com/beartype/bearboto3#main${{ matrix.stubs }}
+
       - name: Run integration project
         run: python3 integration.py
