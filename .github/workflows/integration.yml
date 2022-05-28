@@ -9,7 +9,7 @@ on:
 
 jobs:
   integration:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     strategy:
       fail-fast: false
       matrix:
@@ -20,25 +20,26 @@ jobs:
           - '3.10'
         beartype-version:
           - 0.9
-          - 0.10
+          - '0.10'
         stubs:
           - ''
           - '[s3,ec2]'
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/beartype/bearboto3-int:${{ matrix.python-version }}
+    container: ghcr.io/beartype/bearboto3-int:${{ matrix.python-version }}
     defaults:
       run:
-        working-directory: ./integration
+        working-directory: integration
     steps:
+        # Checkout always clones to $GITHUB_WORKSPACE so not affected by workdir setting
       - name: Clone repo
         uses: actions/checkout@v3
-      
+
+        # WORKDIR takes affect starting here
       - name: Install beartype ${{ matrix.beartype-version }}
         run: poetry add beartype@^${{ matrix.beartype-version }}
-      
-      - name: Update bearboto3 (and optionally install stub extras)
-        run: poetry add git+https://github.com/beartype/bearboto3.git#main${{ matrix.stubs }}
-      
+
+      - name: Install bearboto3 (and optionally install stub extras)
+        run: poetry add git+https://github.com/beartype/bearboto3#main${{ matrix.stubs }}
+
       - name: Run integration project
         run: python3 integration.py

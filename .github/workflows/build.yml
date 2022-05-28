@@ -1,4 +1,4 @@
-name: Build
+name: Build Docker Images
 on:
   push:
     branches-ignore:
@@ -7,7 +7,13 @@ on:
       - Dockerfile
       - Dockerfile.base
       - poetry.lock
+      - .github/workflows/docker.yml
+      - .github/workflows/build.yml
   workflow_dispatch:
+
+concurrency: 
+  group: ${{ github.ref }}-build
+  cancel-in-progress: true
 
 jobs:
   build-base:
@@ -30,4 +36,4 @@ jobs:
     with:
       dockerfile: Dockerfile
       image-name: bearboto3-int
-      pyproject-path: integration/
+      pyproject-path: integration
