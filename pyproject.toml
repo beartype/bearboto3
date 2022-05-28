@@ -6,6 +6,22 @@ authors = ["Paul Hutchings <dev@studiop.page>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/beartype/bearboto3"
+repository = "https://github.com/beartype/bearboto3"
+keywords = ["aws", "boto3", "type checking", "type hints", "beartype"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+
+[tool.poetry.urls]
+"Issues" = "https://github.com/beartype/bearboto3/issues"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -13,23 +29,23 @@ beartype = ">=0.9.0"
 typing-extensions = { version = "^4.2.0", python = "<3.9" }
 
 # Optional type stubs (will be installed as runtime dependencies this way)
-mypy-boto3-s3 = {version = "^1.21.0", optional = true}
-mypy-boto3-ec2 = {version = "^1.21.1", optional = true}
-mypy-boto3-dynamodb = {version = "^1.21.4", optional = true}
-mypy-boto3-iam = {version = "^1.21.2", optional = true}
-mypy-boto3-sns = {version = "^1.21.0", optional = true}
-mypy-boto3-sqs = {version = "^1.21.0", optional = true}
-mypy-boto3-lambda = {version = "^1.21.0", optional = true}
+mypy-boto3-s3 = { version = "^1.21.0", optional = true }
+mypy-boto3-ec2 = { version = "^1.21.1", optional = true }
+mypy-boto3-dynamodb = { version = "^1.21.4", optional = true }
+mypy-boto3-iam = { version = "^1.21.2", optional = true }
+mypy-boto3-sns = { version = "^1.21.0", optional = true }
+mypy-boto3-sqs = { version = "^1.21.0", optional = true }
+mypy-boto3-lambda = { version = "^1.21.0", optional = true }
 
 [tool.poetry.dev-dependencies]
 boto3 = "^1.20.5"
 pylint = "^2.11.1"
 pytest = "^6.2.5"
 black = "^21.10b0"
-moto = {extras = ["all"], version = "^2.3.0"}
-boto3-stubs = {extras = ["all"], version = "^1.20.26"}
+moto = { extras = ["all"], version = "^2.3.0" }
+boto3-stubs = { extras = ["all"], version = "^1.20.26" }
 pytest-cov = "^3.0.0"
-coverage = {extras = ["toml"], version = "^6.1.2"}
+coverage = { extras = ["toml"], version = "^6.1.2" }
 Jinja2 = "^3.0.3"
 pytest-xdist = "^2.4.0"
 docker = "^5.0.3"
@@ -51,9 +67,7 @@ build-backend = "poetry.core.masonry.api"
 fail-under = 9
 pyversion = 3.7
 max-line-length = 120
-ignore = [
-    "tests"
-]
+ignore = ["tests"]
 
 [tool.pylint.messages_control]
 disable = [
@@ -61,31 +75,23 @@ disable = [
     "missing-function-docstring",
     "redefined-outer-name",
     "too-many-lines",
-    "duplicate-code"
+    "duplicate-code",
 ]
 
 [tool.pytest.ini_options]
-testpaths = [
-    "tests"
-]
+testpaths = ["tests"]
 addopts = [
     "--cov",
     "--cov-config=pyproject.toml",
     "--cov-report=term-missing",
-    "--numprocesses=4"
+    "--numprocesses=4",
 ]
 
 [tool.coverage.run]
 branch = true
-source = [
-    "bearboto3"
-]
-omit = [
-    'bearboto3/__init__.py'
-]
+source = ["bearboto3"]
+omit = ['bearboto3/__init__.py']
 
 [tool.coverage.report]
 fail_under = 100
-exclude_lines = [
-    'if TYPE_CHECKING:'
-]
+exclude_lines = ['if TYPE_CHECKING:']
