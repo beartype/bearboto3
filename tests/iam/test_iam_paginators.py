@@ -30,7 +30,7 @@ from bearboto3.iam import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -52,7 +52,7 @@ def test_get_account_authorization_details_arg_pass(
 
 
 def test_get_account_authorization_details_arg_fail(gen_list_group_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetAccountAuthorizationDetailsPaginator):
@@ -99,7 +99,7 @@ def test_get_group_arg_pass(gen_get_group_paginator):
 
 
 def test_get_group_arg_fail(gen_list_roles_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetGroupPaginator):
@@ -142,7 +142,7 @@ def test_list_access_keys_arg_pass(gen_list_access_keys_paginator):
 
 
 def test_list_access_keys_arg_fail(gen_list_user_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAccessKeysPaginator):
@@ -185,7 +185,7 @@ def test_list_account_aliases_arg_pass(gen_list_account_aliases_paginator):
 
 
 def test_list_account_aliases_arg_fail(gen_list_ssh_public_keys_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAccountAliasesPaginator):
@@ -230,7 +230,7 @@ def test_list_attached_group_policies_arg_pass(
 
 
 def test_list_attached_group_policies_arg_fail(gen_list_user_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAttachedGroupPoliciesPaginator):
@@ -277,7 +277,7 @@ def test_list_attached_role_policies_arg_pass(
 
 
 def test_list_attached_role_policies_arg_fail(gen_list_server_certificates_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAttachedRolePoliciesPaginator):
@@ -326,7 +326,7 @@ def test_list_attached_user_policies_arg_pass(
 
 
 def test_list_attached_user_policies_arg_fail(gen_list_roles_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAttachedUserPoliciesPaginator):
@@ -371,7 +371,7 @@ def test_list_entities_for_policy_arg_pass(gen_list_entities_for_policy_paginato
 
 
 def test_list_entities_for_policy_arg_fail(gen_get_group_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListEntitiesForPolicyPaginator):
@@ -414,7 +414,7 @@ def test_list_group_policies_arg_pass(gen_list_group_policies_paginator):
 
 
 def test_list_group_policies_arg_fail(gen_get_group_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListGroupPoliciesPaginator):
@@ -457,7 +457,7 @@ def test_list_groups_arg_pass(gen_list_groups_paginator):
 
 
 def test_list_groups_arg_fail(gen_list_account_aliases_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListGroupsPaginator):
@@ -500,7 +500,7 @@ def test_list_groups_for_user_arg_pass(gen_list_groups_for_user_paginator):
 
 
 def test_list_groups_for_user_arg_fail(gen_list_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListGroupsForUserPaginator):
@@ -543,7 +543,7 @@ def test_list_instance_profiles_arg_pass(gen_list_instance_profiles_paginator):
 
 
 def test_list_instance_profiles_arg_fail(gen_list_groups_for_user_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListInstanceProfilesPaginator):
@@ -588,7 +588,7 @@ def test_list_instance_profiles_for_role_arg_pass(
 
 
 def test_list_instance_profiles_for_role_arg_fail(gen_list_group_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListInstanceProfilesForRolePaginator):
@@ -633,7 +633,7 @@ def test_list_mfa_devices_arg_pass(gen_list_mfa_devices_paginator):
 
 
 def test_list_mfa_devices_arg_fail(gen_list_instance_profiles_for_role_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListMFADevicesPaginator):
@@ -676,7 +676,7 @@ def test_list_policies_arg_pass(gen_list_policies_paginator):
 
 
 def test_list_policies_arg_fail(gen_list_role_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListPoliciesPaginator):
@@ -719,7 +719,7 @@ def test_list_policy_versions_arg_pass(gen_list_policy_versions_paginator):
 
 
 def test_list_policy_versions_arg_fail(gen_list_account_aliases_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListPolicyVersionsPaginator):
@@ -762,7 +762,7 @@ def test_list_role_policies_arg_pass(gen_list_role_policies_paginator):
 
 
 def test_list_role_policies_arg_fail(gen_list_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListRolePoliciesPaginator):
@@ -805,7 +805,7 @@ def test_list_roles_arg_pass(gen_list_roles_paginator):
 
 
 def test_list_roles_arg_fail(gen_list_group_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListRolesPaginator):
@@ -848,7 +848,7 @@ def test_list_server_certificates_arg_pass(gen_list_server_certificates_paginato
 
 
 def test_list_server_certificates_arg_fail(gen_list_user_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListServerCertificatesPaginator):
@@ -891,7 +891,7 @@ def test_list_signing_certificates_arg_pass(gen_list_signing_certificates_pagina
 
 
 def test_list_signing_certificates_arg_fail(gen_list_group_policies_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListSigningCertificatesPaginator):
@@ -934,7 +934,7 @@ def test_list_ssh_public_keys_arg_pass(gen_list_ssh_public_keys_paginator):
 
 
 def test_list_ssh_public_keys_arg_fail(gen_list_users_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListSSHPublicKeysPaginator):
@@ -977,7 +977,7 @@ def test_list_user_policies_arg_pass(gen_list_user_policies_paginator):
 
 
 def test_list_user_policies_arg_fail(gen_list_groups_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListUserPoliciesPaginator):
@@ -1020,7 +1020,7 @@ def test_list_users_arg_pass(gen_list_users_paginator):
 
 
 def test_list_users_arg_fail(gen_get_group_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListUsersPaginator):
@@ -1063,7 +1063,7 @@ def test_list_virtual_mfa_devices_arg_pass(gen_list_virtual_mfa_devices_paginato
 
 
 def test_list_virtual_mfa_devices_arg_fail(gen_list_policy_versions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListVirtualMFADevicesPaginator):
@@ -1106,7 +1106,7 @@ def test_simulate_custom_policy_arg_pass(gen_simulate_custom_policy_paginator):
 
 
 def test_simulate_custom_policy_arg_fail(gen_list_instance_profiles_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SimulateCustomPolicyPaginator):
@@ -1149,7 +1149,7 @@ def test_simulate_principal_policy_arg_pass(gen_simulate_principal_policy_pagina
 
 
 def test_simulate_principal_policy_arg_fail(gen_list_policy_versions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SimulatePrincipalPolicyPaginator):
@@ -1192,7 +1192,7 @@ def test_list_user_tags_arg_pass(gen_list_user_tags_paginator):
 
 
 def test_list_user_tags_arg_fail(gen_get_account_authorization_details_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListUserTagsPaginator):

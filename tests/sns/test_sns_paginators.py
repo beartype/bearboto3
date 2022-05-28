@@ -11,7 +11,7 @@ from bearboto3.sns import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -33,7 +33,7 @@ def test_list_endpoints_by_platform_application_arg_pass(
 
 
 def test_list_endpoints_by_platform_application_arg_fail(gen_list_topics_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListEndpointsByPlatformApplicationPaginator):
@@ -78,7 +78,7 @@ def test_list_platform_applications_arg_pass(gen_list_platform_applications_pagi
 
 
 def test_list_platform_applications_arg_fail(gen_list_subscriptions_by_topic_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListPlatformApplicationsPaginator):
@@ -125,7 +125,7 @@ def test_list_subscriptions_arg_pass(gen_list_subscriptions_paginator):
 
 
 def test_list_subscriptions_arg_fail(gen_list_platform_applications_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListSubscriptionsPaginator):
@@ -170,7 +170,7 @@ def test_list_subscriptions_by_topic_arg_pass(
 
 
 def test_list_subscriptions_by_topic_arg_fail(gen_list_platform_applications_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListSubscriptionsByTopicPaginator):
@@ -217,7 +217,7 @@ def test_list_topics_arg_pass(gen_list_topics_paginator):
 
 
 def test_list_topics_arg_fail(gen_list_endpoints_by_platform_application_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListTopicsPaginator):
@@ -264,7 +264,7 @@ def test_list_phone_numbers_opted_out_arg_pass(
 def test_list_phone_numbers_opted_out_arg_fail(
     gen_list_platform_applications_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListPhoneNumbersOptedOutPaginator):
@@ -311,7 +311,7 @@ def test_list_origination_numbers_arg_pass(gen_list_origination_numbers_paginato
 
 
 def test_list_origination_numbers_arg_fail(gen_list_phone_numbers_opted_out_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListOriginationNumbersPaginator):
@@ -358,7 +358,7 @@ def test_list_sms_sandbox_phone_numbers_arg_pass(
 
 
 def test_list_sms_sandbox_phone_numbers_arg_fail(gen_list_topics_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListSMSSandboxPhoneNumbersPaginator):

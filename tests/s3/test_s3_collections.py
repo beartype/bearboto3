@@ -8,7 +8,7 @@ from bearboto3.s3 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -28,7 +28,7 @@ def test_buckets_arg_pass(gen_service_resource_buckets_collection):
 
 
 def test_buckets_arg_fail(gen_bucket_objects_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceBucketsCollection):
@@ -71,7 +71,7 @@ def test_multipart_uploads_arg_pass(gen_bucket_multipart_uploads_collection):
 
 
 def test_multipart_uploads_arg_fail(gen_bucket_object_versions_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketMultipartUploadsCollection):
@@ -114,7 +114,7 @@ def test_object_versions_arg_pass(gen_bucket_object_versions_collection):
 
 
 def test_object_versions_arg_fail(gen_bucket_objects_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketObjectVersionsCollection):
@@ -157,7 +157,7 @@ def test_objects_arg_pass(gen_bucket_objects_collection):
 
 
 def test_objects_arg_fail(gen_service_resource_buckets_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketObjectsCollection):
@@ -200,7 +200,7 @@ def test_parts_arg_pass(gen_multipart_upload_parts_collection):
 
 
 def test_parts_arg_fail(gen_bucket_object_versions_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: MultipartUploadPartsCollection):

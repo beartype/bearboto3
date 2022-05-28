@@ -4,7 +4,7 @@ from bearboto3.lambda_ import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -24,7 +24,7 @@ def test_lambda_client_arg_pass(gen_lambda_client):
 
 
 def test_lambda_client_arg_fail(gen_s3_client):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: LambdaClient):

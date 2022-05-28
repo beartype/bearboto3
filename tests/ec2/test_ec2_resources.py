@@ -25,7 +25,7 @@ from bearboto3.ec2 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -44,7 +44,7 @@ def test_classic_address_arg_pass(gen_classic_address):
 
 
 def test_classic_address_arg_fail(gen_key_pair):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ClassicAddress):
@@ -87,7 +87,7 @@ def test_dhcp_options_arg_pass(gen_dhcp_options):
 
 
 def test_dhcp_options_arg_fail(gen_route_table):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DhcpOptions):
@@ -130,7 +130,7 @@ def test_image_arg_pass(gen_image):
 
 
 def test_image_arg_fail(gen_classic_address):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Image):
@@ -173,7 +173,7 @@ def test_instance_arg_pass(gen_instance):
 
 
 def test_instance_arg_fail(gen_network_acl):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Instance):
@@ -216,7 +216,7 @@ def test_internet_gateway_arg_pass(gen_internet_gateway):
 
 
 def test_internet_gateway_arg_fail(gen_tag):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InternetGateway):
@@ -259,7 +259,7 @@ def test_key_pair_arg_pass(gen_key_pair):
 
 
 def test_key_pair_arg_fail(gen_volume):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: KeyPair):
@@ -302,7 +302,7 @@ def test_key_pair_info_arg_pass(gen_key_pair):
 
 
 def test_key_pair_info_arg_fail(gen_route_table_association):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: KeyPairInfo):
@@ -345,7 +345,7 @@ def test_network_acl_arg_pass(gen_network_acl):
 
 
 def test_network_acl_arg_fail(gen_route_table):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: NetworkAcl):
@@ -388,7 +388,7 @@ def test_network_interface_arg_pass(gen_network_interface):
 
 
 def test_network_interface_arg_fail(gen_key_pair):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: NetworkInterface):
@@ -431,7 +431,7 @@ def test_network_interface_association_arg_pass(gen_network_interface_associatio
 
 
 def test_network_interface_association_arg_fail(gen_network_interface):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: NetworkInterfaceAssociation):
@@ -474,7 +474,7 @@ def test_placement_group_arg_pass(gen_placement_group):
 
 
 def test_placement_group_arg_fail(gen_vpc_address):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PlacementGroup):
@@ -517,7 +517,7 @@ def test_route_arg_pass(gen_route):
 
 
 def test_route_arg_fail(gen_placement_group):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Route):
@@ -560,7 +560,7 @@ def test_route_table_arg_pass(gen_route_table):
 
 
 def test_route_table_arg_fail(gen_key_pair):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RouteTable):
@@ -603,7 +603,7 @@ def test_route_table_association_arg_pass(gen_route_table_association):
 
 
 def test_route_table_association_arg_fail(gen_image):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RouteTableAssociation):
@@ -646,7 +646,7 @@ def test_security_group_arg_pass(gen_security_group):
 
 
 def test_security_group_arg_fail(gen_route):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SecurityGroup):
@@ -689,7 +689,7 @@ def test_snapshot_arg_pass(gen_snapshot):
 
 
 def test_snapshot_arg_fail(gen_classic_address):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Snapshot):
@@ -732,7 +732,7 @@ def test_subnet_arg_pass(gen_subnet):
 
 
 def test_subnet_arg_fail(gen_vpc):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Subnet):
@@ -775,7 +775,7 @@ def test_tag_arg_pass(gen_tag):
 
 
 def test_tag_arg_fail(gen_classic_address):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Tag):
@@ -818,7 +818,7 @@ def test_volume_arg_pass(gen_volume):
 
 
 def test_volume_arg_fail(gen_classic_address):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Volume):
@@ -861,7 +861,7 @@ def test_vpc_arg_pass(gen_vpc):
 
 
 def test_vpc_arg_fail(gen_tag):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Vpc):
@@ -904,7 +904,7 @@ def test_vpc_peering_connection_arg_pass(gen_vpc_peering_connection):
 
 
 def test_vpc_peering_connection_arg_fail(gen_network_interface_association):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcPeeringConnection):
@@ -947,7 +947,7 @@ def test_vpc_address_arg_pass(gen_vpc_address):
 
 
 def test_vpc_address_arg_fail(gen_network_interface_association):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcAddress):

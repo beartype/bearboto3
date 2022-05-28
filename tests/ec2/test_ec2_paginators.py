@@ -110,7 +110,7 @@ from bearboto3.ec2 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -132,7 +132,7 @@ def test_describe_route_tables_arg_pass(gen_describe_route_tables_paginator):
 def test_describe_route_tables_arg_fail(
     gen_describe_transit_gateway_attachments_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeRouteTablesPaginator):
@@ -181,7 +181,7 @@ def test_describe_iam_instance_profile_associations_arg_pass(
 def test_describe_iam_instance_profile_associations_arg_fail(
     gen_describe_vpcs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeIamInstanceProfileAssociationsPaginator):
@@ -228,7 +228,7 @@ def test_describe_instance_status_arg_pass(gen_describe_instance_status_paginato
 
 
 def test_describe_instance_status_arg_fail(gen_search_local_gateway_routes_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstanceStatusPaginator):
@@ -273,7 +273,7 @@ def test_describe_instances_arg_pass(gen_describe_instances_paginator):
 
 
 def test_describe_instances_arg_fail(gen_describe_replace_root_volume_tasks_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstancesPaginator):
@@ -322,7 +322,7 @@ def test_describe_reserved_instances_offerings_arg_pass(
 def test_describe_reserved_instances_offerings_arg_fail(
     gen_describe_trunk_interface_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeReservedInstancesOfferingsPaginator):
@@ -373,7 +373,7 @@ def test_describe_reserved_instances_modifications_arg_pass(
 def test_describe_reserved_instances_modifications_arg_fail(
     gen_describe_dhcp_options_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeReservedInstancesModificationsPaginator):
@@ -420,7 +420,7 @@ def test_describe_security_groups_arg_pass(gen_describe_security_groups_paginato
 
 
 def test_describe_security_groups_arg_fail(gen_describe_spot_fleet_instances_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSecurityGroupsPaginator):
@@ -465,7 +465,7 @@ def test_describe_snapshots_arg_pass(gen_describe_snapshots_paginator):
 
 
 def test_describe_snapshots_arg_fail(gen_describe_client_vpn_endpoints_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSnapshotsPaginator):
@@ -512,7 +512,7 @@ def test_describe_spot_fleet_instances_arg_pass(
 def test_describe_spot_fleet_instances_arg_fail(
     gen_describe_security_group_rules_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSpotFleetInstancesPaginator):
@@ -563,7 +563,7 @@ def test_describe_spot_fleet_requests_arg_pass(
 def test_describe_spot_fleet_requests_arg_fail(
     gen_describe_local_gateway_route_table_vpc_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSpotFleetRequestsPaginator):
@@ -614,7 +614,7 @@ def test_describe_spot_price_history_arg_pass(
 def test_describe_spot_price_history_arg_fail(
     gen_describe_replace_root_volume_tasks_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSpotPriceHistoryPaginator):
@@ -661,7 +661,7 @@ def test_describe_tags_arg_pass(gen_describe_tags_paginator):
 
 
 def test_describe_tags_arg_fail(gen_describe_flow_logs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTagsPaginator):
@@ -704,7 +704,7 @@ def test_describe_volume_status_arg_pass(gen_describe_volume_status_paginator):
 
 
 def test_describe_volume_status_arg_fail(gen_describe_network_insights_paths_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVolumeStatusPaginator):
@@ -749,7 +749,7 @@ def test_describe_volumes_arg_pass(gen_describe_volumes_paginator):
 
 
 def test_describe_volumes_arg_fail(gen_describe_instance_event_windows_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVolumesPaginator):
@@ -794,7 +794,7 @@ def test_describe_nat_gateways_arg_pass(gen_describe_nat_gateways_paginator):
 def test_describe_nat_gateways_arg_fail(
     gen_describe_scheduled_instance_availability_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNatGatewaysPaginator):
@@ -843,7 +843,7 @@ def test_describe_network_interfaces_arg_pass(
 def test_describe_network_interfaces_arg_fail(
     gen_describe_client_vpn_connections_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNetworkInterfacesPaginator):
@@ -890,7 +890,7 @@ def test_describe_vpc_endpoints_arg_pass(gen_describe_vpc_endpoints_paginator):
 
 
 def test_describe_vpc_endpoints_arg_fail(gen_describe_byoip_cidrs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointsPaginator):
@@ -937,7 +937,7 @@ def test_describe_vpc_endpoint_services_arg_pass(
 def test_describe_vpc_endpoint_services_arg_fail(
     gen_describe_public_ipv4_pools_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointServicesPaginator):
@@ -988,7 +988,7 @@ def test_describe_vpc_endpoint_connections_arg_pass(
 def test_describe_vpc_endpoint_connections_arg_fail(
     gen_describe_spot_instance_requests_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointConnectionsPaginator):
@@ -1035,7 +1035,7 @@ def test_describe_byoip_cidrs_arg_pass(gen_describe_byoip_cidrs_paginator):
 
 
 def test_describe_byoip_cidrs_arg_fail(gen_get_associated_ipv6_pool_cidrs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeByoipCidrsPaginator):
@@ -1082,7 +1082,7 @@ def test_describe_capacity_reservations_arg_pass(
 def test_describe_capacity_reservations_arg_fail(
     gen_describe_transit_gateway_connects_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeCapacityReservationsPaginator):
@@ -1133,7 +1133,7 @@ def test_describe_classic_link_instances_arg_pass(
 def test_describe_classic_link_instances_arg_fail(
     gen_describe_vpc_endpoint_service_permissions_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClassicLinkInstancesPaginator):
@@ -1184,7 +1184,7 @@ def test_describe_client_vpn_authorization_rules_arg_pass(
 def test_describe_client_vpn_authorization_rules_arg_fail(
     gen_describe_fpga_images_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClientVpnAuthorizationRulesPaginator):
@@ -1233,7 +1233,7 @@ def test_describe_client_vpn_connections_arg_pass(
 
 
 def test_describe_client_vpn_connections_arg_fail(gen_describe_route_tables_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClientVpnConnectionsPaginator):
@@ -1282,7 +1282,7 @@ def test_describe_client_vpn_endpoints_arg_pass(
 
 
 def test_describe_client_vpn_endpoints_arg_fail(gen_describe_byoip_cidrs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClientVpnEndpointsPaginator):
@@ -1327,7 +1327,7 @@ def test_describe_client_vpn_routes_arg_pass(gen_describe_client_vpn_routes_pagi
 
 
 def test_describe_client_vpn_routes_arg_fail(gen_describe_snapshots_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClientVpnRoutesPaginator):
@@ -1374,7 +1374,7 @@ def test_describe_client_vpn_target_networks_arg_pass(
 
 
 def test_describe_client_vpn_target_networks_arg_fail(gen_describe_subnets_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeClientVpnTargetNetworksPaginator):
@@ -1425,7 +1425,7 @@ def test_describe_egress_only_internet_gateways_arg_pass(
 def test_describe_egress_only_internet_gateways_arg_fail(
     gen_describe_traffic_mirror_targets_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeEgressOnlyInternetGatewaysPaginator):
@@ -1472,7 +1472,7 @@ def test_describe_fleets_arg_pass(gen_describe_fleets_paginator):
 
 
 def test_describe_fleets_arg_fail(gen_describe_security_groups_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeFleetsPaginator):
@@ -1515,7 +1515,7 @@ def test_describe_flow_logs_arg_pass(gen_describe_flow_logs_paginator):
 
 
 def test_describe_flow_logs_arg_fail(gen_describe_coip_pools_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeFlowLogsPaginator):
@@ -1558,7 +1558,7 @@ def test_describe_fpga_images_arg_pass(gen_describe_fpga_images_paginator):
 
 
 def test_describe_fpga_images_arg_fail(gen_describe_moving_addresses_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeFpgaImagesPaginator):
@@ -1605,7 +1605,7 @@ def test_describe_host_reservation_offerings_arg_pass(
 def test_describe_host_reservation_offerings_arg_fail(
     gen_describe_client_vpn_target_networks_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeHostReservationOfferingsPaginator):
@@ -1652,7 +1652,7 @@ def test_describe_host_reservations_arg_pass(gen_describe_host_reservations_pagi
 
 
 def test_describe_host_reservations_arg_fail(gen_describe_volume_status_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeHostReservationsPaginator):
@@ -1697,7 +1697,7 @@ def test_describe_hosts_arg_pass(gen_describe_hosts_paginator):
 
 
 def test_describe_hosts_arg_fail(gen_describe_store_image_tasks_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeHostsPaginator):
@@ -1742,7 +1742,7 @@ def test_describe_import_image_tasks_arg_pass(
 
 
 def test_describe_import_image_tasks_arg_fail(gen_describe_tags_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeImportImageTasksPaginator):
@@ -1791,7 +1791,7 @@ def test_describe_import_snapshot_tasks_arg_pass(
 def test_describe_import_snapshot_tasks_arg_fail(
     gen_describe_addresses_attribute_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeImportSnapshotTasksPaginator):
@@ -1842,7 +1842,7 @@ def test_describe_instance_credit_specifications_arg_pass(
 def test_describe_instance_credit_specifications_arg_fail(
     gen_describe_network_interfaces_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstanceCreditSpecificationsPaginator):
@@ -1893,7 +1893,7 @@ def test_describe_launch_template_versions_arg_pass(
 def test_describe_launch_template_versions_arg_fail(
     gen_describe_spot_instance_requests_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLaunchTemplateVersionsPaginator):
@@ -1940,7 +1940,7 @@ def test_describe_launch_templates_arg_pass(gen_describe_launch_templates_pagina
 
 
 def test_describe_launch_templates_arg_fail(gen_describe_coip_pools_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLaunchTemplatesPaginator):
@@ -1983,7 +1983,7 @@ def test_describe_moving_addresses_arg_pass(gen_describe_moving_addresses_pagina
 
 
 def test_describe_moving_addresses_arg_fail(gen_describe_fpga_images_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeMovingAddressesPaginator):
@@ -2030,7 +2030,7 @@ def test_describe_network_interface_permissions_arg_pass(
 def test_describe_network_interface_permissions_arg_fail(
     gen_describe_network_insights_paths_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNetworkInterfacePermissionsPaginator):
@@ -2077,7 +2077,7 @@ def test_describe_prefix_lists_arg_pass(gen_describe_prefix_lists_paginator):
 
 
 def test_describe_prefix_lists_arg_fail(gen_describe_volumes_modifications_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribePrefixListsPaginator):
@@ -2126,7 +2126,7 @@ def test_describe_principal_id_format_arg_pass(
 def test_describe_principal_id_format_arg_fail(
     gen_get_associated_ipv6_pool_cidrs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribePrincipalIdFormatPaginator):
@@ -2175,7 +2175,7 @@ def test_describe_public_ipv4_pools_arg_pass(gen_describe_public_ipv4_pools_pagi
 def test_describe_public_ipv4_pools_arg_fail(
     gen_describe_local_gateway_virtual_interfaces_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribePublicIpv4PoolsPaginator):
@@ -2226,7 +2226,7 @@ def test_describe_scheduled_instance_availability_arg_pass(
 def test_describe_scheduled_instance_availability_arg_fail(
     gen_get_vpn_connection_device_types_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeScheduledInstanceAvailabilityPaginator):
@@ -2275,7 +2275,7 @@ def test_describe_scheduled_instances_arg_pass(
 
 
 def test_describe_scheduled_instances_arg_fail(gen_describe_instance_status_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeScheduledInstancesPaginator):
@@ -2326,7 +2326,7 @@ def test_describe_stale_security_groups_arg_pass(
 def test_describe_stale_security_groups_arg_fail(
     gen_get_associated_ipv6_pool_cidrs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeStaleSecurityGroupsPaginator):
@@ -2377,7 +2377,7 @@ def test_describe_transit_gateway_attachments_arg_pass(
 def test_describe_transit_gateway_attachments_arg_fail(
     gen_describe_local_gateway_route_tables_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayAttachmentsPaginator):
@@ -2428,7 +2428,7 @@ def test_describe_transit_gateway_route_tables_arg_pass(
 def test_describe_transit_gateway_route_tables_arg_fail(
     gen_describe_launch_templates_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayRouteTablesPaginator):
@@ -2479,7 +2479,7 @@ def test_describe_transit_gateway_vpc_attachments_arg_pass(
 def test_describe_transit_gateway_vpc_attachments_arg_fail(
     gen_get_instance_types_from_instance_requirements_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayVpcAttachmentsPaginator):
@@ -2526,7 +2526,7 @@ def test_describe_transit_gateways_arg_pass(gen_describe_transit_gateways_pagina
 
 
 def test_describe_transit_gateways_arg_fail(gen_describe_route_tables_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewaysPaginator):
@@ -2571,7 +2571,7 @@ def test_describe_volumes_modifications_arg_pass(
 
 
 def test_describe_volumes_modifications_arg_fail(gen_describe_instance_types_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVolumesModificationsPaginator):
@@ -2622,7 +2622,7 @@ def test_describe_vpc_classic_link_dns_support_arg_pass(
 def test_describe_vpc_classic_link_dns_support_arg_fail(
     gen_get_transit_gateway_multicast_domain_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcClassicLinkDnsSupportPaginator):
@@ -2673,7 +2673,7 @@ def test_describe_vpc_endpoint_connection_notifications_arg_pass(
 def test_describe_vpc_endpoint_connection_notifications_arg_fail(
     gen_describe_launch_templates_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointConnectionNotificationsPaginator):
@@ -2724,7 +2724,7 @@ def test_describe_vpc_endpoint_service_configurations_arg_pass(
 def test_describe_vpc_endpoint_service_configurations_arg_fail(
     gen_describe_vpcs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointServiceConfigurationsPaginator):
@@ -2775,7 +2775,7 @@ def test_describe_vpc_endpoint_service_permissions_arg_pass(
 def test_describe_vpc_endpoint_service_permissions_arg_fail(
     gen_describe_vpc_peering_connections_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcEndpointServicePermissionsPaginator):
@@ -2826,7 +2826,7 @@ def test_describe_vpc_peering_connections_arg_pass(
 def test_describe_vpc_peering_connections_arg_fail(
     gen_describe_network_insights_paths_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcPeeringConnectionsPaginator):
@@ -2877,7 +2877,7 @@ def test_get_transit_gateway_attachment_propagations_arg_pass(
 def test_get_transit_gateway_attachment_propagations_arg_fail(
     gen_get_managed_prefix_list_entries_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetTransitGatewayAttachmentPropagationsPaginator):
@@ -2928,7 +2928,7 @@ def test_get_transit_gateway_route_table_associations_arg_pass(
 def test_get_transit_gateway_route_table_associations_arg_fail(
     gen_describe_classic_link_instances_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetTransitGatewayRouteTableAssociationsPaginator):
@@ -2979,7 +2979,7 @@ def test_get_transit_gateway_route_table_propagations_arg_pass(
 def test_get_transit_gateway_route_table_propagations_arg_fail(
     gen_describe_ipv6_pools_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetTransitGatewayRouteTablePropagationsPaginator):
@@ -3028,7 +3028,7 @@ def test_describe_internet_gateways_arg_pass(gen_describe_internet_gateways_pagi
 def test_describe_internet_gateways_arg_fail(
     gen_describe_network_insights_analyses_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInternetGatewaysPaginator):
@@ -3075,7 +3075,7 @@ def test_describe_network_acls_arg_pass(gen_describe_network_acls_paginator):
 
 
 def test_describe_network_acls_arg_fail(gen_describe_instance_type_offerings_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNetworkAclsPaginator):
@@ -3120,7 +3120,7 @@ def test_describe_vpcs_arg_pass(gen_describe_vpcs_paginator):
 
 
 def test_describe_vpcs_arg_fail(gen_describe_fleets_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeVpcsPaginator):
@@ -3167,7 +3167,7 @@ def test_describe_spot_instance_requests_arg_pass(
 def test_describe_spot_instance_requests_arg_fail(
     gen_describe_vpc_endpoint_service_permissions_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSpotInstanceRequestsPaginator):
@@ -3216,7 +3216,7 @@ def test_describe_dhcp_options_arg_pass(gen_describe_dhcp_options_paginator):
 def test_describe_dhcp_options_arg_fail(
     gen_get_transit_gateway_prefix_list_references_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeDhcpOptionsPaginator):
@@ -3263,7 +3263,7 @@ def test_describe_subnets_arg_pass(gen_describe_subnets_paginator):
 def test_describe_subnets_arg_fail(
     gen_describe_egress_only_internet_gateways_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSubnetsPaginator):
@@ -3312,7 +3312,7 @@ def test_describe_traffic_mirror_filters_arg_pass(
 def test_describe_traffic_mirror_filters_arg_fail(
     gen_describe_transit_gateway_vpc_attachments_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTrafficMirrorFiltersPaginator):
@@ -3363,7 +3363,7 @@ def test_describe_traffic_mirror_sessions_arg_pass(
 def test_describe_traffic_mirror_sessions_arg_fail(
     gen_describe_client_vpn_connections_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTrafficMirrorSessionsPaginator):
@@ -3414,7 +3414,7 @@ def test_describe_traffic_mirror_targets_arg_pass(
 def test_describe_traffic_mirror_targets_arg_fail(
     gen_describe_vpc_endpoint_services_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTrafficMirrorTargetsPaginator):
@@ -3465,7 +3465,7 @@ def test_describe_export_image_tasks_arg_pass(
 def test_describe_export_image_tasks_arg_fail(
     gen_get_managed_prefix_list_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeExportImageTasksPaginator):
@@ -3516,7 +3516,7 @@ def test_describe_fast_snapshot_restores_arg_pass(
 def test_describe_fast_snapshot_restores_arg_fail(
     gen_describe_transit_gateway_multicast_domains_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeFastSnapshotRestoresPaginator):
@@ -3563,7 +3563,7 @@ def test_describe_ipv6_pools_arg_pass(gen_describe_ipv6_pools_paginator):
 
 
 def test_describe_ipv6_pools_arg_fail(gen_describe_launch_template_versions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeIpv6PoolsPaginator):
@@ -3612,7 +3612,7 @@ def test_get_associated_ipv6_pool_cidrs_arg_pass(
 def test_get_associated_ipv6_pool_cidrs_arg_fail(
     gen_describe_spot_fleet_instances_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetAssociatedIpv6PoolCidrsPaginator):
@@ -3659,7 +3659,7 @@ def test_describe_coip_pools_arg_pass(gen_describe_coip_pools_paginator):
 
 
 def test_describe_coip_pools_arg_fail(gen_describe_instance_event_windows_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeCoipPoolsPaginator):
@@ -3706,7 +3706,7 @@ def test_describe_instance_type_offerings_arg_pass(
 def test_describe_instance_type_offerings_arg_fail(
     gen_describe_traffic_mirror_targets_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstanceTypeOfferingsPaginator):
@@ -3753,7 +3753,7 @@ def test_describe_instance_types_arg_pass(gen_describe_instance_types_paginator)
 
 
 def test_describe_instance_types_arg_fail(gen_describe_flow_logs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstanceTypesPaginator):
@@ -3804,7 +3804,7 @@ def test_describe_local_gateway_route_table_virtual_interface_group_associations
 def test_describe_local_gateway_route_table_virtual_interface_group_associations_arg_fail(
     gen_describe_security_groups_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(
@@ -3857,7 +3857,7 @@ def test_describe_local_gateway_route_table_vpc_associations_arg_pass(
 def test_describe_local_gateway_route_table_vpc_associations_arg_fail(
     gen_get_managed_prefix_list_entries_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLocalGatewayRouteTableVpcAssociationsPaginator):
@@ -3908,7 +3908,7 @@ def test_describe_local_gateway_route_tables_arg_pass(
 def test_describe_local_gateway_route_tables_arg_fail(
     gen_describe_managed_prefix_lists_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLocalGatewayRouteTablesPaginator):
@@ -3959,7 +3959,7 @@ def test_describe_local_gateway_virtual_interface_groups_arg_pass(
 def test_describe_local_gateway_virtual_interface_groups_arg_fail(
     gen_describe_subnets_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLocalGatewayVirtualInterfaceGroupsPaginator):
@@ -4010,7 +4010,7 @@ def test_describe_local_gateway_virtual_interfaces_arg_pass(
 def test_describe_local_gateway_virtual_interfaces_arg_fail(
     gen_describe_import_snapshot_tasks_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLocalGatewayVirtualInterfacesPaginator):
@@ -4059,7 +4059,7 @@ def test_describe_local_gateways_arg_pass(gen_describe_local_gateways_paginator)
 def test_describe_local_gateways_arg_fail(
     gen_describe_classic_link_instances_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeLocalGatewaysPaginator):
@@ -4108,7 +4108,7 @@ def test_describe_transit_gateway_multicast_domains_arg_pass(
 def test_describe_transit_gateway_multicast_domains_arg_fail(
     gen_describe_vpc_endpoint_services_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayMulticastDomainsPaginator):
@@ -4159,7 +4159,7 @@ def test_describe_transit_gateway_peering_attachments_arg_pass(
 def test_describe_transit_gateway_peering_attachments_arg_fail(
     gen_describe_export_image_tasks_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayPeeringAttachmentsPaginator):
@@ -4210,7 +4210,7 @@ def test_get_transit_gateway_multicast_domain_associations_arg_pass(
 def test_get_transit_gateway_multicast_domain_associations_arg_fail(
     gen_describe_capacity_reservation_fleets_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetTransitGatewayMulticastDomainAssociationsPaginator):
@@ -4261,7 +4261,7 @@ def test_search_local_gateway_routes_arg_pass(
 def test_search_local_gateway_routes_arg_fail(
     gen_describe_local_gateway_route_table_virtual_interface_group_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SearchLocalGatewayRoutesPaginator):
@@ -4314,7 +4314,7 @@ def test_search_transit_gateway_multicast_groups_arg_pass(
 def test_search_transit_gateway_multicast_groups_arg_fail(
     gen_describe_subnets_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SearchTransitGatewayMulticastGroupsPaginator):
@@ -4365,7 +4365,7 @@ def test_describe_managed_prefix_lists_arg_pass(
 def test_describe_managed_prefix_lists_arg_fail(
     gen_describe_transit_gateway_multicast_domains_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeManagedPrefixListsPaginator):
@@ -4416,7 +4416,7 @@ def test_get_managed_prefix_list_associations_arg_pass(
 def test_get_managed_prefix_list_associations_arg_fail(
     gen_get_spot_placement_scores_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetManagedPrefixListAssociationsPaginator):
@@ -4467,7 +4467,7 @@ def test_get_managed_prefix_list_entries_arg_pass(
 def test_get_managed_prefix_list_entries_arg_fail(
     gen_describe_host_reservation_offerings_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetManagedPrefixListEntriesPaginator):
@@ -4518,7 +4518,7 @@ def test_get_groups_for_capacity_reservation_arg_pass(
 def test_get_groups_for_capacity_reservation_arg_fail(
     gen_get_transit_gateway_multicast_domain_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetGroupsForCapacityReservationPaginator):
@@ -4567,7 +4567,7 @@ def test_describe_carrier_gateways_arg_pass(gen_describe_carrier_gateways_pagina
 def test_describe_carrier_gateways_arg_fail(
     gen_describe_local_gateway_route_table_virtual_interface_group_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeCarrierGatewaysPaginator):
@@ -4618,7 +4618,7 @@ def test_get_transit_gateway_prefix_list_references_arg_pass(
 def test_get_transit_gateway_prefix_list_references_arg_fail(
     gen_describe_network_acls_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetTransitGatewayPrefixListReferencesPaginator):
@@ -4669,7 +4669,7 @@ def test_describe_network_insights_analyses_arg_pass(
 def test_describe_network_insights_analyses_arg_fail(
     gen_describe_launch_templates_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNetworkInsightsAnalysesPaginator):
@@ -4720,7 +4720,7 @@ def test_describe_network_insights_paths_arg_pass(
 def test_describe_network_insights_paths_arg_fail(
     gen_describe_local_gateway_route_table_vpc_associations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeNetworkInsightsPathsPaginator):
@@ -4771,7 +4771,7 @@ def test_describe_transit_gateway_connect_peers_arg_pass(
 def test_describe_transit_gateway_connect_peers_arg_fail(
     gen_describe_spot_fleet_requests_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayConnectPeersPaginator):
@@ -4822,7 +4822,7 @@ def test_describe_transit_gateway_connects_arg_pass(
 def test_describe_transit_gateway_connects_arg_fail(
     gen_describe_capacity_reservations_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTransitGatewayConnectsPaginator):
@@ -4871,7 +4871,7 @@ def test_describe_addresses_attribute_arg_pass(
 
 
 def test_describe_addresses_attribute_arg_fail(gen_describe_dhcp_options_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeAddressesAttributePaginator):
@@ -4920,7 +4920,7 @@ def test_describe_replace_root_volume_tasks_arg_pass(
 def test_describe_replace_root_volume_tasks_arg_fail(
     gen_describe_client_vpn_routes_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeReplaceRootVolumeTasksPaginator):
@@ -4969,7 +4969,7 @@ def test_describe_store_image_tasks_arg_pass(gen_describe_store_image_tasks_pagi
 def test_describe_store_image_tasks_arg_fail(
     gen_describe_addresses_attribute_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeStoreImageTasksPaginator):
@@ -5020,7 +5020,7 @@ def test_describe_security_group_rules_arg_pass(
 def test_describe_security_group_rules_arg_fail(
     gen_describe_instance_credit_specifications_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeSecurityGroupRulesPaginator):
@@ -5071,7 +5071,7 @@ def test_describe_instance_event_windows_arg_pass(
 def test_describe_instance_event_windows_arg_fail(
     gen_describe_instance_status_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeInstanceEventWindowsPaginator):
@@ -5122,7 +5122,7 @@ def test_describe_trunk_interface_associations_arg_pass(
 def test_describe_trunk_interface_associations_arg_fail(
     gen_search_transit_gateway_multicast_groups_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeTrunkInterfaceAssociationsPaginator):
@@ -5171,7 +5171,7 @@ def test_get_vpn_connection_device_types_arg_pass(
 
 
 def test_get_vpn_connection_device_types_arg_fail(gen_describe_subnets_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetVpnConnectionDeviceTypesPaginator):
@@ -5220,7 +5220,7 @@ def test_describe_capacity_reservation_fleets_arg_pass(
 def test_describe_capacity_reservation_fleets_arg_fail(
     gen_describe_scheduled_instance_availability_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: DescribeCapacityReservationFleetsPaginator):
@@ -5271,7 +5271,7 @@ def test_get_instance_types_from_instance_requirements_arg_pass(
 def test_get_instance_types_from_instance_requirements_arg_fail(
     gen_describe_moving_addresses_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetInstanceTypesFromInstanceRequirementsPaginator):
@@ -5318,7 +5318,7 @@ def test_get_spot_placement_scores_arg_pass(gen_get_spot_placement_scores_pagina
 
 
 def test_get_spot_placement_scores_arg_fail(gen_describe_prefix_lists_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GetSpotPlacementScoresPaginator):

@@ -7,7 +7,7 @@ from bearboto3.iam import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -27,7 +27,7 @@ def test_instance_profile_exists_arg_pass(gen_instance_profile_exists_waiter):
 
 
 def test_instance_profile_exists_arg_fail(gen_user_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceProfileExistsWaiter):
@@ -70,7 +70,7 @@ def test_user_exists_arg_pass(gen_user_exists_waiter):
 
 
 def test_user_exists_arg_fail(gen_instance_profile_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserExistsWaiter):
@@ -113,7 +113,7 @@ def test_role_exists_arg_pass(gen_role_exists_waiter):
 
 
 def test_role_exists_arg_fail(gen_user_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RoleExistsWaiter):
@@ -156,7 +156,7 @@ def test_policy_exists_arg_pass(gen_policy_exists_waiter):
 
 
 def test_policy_exists_arg_fail(gen_role_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyExistsWaiter):

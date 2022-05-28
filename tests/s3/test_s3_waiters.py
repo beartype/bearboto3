@@ -7,7 +7,7 @@ from bearboto3.s3 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -27,7 +27,7 @@ def test_bucket_exists_arg_pass(gen_bucket_exists_waiter):
 
 
 def test_bucket_exists_arg_fail(gen_object_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketExistsWaiter):
@@ -70,7 +70,7 @@ def test_bucket_not_exists_arg_pass(gen_bucket_not_exists_waiter):
 
 
 def test_bucket_not_exists_arg_fail(gen_object_not_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketNotExistsWaiter):
@@ -113,7 +113,7 @@ def test_object_exists_arg_pass(gen_object_exists_waiter):
 
 
 def test_object_exists_arg_fail(gen_bucket_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ObjectExistsWaiter):
@@ -156,7 +156,7 @@ def test_object_not_exists_arg_pass(gen_object_not_exists_waiter):
 
 
 def test_object_not_exists_arg_fail(gen_bucket_not_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ObjectNotExistsWaiter):

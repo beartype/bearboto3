@@ -24,7 +24,7 @@ from bearboto3.iam import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -44,7 +44,7 @@ def test_access_key_arg_pass(gen_access_key):
 
 
 def test_access_key_arg_fail(gen_role):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: AccessKey):
@@ -87,7 +87,7 @@ def test_access_key_pair_arg_pass(gen_access_key_pair):
 
 
 def test_access_key_pair_arg_fail(gen_policy_version):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: AccessKeyPair):
@@ -130,7 +130,7 @@ def test_account_password_policy_arg_pass(gen_account_password_policy):
 
 
 def test_account_password_policy_arg_fail(gen_mfa_device):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: AccountPasswordPolicy):
@@ -173,7 +173,7 @@ def test_account_summary_arg_pass(gen_account_summary):
 
 
 def test_account_summary_arg_fail(gen_role):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: AccountSummary):
@@ -216,7 +216,7 @@ def test_assume_role_policy_arg_pass(gen_assume_role_policy):
 
 
 def test_assume_role_policy_arg_fail(gen_signing_certificate):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: AssumeRolePolicy):
@@ -259,7 +259,7 @@ def test_current_user_arg_pass(gen_current_user):
 
 
 def test_current_user_arg_fail(gen_mfa_device):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: CurrentUser):
@@ -302,7 +302,7 @@ def test_group_arg_pass(gen_group):
 
 
 def test_group_arg_fail(gen_account_summary):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Group):
@@ -345,7 +345,7 @@ def test_group_policy_arg_pass(gen_group_policy):
 
 
 def test_group_policy_arg_fail(gen_access_key_pair):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GroupPolicy):
@@ -388,7 +388,7 @@ def test_instance_profile_arg_pass(gen_instance_profile):
 
 
 def test_instance_profile_arg_fail(gen_current_user):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceProfile):
@@ -431,7 +431,7 @@ def test_login_profile_arg_pass(gen_login_profile):
 
 
 def test_login_profile_arg_fail(gen_role_policy):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: LoginProfile):
@@ -474,7 +474,7 @@ def test_mfa_device_arg_pass(gen_mfa_device):
 
 
 def test_mfa_device_arg_fail(gen_server_certificate):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: MfaDevice):
@@ -517,7 +517,7 @@ def test_policy_arg_pass(gen_policy):
 
 
 def test_policy_arg_fail(gen_role):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Policy):
@@ -560,7 +560,7 @@ def test_policy_version_arg_pass(gen_policy_version):
 
 
 def test_policy_version_arg_fail(gen_group):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyVersion):
@@ -603,7 +603,7 @@ def test_role_arg_pass(gen_role):
 
 
 def test_role_arg_fail(gen_account_summary):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Role):
@@ -646,7 +646,7 @@ def test_role_policy_arg_pass(gen_role_policy):
 
 
 def test_role_policy_arg_fail(gen_group):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RolePolicy):
@@ -689,7 +689,7 @@ def test_saml_provider_arg_pass(gen_saml_provider):
 
 
 def test_saml_provider_arg_fail(gen_mfa_device):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SamlProvider):
@@ -732,7 +732,7 @@ def test_server_certificate_arg_pass(gen_server_certificate):
 
 
 def test_server_certificate_arg_fail(gen_saml_provider):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServerCertificate):
@@ -775,7 +775,7 @@ def test_signing_certificate_arg_pass(gen_signing_certificate):
 
 
 def test_signing_certificate_arg_fail(gen_saml_provider):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SigningCertificate):
@@ -818,7 +818,7 @@ def test_user_arg_pass(gen_user):
 
 
 def test_user_arg_fail(gen_role_policy):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: User):
@@ -861,7 +861,7 @@ def test_user_policy_arg_pass(gen_user_policy):
 
 
 def test_user_policy_arg_fail(gen_account_summary):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserPolicy):
@@ -904,7 +904,7 @@ def test_virtual_mfa_device_arg_pass(gen_virtual_mfa_device):
 
 
 def test_virtual_mfa_device_arg_fail(gen_role):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VirtualMfaDevice):

@@ -5,7 +5,7 @@ from bearboto3.sqs import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -25,7 +25,7 @@ def test_queues_arg_pass(gen_service_resource_queues_collection):
 
 
 def test_queues_arg_fail(gen_queue_dead_letter_source_queues_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceQueuesCollection):
@@ -70,7 +70,7 @@ def test_dead_letter_source_queues_arg_pass(
 
 
 def test_dead_letter_source_queues_arg_fail(gen_service_resource_queues_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: QueueDeadLetterSourceQueuesCollection):

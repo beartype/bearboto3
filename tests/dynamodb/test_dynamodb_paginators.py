@@ -8,7 +8,7 @@ from bearboto3.dynamodb import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -28,7 +28,7 @@ def test_list_backups_arg_pass(gen_list_backups_paginator):
 
 
 def test_list_backups_arg_fail(gen_list_tags_of_resource_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListBackupsPaginator):
@@ -71,7 +71,7 @@ def test_list_tables_arg_pass(gen_list_tables_paginator):
 
 
 def test_list_tables_arg_fail(gen_list_backups_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListTablesPaginator):
@@ -114,7 +114,7 @@ def test_query_arg_pass(gen_query_paginator):
 
 
 def test_query_arg_fail(gen_scan_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: QueryPaginator):
@@ -157,7 +157,7 @@ def test_scan_arg_pass(gen_scan_paginator):
 
 
 def test_scan_arg_fail(gen_query_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ScanPaginator):
@@ -200,7 +200,7 @@ def test_list_tags_of_resource_arg_pass(gen_list_tags_of_resource_paginator):
 
 
 def test_list_tags_of_resource_arg_fail(gen_query_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListTagsOfResourcePaginator):

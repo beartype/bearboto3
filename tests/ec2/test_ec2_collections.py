@@ -35,7 +35,7 @@ from bearboto3.ec2 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -55,7 +55,7 @@ def test_classic_addresses_arg_pass(gen_service_resource_classic_addresses_colle
 
 
 def test_classic_addresses_arg_fail(gen_service_resource_network_acls_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceClassicAddressesCollection):
@@ -102,7 +102,7 @@ def test_dhcp_options_sets_arg_pass(gen_service_resource_dhcp_options_sets_colle
 def test_dhcp_options_sets_arg_fail(
     gen_vpc_accepted_vpc_peering_connections_collection,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceDhcpOptionsSetsCollection):
@@ -149,7 +149,7 @@ def test_images_arg_pass(gen_service_resource_images_collection):
 
 
 def test_images_arg_fail(gen_service_resource_network_acls_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceImagesCollection):
@@ -192,7 +192,7 @@ def test_instances_arg_pass(gen_service_resource_instances_collection):
 
 
 def test_instances_arg_fail(gen_subnet_instances_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceInstancesCollection):
@@ -235,7 +235,7 @@ def test_internet_gateways_arg_pass(gen_service_resource_internet_gateways_colle
 
 
 def test_internet_gateways_arg_fail(gen_service_resource_dhcp_options_sets_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceInternetGatewaysCollection):
@@ -282,7 +282,7 @@ def test_key_pairs_arg_pass(gen_service_resource_key_pairs_collection):
 
 
 def test_key_pairs_arg_fail(gen_placement_group_instances_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceKeyPairsCollection):
@@ -325,7 +325,7 @@ def test_network_acls_arg_pass(gen_service_resource_network_acls_collection):
 
 
 def test_network_acls_arg_fail(gen_vpc_internet_gateways_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceNetworkAclsCollection):
@@ -370,7 +370,7 @@ def test_network_interfaces_arg_pass(
 
 
 def test_network_interfaces_arg_fail(gen_service_resource_volumes_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceNetworkInterfacesCollection):
@@ -415,7 +415,7 @@ def test_placement_groups_arg_pass(gen_service_resource_placement_groups_collect
 
 
 def test_placement_groups_arg_fail(gen_service_resource_route_tables_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourcePlacementGroupsCollection):
@@ -458,7 +458,7 @@ def test_route_tables_arg_pass(gen_service_resource_route_tables_collection):
 
 
 def test_route_tables_arg_fail(gen_service_resource_vpc_peering_connections_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceRouteTablesCollection):
@@ -503,7 +503,7 @@ def test_security_groups_arg_pass(gen_service_resource_security_groups_collectio
 
 
 def test_security_groups_arg_fail(gen_service_resource_images_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceSecurityGroupsCollection):
@@ -546,7 +546,7 @@ def test_snapshots_arg_pass(gen_service_resource_snapshots_collection):
 
 
 def test_snapshots_arg_fail(gen_service_resource_route_tables_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceSnapshotsCollection):
@@ -589,7 +589,7 @@ def test_subnets_arg_pass(gen_service_resource_subnets_collection):
 
 
 def test_subnets_arg_fail(gen_service_resource_snapshots_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceSubnetsCollection):
@@ -632,7 +632,7 @@ def test_volumes_arg_pass(gen_service_resource_volumes_collection):
 
 
 def test_volumes_arg_fail(gen_vpc_accepted_vpc_peering_connections_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceVolumesCollection):
@@ -675,7 +675,7 @@ def test_vpc_addresses_arg_pass(gen_service_resource_vpc_addresses_collection):
 
 
 def test_vpc_addresses_arg_fail(gen_volume_snapshots_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceVpcAddressesCollection):
@@ -720,7 +720,7 @@ def test_vpc_peering_connections_arg_pass(
 
 
 def test_vpc_peering_connections_arg_fail(gen_service_resource_snapshots_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceVpcPeeringConnectionsCollection):
@@ -765,7 +765,7 @@ def test_vpcs_arg_pass(gen_service_resource_vpcs_collection):
 
 
 def test_vpcs_arg_fail(gen_service_resource_images_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceVpcsCollection):
@@ -808,7 +808,7 @@ def test_volumes_arg_pass(gen_instance_volumes_collection):
 
 
 def test_volumes_arg_fail(gen_service_resource_network_acls_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceVolumesCollection):
@@ -851,7 +851,7 @@ def test_vpc_addresses_arg_pass(gen_instance_vpc_addresses_collection):
 
 
 def test_vpc_addresses_arg_fail(gen_vpc_network_acls_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceVpcAddressesCollection):
@@ -894,7 +894,7 @@ def test_instances_arg_pass(gen_placement_group_instances_collection):
 
 
 def test_instances_arg_fail(gen_vpc_requested_vpc_peering_connections_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PlacementGroupInstancesCollection):
@@ -937,7 +937,7 @@ def test_instances_arg_pass(gen_subnet_instances_collection):
 
 
 def test_instances_arg_fail(gen_vpc_network_acls_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SubnetInstancesCollection):
@@ -980,7 +980,7 @@ def test_network_interfaces_arg_pass(gen_subnet_network_interfaces_collection):
 
 
 def test_network_interfaces_arg_fail(gen_vpc_subnets_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SubnetNetworkInterfacesCollection):
@@ -1023,7 +1023,7 @@ def test_snapshots_arg_pass(gen_volume_snapshots_collection):
 
 
 def test_snapshots_arg_fail(gen_vpc_subnets_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VolumeSnapshotsCollection):
@@ -1070,7 +1070,7 @@ def test_accepted_vpc_peering_connections_arg_pass(
 def test_accepted_vpc_peering_connections_arg_fail(
     gen_service_resource_dhcp_options_sets_collection,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcAcceptedVpcPeeringConnectionsCollection):
@@ -1117,7 +1117,7 @@ def test_instances_arg_pass(gen_vpc_instances_collection):
 
 
 def test_instances_arg_fail(gen_service_resource_route_tables_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcInstancesCollection):
@@ -1160,7 +1160,7 @@ def test_internet_gateways_arg_pass(gen_vpc_internet_gateways_collection):
 
 
 def test_internet_gateways_arg_fail(gen_service_resource_internet_gateways_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcInternetGatewaysCollection):
@@ -1205,7 +1205,7 @@ def test_network_acls_arg_pass(gen_vpc_network_acls_collection):
 
 
 def test_network_acls_arg_fail(gen_service_resource_images_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcNetworkAclsCollection):
@@ -1248,7 +1248,7 @@ def test_network_interfaces_arg_pass(gen_vpc_network_interfaces_collection):
 
 
 def test_network_interfaces_arg_fail(gen_service_resource_internet_gateways_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcNetworkInterfacesCollection):
@@ -1297,7 +1297,7 @@ def test_requested_vpc_peering_connections_arg_pass(
 def test_requested_vpc_peering_connections_arg_fail(
     gen_subnet_network_interfaces_collection,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcRequestedVpcPeeringConnectionsCollection):
@@ -1344,7 +1344,7 @@ def test_route_tables_arg_pass(gen_vpc_route_tables_collection):
 
 
 def test_route_tables_arg_fail(gen_service_resource_dhcp_options_sets_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcRouteTablesCollection):
@@ -1387,7 +1387,7 @@ def test_security_groups_arg_pass(gen_vpc_security_groups_collection):
 
 
 def test_security_groups_arg_fail(gen_service_resource_key_pairs_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcSecurityGroupsCollection):
@@ -1430,7 +1430,7 @@ def test_subnets_arg_pass(gen_vpc_subnets_collection):
 
 
 def test_subnets_arg_fail(gen_vpc_route_tables_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcSubnetsCollection):

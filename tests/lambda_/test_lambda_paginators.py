@@ -13,7 +13,7 @@ from bearboto3.lambda_ import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -35,7 +35,7 @@ def test_list_event_source_mappings_arg_pass(gen_list_event_source_mappings_pagi
 def test_list_event_source_mappings_arg_fail(
     gen_list_functions_by_code_signing_config_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListEventSourceMappingsPaginator):
@@ -82,7 +82,7 @@ def test_list_functions_arg_pass(gen_list_functions_paginator):
 
 
 def test_list_functions_arg_fail(gen_list_code_signing_configs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListFunctionsPaginator):
@@ -125,7 +125,7 @@ def test_list_aliases_arg_pass(gen_list_aliases_paginator):
 
 
 def test_list_aliases_arg_fail(gen_list_provisioned_concurrency_configs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListAliasesPaginator):
@@ -168,7 +168,7 @@ def test_list_layer_versions_arg_pass(gen_list_layer_versions_paginator):
 
 
 def test_list_layer_versions_arg_fail(gen_list_aliases_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListLayerVersionsPaginator):
@@ -211,7 +211,7 @@ def test_list_layers_arg_pass(gen_list_layers_paginator):
 
 
 def test_list_layers_arg_fail(gen_list_code_signing_configs_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListLayersPaginator):
@@ -256,7 +256,7 @@ def test_list_versions_by_function_arg_pass(gen_list_versions_by_function_pagina
 def test_list_versions_by_function_arg_fail(
     gen_list_function_event_invoke_configs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListVersionsByFunctionPaginator):
@@ -305,7 +305,7 @@ def test_list_function_event_invoke_configs_arg_pass(
 def test_list_function_event_invoke_configs_arg_fail(
     gen_list_code_signing_configs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListFunctionEventInvokeConfigsPaginator):
@@ -356,7 +356,7 @@ def test_list_provisioned_concurrency_configs_arg_pass(
 def test_list_provisioned_concurrency_configs_arg_fail(
     gen_list_function_event_invoke_configs_paginator,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListProvisionedConcurrencyConfigsPaginator):
@@ -403,7 +403,7 @@ def test_list_code_signing_configs_arg_pass(gen_list_code_signing_configs_pagina
 
 
 def test_list_code_signing_configs_arg_fail(gen_list_functions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListCodeSigningConfigsPaginator):
@@ -448,7 +448,7 @@ def test_list_functions_by_code_signing_config_arg_pass(
 
 
 def test_list_functions_by_code_signing_config_arg_fail(gen_list_functions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListFunctionsByCodeSigningConfigPaginator):

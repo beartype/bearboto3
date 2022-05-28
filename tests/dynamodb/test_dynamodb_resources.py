@@ -2,7 +2,7 @@ import pytest
 from bearboto3.dynamodb import Table
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -21,7 +21,7 @@ def test_table_arg_pass(gen_table):
 
 
 def test_table_arg_fail(gen_bucket):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Table):

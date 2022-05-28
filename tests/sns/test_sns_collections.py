@@ -8,7 +8,7 @@ from bearboto3.sns import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -30,7 +30,7 @@ def test_platform_applications_arg_pass(
 
 
 def test_platform_applications_arg_fail(gen_platform_application_endpoints_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourcePlatformApplicationsCollection):
@@ -77,7 +77,7 @@ def test_subscriptions_arg_pass(gen_service_resource_subscriptions_collection):
 
 
 def test_subscriptions_arg_fail(gen_service_resource_platform_applications_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceSubscriptionsCollection):
@@ -122,7 +122,7 @@ def test_topics_arg_pass(gen_service_resource_topics_collection):
 
 
 def test_topics_arg_fail(gen_platform_application_endpoints_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceTopicsCollection):
@@ -165,7 +165,7 @@ def test_endpoints_arg_pass(gen_platform_application_endpoints_collection):
 
 
 def test_endpoints_arg_fail(gen_service_resource_subscriptions_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PlatformApplicationEndpointsCollection):
@@ -208,7 +208,7 @@ def test_subscriptions_arg_pass(gen_topic_subscriptions_collection):
 
 
 def test_subscriptions_arg_fail(gen_service_resource_topics_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: TopicSubscriptionsCollection):

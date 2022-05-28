@@ -5,7 +5,7 @@ from bearboto3.dynamodb import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -25,7 +25,7 @@ def test_table_exists_arg_pass(gen_table_exists_waiter):
 
 
 def test_table_exists_arg_fail(gen_table_not_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: TableExistsWaiter):
@@ -68,7 +68,7 @@ def test_table_not_exists_arg_pass(gen_table_not_exists_waiter):
 
 
 def test_table_not_exists_arg_fail(gen_table_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: TableNotExistsWaiter):

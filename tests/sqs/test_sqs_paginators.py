@@ -5,7 +5,7 @@ from bearboto3.sqs import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -27,7 +27,7 @@ def test_list_dead_letter_source_queues_arg_pass(
 
 
 def test_list_dead_letter_source_queues_arg_fail(gen_list_queues_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListDeadLetterSourceQueuesPaginator):
@@ -72,7 +72,7 @@ def test_list_queues_arg_pass(gen_list_queues_paginator):
 
 
 def test_list_queues_arg_fail(gen_list_dead_letter_source_queues_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListQueuesPaginator):

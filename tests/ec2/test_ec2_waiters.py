@@ -35,7 +35,7 @@ from bearboto3.ec2 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -55,7 +55,7 @@ def test_instance_exists_arg_pass(gen_instance_exists_waiter):
 
 
 def test_instance_exists_arg_fail(gen_conversion_task_completed_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceExistsWaiter):
@@ -98,7 +98,7 @@ def test_bundle_task_complete_arg_pass(gen_bundle_task_complete_waiter):
 
 
 def test_bundle_task_complete_arg_fail(gen_spot_instance_request_fulfilled_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BundleTaskCompleteWaiter):
@@ -141,7 +141,7 @@ def test_conversion_task_cancelled_arg_pass(gen_conversion_task_cancelled_waiter
 
 
 def test_conversion_task_cancelled_arg_fail(gen_nat_gateway_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ConversionTaskCancelledWaiter):
@@ -184,7 +184,7 @@ def test_conversion_task_completed_arg_pass(gen_conversion_task_completed_waiter
 
 
 def test_conversion_task_completed_arg_fail(gen_image_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ConversionTaskCompletedWaiter):
@@ -227,7 +227,7 @@ def test_conversion_task_deleted_arg_pass(gen_conversion_task_deleted_waiter):
 
 
 def test_conversion_task_deleted_arg_fail(gen_bundle_task_complete_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ConversionTaskDeletedWaiter):
@@ -270,7 +270,7 @@ def test_customer_gateway_available_arg_pass(gen_customer_gateway_available_wait
 
 
 def test_customer_gateway_available_arg_fail(gen_bundle_task_complete_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: CustomerGatewayAvailableWaiter):
@@ -313,7 +313,7 @@ def test_export_task_cancelled_arg_pass(gen_export_task_cancelled_waiter):
 
 
 def test_export_task_cancelled_arg_fail(gen_subnet_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ExportTaskCancelledWaiter):
@@ -356,7 +356,7 @@ def test_export_task_completed_arg_pass(gen_export_task_completed_waiter):
 
 
 def test_export_task_completed_arg_fail(gen_vpc_peering_connection_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ExportTaskCompletedWaiter):
@@ -399,7 +399,7 @@ def test_image_exists_arg_pass(gen_image_exists_waiter):
 
 
 def test_image_exists_arg_fail(gen_password_data_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ImageExistsWaiter):
@@ -442,7 +442,7 @@ def test_image_available_arg_pass(gen_image_available_waiter):
 
 
 def test_image_available_arg_fail(gen_export_task_cancelled_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ImageAvailableWaiter):
@@ -485,7 +485,7 @@ def test_instance_running_arg_pass(gen_instance_running_waiter):
 
 
 def test_instance_running_arg_fail(gen_volume_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceRunningWaiter):
@@ -528,7 +528,7 @@ def test_instance_status_ok_arg_pass(gen_instance_status_ok_waiter):
 
 
 def test_instance_status_ok_arg_fail(gen_instance_stopped_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceStatusOkWaiter):
@@ -571,7 +571,7 @@ def test_instance_stopped_arg_pass(gen_instance_stopped_waiter):
 
 
 def test_instance_stopped_arg_fail(gen_bundle_task_complete_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceStoppedWaiter):
@@ -614,7 +614,7 @@ def test_instance_terminated_arg_pass(gen_instance_terminated_waiter):
 
 
 def test_instance_terminated_arg_fail(gen_network_interface_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: InstanceTerminatedWaiter):
@@ -657,7 +657,7 @@ def test_key_pair_exists_arg_pass(gen_key_pair_exists_waiter):
 
 
 def test_key_pair_exists_arg_fail(gen_snapshot_completed_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: KeyPairExistsWaiter):
@@ -700,7 +700,7 @@ def test_nat_gateway_available_arg_pass(gen_nat_gateway_available_waiter):
 
 
 def test_nat_gateway_available_arg_fail(gen_bundle_task_complete_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: NatGatewayAvailableWaiter):
@@ -743,7 +743,7 @@ def test_network_interface_available_arg_pass(gen_network_interface_available_wa
 
 
 def test_network_interface_available_arg_fail(gen_volume_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: NetworkInterfaceAvailableWaiter):
@@ -788,7 +788,7 @@ def test_password_data_available_arg_pass(gen_password_data_available_waiter):
 
 
 def test_password_data_available_arg_fail(gen_key_pair_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PasswordDataAvailableWaiter):
@@ -831,7 +831,7 @@ def test_snapshot_completed_arg_pass(gen_snapshot_completed_waiter):
 
 
 def test_snapshot_completed_arg_fail(gen_instance_running_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SnapshotCompletedWaiter):
@@ -874,7 +874,7 @@ def test_security_group_exists_arg_pass(gen_security_group_exists_waiter):
 
 
 def test_security_group_exists_arg_fail(gen_volume_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SecurityGroupExistsWaiter):
@@ -919,7 +919,7 @@ def test_spot_instance_request_fulfilled_arg_pass(
 
 
 def test_spot_instance_request_fulfilled_arg_fail(gen_instance_stopped_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SpotInstanceRequestFulfilledWaiter):
@@ -964,7 +964,7 @@ def test_subnet_available_arg_pass(gen_subnet_available_waiter):
 
 
 def test_subnet_available_arg_fail(gen_vpc_peering_connection_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SubnetAvailableWaiter):
@@ -1007,7 +1007,7 @@ def test_system_status_ok_arg_pass(gen_system_status_ok_waiter):
 
 
 def test_system_status_ok_arg_fail(gen_export_task_cancelled_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: SystemStatusOkWaiter):
@@ -1050,7 +1050,7 @@ def test_volume_available_arg_pass(gen_volume_available_waiter):
 
 
 def test_volume_available_arg_fail(gen_vpn_connection_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VolumeAvailableWaiter):
@@ -1093,7 +1093,7 @@ def test_volume_deleted_arg_pass(gen_volume_deleted_waiter):
 
 
 def test_volume_deleted_arg_fail(gen_vpc_peering_connection_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VolumeDeletedWaiter):
@@ -1136,7 +1136,7 @@ def test_volume_in_use_arg_pass(gen_volume_in_use_waiter):
 
 
 def test_volume_in_use_arg_fail(gen_conversion_task_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VolumeInUseWaiter):
@@ -1179,7 +1179,7 @@ def test_vpc_available_arg_pass(gen_vpc_available_waiter):
 
 
 def test_vpc_available_arg_fail(gen_vpc_peering_connection_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcAvailableWaiter):
@@ -1222,7 +1222,7 @@ def test_vpc_exists_arg_pass(gen_vpc_exists_waiter):
 
 
 def test_vpc_exists_arg_fail(gen_instance_terminated_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcExistsWaiter):
@@ -1265,7 +1265,7 @@ def test_vpn_connection_available_arg_pass(gen_vpn_connection_available_waiter):
 
 
 def test_vpn_connection_available_arg_fail(gen_customer_gateway_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpnConnectionAvailableWaiter):
@@ -1308,7 +1308,7 @@ def test_vpn_connection_deleted_arg_pass(gen_vpn_connection_deleted_waiter):
 
 
 def test_vpn_connection_deleted_arg_fail(gen_volume_available_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpnConnectionDeletedWaiter):
@@ -1353,7 +1353,7 @@ def test_vpc_peering_connection_exists_arg_pass(
 
 
 def test_vpc_peering_connection_exists_arg_fail(gen_instance_exists_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcPeeringConnectionExistsWaiter):
@@ -1400,7 +1400,7 @@ def test_vpc_peering_connection_deleted_arg_pass(
 
 
 def test_vpc_peering_connection_deleted_arg_fail(gen_volume_deleted_waiter):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: VpcPeeringConnectionDeletedWaiter):

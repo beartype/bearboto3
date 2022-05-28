@@ -5,7 +5,7 @@ from bearboto3.sqs import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -25,7 +25,7 @@ def test_message_arg_pass(gen_message):
 
 
 def test_message_arg_fail(gen_queue):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Message):
@@ -68,7 +68,7 @@ def test_queue_arg_pass(gen_queue):
 
 
 def test_queue_arg_fail(gen_message):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Queue):

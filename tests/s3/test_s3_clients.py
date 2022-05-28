@@ -5,7 +5,7 @@ from bearboto3.s3 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -25,7 +25,7 @@ def test_s3_client_arg_pass(gen_s3_client):
 
 
 def test_s3_client_arg_fail(gen_ec2_client):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: S3Client):
@@ -68,7 +68,7 @@ def test_s3_resource_arg_pass(gen_s3_resource):
 
 
 def test_s3_resource_arg_fail(gen_ec2_resource):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: S3ServiceResource):

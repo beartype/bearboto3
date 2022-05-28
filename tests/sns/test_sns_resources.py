@@ -7,7 +7,7 @@ from bearboto3.sns import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -27,7 +27,7 @@ def test_platform_application_arg_pass(gen_platform_application):
 
 
 def test_platform_application_arg_fail(gen_subscription):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PlatformApplication):
@@ -70,7 +70,7 @@ def test_platform_endpoint_arg_pass(gen_platform_endpoint):
 
 
 def test_platform_endpoint_arg_fail(gen_subscription):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PlatformEndpoint):
@@ -113,7 +113,7 @@ def test_subscription_arg_pass(gen_subscription):
 
 
 def test_subscription_arg_fail(gen_topic):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Subscription):
@@ -156,7 +156,7 @@ def test_topic_arg_pass(gen_topic):
 
 
 def test_topic_arg_fail(gen_platform_endpoint):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Topic):

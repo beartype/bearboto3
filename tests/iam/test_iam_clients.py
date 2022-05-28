@@ -5,7 +5,7 @@ from bearboto3.iam import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -25,7 +25,7 @@ def test_iam_client_arg_pass(gen_iam_client):
 
 
 def test_iam_client_arg_fail(gen_s3_client):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: IAMClient):
@@ -68,7 +68,7 @@ def test_iam_resource_arg_pass(gen_iam_resource):
 
 
 def test_iam_resource_arg_fail(gen_s3_resource):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: IAMServiceResource):

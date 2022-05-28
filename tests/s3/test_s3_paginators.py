@@ -8,7 +8,7 @@ from bearboto3.s3 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -28,7 +28,7 @@ def test_list_multipart_uploads_arg_pass(gen_list_multipart_uploads_paginator):
 
 
 def test_list_multipart_uploads_arg_fail(gen_list_objects_v2_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListMultipartUploadsPaginator):
@@ -71,7 +71,7 @@ def test_list_object_versions_arg_pass(gen_list_object_versions_paginator):
 
 
 def test_list_object_versions_arg_fail(gen_list_objects_v2_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListObjectVersionsPaginator):
@@ -114,7 +114,7 @@ def test_list_objects_arg_pass(gen_list_objects_paginator):
 
 
 def test_list_objects_arg_fail(gen_list_multipart_uploads_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListObjectsPaginator):
@@ -157,7 +157,7 @@ def test_list_objects_v2_arg_pass(gen_list_objects_v2_paginator):
 
 
 def test_list_objects_v2_arg_fail(gen_list_object_versions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListObjectsV2Paginator):
@@ -200,7 +200,7 @@ def test_list_parts_arg_pass(gen_list_parts_paginator):
 
 
 def test_list_parts_arg_fail(gen_list_object_versions_paginator):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ListPartsPaginator):

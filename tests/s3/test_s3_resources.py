@@ -21,7 +21,7 @@ from bearboto3.s3 import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -41,7 +41,7 @@ def test_bucket_arg_pass(gen_bucket):
 
 
 def test_bucket_arg_fail(gen_bucket_versioning):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Bucket):
@@ -84,7 +84,7 @@ def test_bucket_acl_arg_pass(gen_bucket_acl):
 
 
 def test_bucket_acl_arg_fail(gen_bucket_lifecycle_configuration):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketAcl):
@@ -127,7 +127,7 @@ def test_bucket_cors_arg_pass(gen_bucket_cors):
 
 
 def test_bucket_cors_arg_fail(gen_multipart_upload):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketCors):
@@ -170,7 +170,7 @@ def test_bucket_lifecycle_arg_pass(gen_bucket_lifecycle):
 
 
 def test_bucket_lifecycle_arg_fail(gen_bucket_logging):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketLifecycle):
@@ -213,7 +213,7 @@ def test_bucket_lifecycle_configuration_arg_pass(gen_bucket_lifecycle_configurat
 
 
 def test_bucket_lifecycle_configuration_arg_fail(gen_bucket_notification):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketLifecycleConfiguration):
@@ -256,7 +256,7 @@ def test_bucket_logging_arg_pass(gen_bucket_logging):
 
 
 def test_bucket_logging_arg_fail(gen_object_acl):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketLogging):
@@ -299,7 +299,7 @@ def test_bucket_notification_arg_pass(gen_bucket_notification):
 
 
 def test_bucket_notification_arg_fail(gen_bucket_tagging):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketNotification):
@@ -342,7 +342,7 @@ def test_bucket_policy_arg_pass(gen_bucket_policy):
 
 
 def test_bucket_policy_arg_fail(gen_bucket):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketPolicy):
@@ -385,7 +385,7 @@ def test_bucket_request_payment_arg_pass(gen_bucket_request_payment):
 
 
 def test_bucket_request_payment_arg_fail(gen_bucket_cors):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketRequestPayment):
@@ -428,7 +428,7 @@ def test_bucket_tagging_arg_pass(gen_bucket_tagging):
 
 
 def test_bucket_tagging_arg_fail(gen_multipart_upload_part):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketTagging):
@@ -471,7 +471,7 @@ def test_bucket_versioning_arg_pass(gen_bucket_versioning):
 
 
 def test_bucket_versioning_arg_fail(gen_object_summary):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketVersioning):
@@ -514,7 +514,7 @@ def test_bucket_website_arg_pass(gen_bucket_website):
 
 
 def test_bucket_website_arg_fail(gen_bucket_logging):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: BucketWebsite):
@@ -557,7 +557,7 @@ def test_multipart_upload_arg_pass(gen_multipart_upload):
 
 
 def test_multipart_upload_arg_fail(gen_bucket_logging):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: MultipartUpload):
@@ -600,7 +600,7 @@ def test_multipart_upload_part_arg_pass(gen_multipart_upload_part):
 
 
 def test_multipart_upload_part_arg_fail(gen_bucket_cors):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: MultipartUploadPart):
@@ -643,7 +643,7 @@ def test_object_arg_pass(gen_object):
 
 
 def test_object_arg_fail(gen_bucket_request_payment):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: Object):
@@ -686,7 +686,7 @@ def test_object_acl_arg_pass(gen_object_acl):
 
 
 def test_object_acl_arg_fail(gen_object_summary):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ObjectAcl):
@@ -729,7 +729,7 @@ def test_object_summary_arg_pass(gen_object_summary):
 
 
 def test_object_summary_arg_fail(gen_object_acl):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ObjectSummary):
@@ -772,7 +772,7 @@ def test_object_version_arg_pass(gen_object_version):
 
 
 def test_object_version_arg_fail(gen_bucket_request_payment):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ObjectVersion):

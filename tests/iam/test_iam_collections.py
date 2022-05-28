@@ -30,7 +30,7 @@ from bearboto3.iam import (
 )
 from beartype import beartype
 from beartype.roar import (
-    BeartypeCallHintPepParamException,
+    BeartypeCallHintParamViolation,
     BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
@@ -50,7 +50,7 @@ def test_groups_arg_pass(gen_service_resource_groups_collection):
 
 
 def test_groups_arg_fail(gen_current_user_access_keys_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceGroupsCollection):
@@ -93,7 +93,7 @@ def test_instance_profiles_arg_pass(gen_service_resource_instance_profiles_colle
 
 
 def test_instance_profiles_arg_fail(gen_user_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceInstanceProfilesCollection):
@@ -138,7 +138,7 @@ def test_policies_arg_pass(gen_service_resource_policies_collection):
 
 
 def test_policies_arg_fail(gen_service_resource_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourcePoliciesCollection):
@@ -181,7 +181,7 @@ def test_roles_arg_pass(gen_service_resource_roles_collection):
 
 
 def test_roles_arg_fail(gen_group_attached_policies_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceRolesCollection):
@@ -224,7 +224,7 @@ def test_saml_providers_arg_pass(gen_service_resource_saml_providers_collection)
 
 
 def test_saml_providers_arg_fail(gen_user_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceSamlProvidersCollection):
@@ -269,7 +269,7 @@ def test_server_certificates_arg_pass(
 
 
 def test_server_certificates_arg_fail(gen_service_resource_saml_providers_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceServerCertificatesCollection):
@@ -316,7 +316,7 @@ def test_users_arg_pass(gen_service_resource_users_collection):
 
 
 def test_users_arg_fail(gen_policy_attached_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceUsersCollection):
@@ -361,7 +361,7 @@ def test_virtual_mfa_devices_arg_pass(
 
 
 def test_virtual_mfa_devices_arg_fail(gen_service_resource_users_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: ServiceResourceVirtualMfaDevicesCollection):
@@ -406,7 +406,7 @@ def test_access_keys_arg_pass(gen_current_user_access_keys_collection):
 
 
 def test_access_keys_arg_fail(gen_user_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: CurrentUserAccessKeysCollection):
@@ -449,7 +449,7 @@ def test_mfa_devices_arg_pass(gen_current_user_mfa_devices_collection):
 
 
 def test_mfa_devices_arg_fail(gen_service_resource_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: CurrentUserMfaDevicesCollection):
@@ -496,7 +496,7 @@ def test_signing_certificates_arg_pass(
 def test_signing_certificates_arg_fail(
     gen_service_resource_server_certificates_collection,
 ):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: CurrentUserSigningCertificatesCollection):
@@ -543,7 +543,7 @@ def test_attached_policies_arg_pass(gen_group_attached_policies_collection):
 
 
 def test_attached_policies_arg_fail(gen_policy_attached_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GroupAttachedPoliciesCollection):
@@ -586,7 +586,7 @@ def test_policies_arg_pass(gen_group_policies_collection):
 
 
 def test_policies_arg_fail(gen_service_resource_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GroupPoliciesCollection):
@@ -629,7 +629,7 @@ def test_users_arg_pass(gen_group_users_collection):
 
 
 def test_users_arg_fail(gen_role_instance_profiles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: GroupUsersCollection):
@@ -672,7 +672,7 @@ def test_attached_groups_arg_pass(gen_policy_attached_groups_collection):
 
 
 def test_attached_groups_arg_fail(gen_service_resource_users_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyAttachedGroupsCollection):
@@ -715,7 +715,7 @@ def test_attached_roles_arg_pass(gen_policy_attached_roles_collection):
 
 
 def test_attached_roles_arg_fail(gen_user_access_keys_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyAttachedRolesCollection):
@@ -758,7 +758,7 @@ def test_attached_users_arg_pass(gen_policy_attached_users_collection):
 
 
 def test_attached_users_arg_fail(gen_service_resource_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyAttachedUsersCollection):
@@ -801,7 +801,7 @@ def test_versions_arg_pass(gen_policy_versions_collection):
 
 
 def test_versions_arg_fail(gen_service_resource_users_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: PolicyVersionsCollection):
@@ -844,7 +844,7 @@ def test_attached_policies_arg_pass(gen_role_attached_policies_collection):
 
 
 def test_attached_policies_arg_fail(gen_service_resource_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RoleAttachedPoliciesCollection):
@@ -887,7 +887,7 @@ def test_instance_profiles_arg_pass(gen_role_instance_profiles_collection):
 
 
 def test_instance_profiles_arg_fail(gen_user_access_keys_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RoleInstanceProfilesCollection):
@@ -930,7 +930,7 @@ def test_policies_arg_pass(gen_role_policies_collection):
 
 
 def test_policies_arg_fail(gen_user_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: RolePoliciesCollection):
@@ -973,7 +973,7 @@ def test_access_keys_arg_pass(gen_user_access_keys_collection):
 
 
 def test_access_keys_arg_fail(gen_user_signing_certificates_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserAccessKeysCollection):
@@ -1016,7 +1016,7 @@ def test_attached_policies_arg_pass(gen_user_attached_policies_collection):
 
 
 def test_attached_policies_arg_fail(gen_policy_attached_roles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserAttachedPoliciesCollection):
@@ -1059,7 +1059,7 @@ def test_groups_arg_pass(gen_user_groups_collection):
 
 
 def test_groups_arg_fail(gen_role_instance_profiles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserGroupsCollection):
@@ -1102,7 +1102,7 @@ def test_mfa_devices_arg_pass(gen_user_mfa_devices_collection):
 
 
 def test_mfa_devices_arg_fail(gen_service_resource_instance_profiles_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserMfaDevicesCollection):
@@ -1145,7 +1145,7 @@ def test_policies_arg_pass(gen_user_policies_collection):
 
 
 def test_policies_arg_fail(gen_policy_attached_groups_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserPoliciesCollection):
@@ -1188,7 +1188,7 @@ def test_signing_certificates_arg_pass(gen_user_signing_certificates_collection)
 
 
 def test_signing_certificates_arg_fail(gen_user_access_keys_collection):
-    with pytest.raises(BeartypeCallHintPepParamException):
+    with pytest.raises(BeartypeCallHintParamViolation):
 
         @beartype
         def func(param: UserSigningCertificatesCollection):
