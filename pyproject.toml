@@ -21,7 +21,7 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-"Issues" = "https://github.com/beartype/bearboto3"
+"Issues" = "https://github.com/beartype/bearboto3/issues"
 
 [tool.poetry.dependencies]
 python = "^3.7"
