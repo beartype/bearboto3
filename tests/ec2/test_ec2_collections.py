@@ -36,7 +36,7 @@ from bearboto3.ec2 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -76,7 +76,7 @@ def test_classic_addresses_return_pass(
 
 def test_classic_addresses_return_fail(gen_service_resource_network_acls_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -125,7 +125,7 @@ def test_dhcp_options_sets_return_fail(
     gen_vpc_accepted_vpc_peering_connections_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -168,7 +168,7 @@ def test_images_return_pass(gen_service_resource_images_collection):
 
 def test_images_return_fail(gen_service_resource_network_acls_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -211,7 +211,7 @@ def test_instances_return_pass(gen_service_resource_instances_collection):
 
 def test_instances_return_fail(gen_subnet_instances_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -258,7 +258,7 @@ def test_internet_gateways_return_fail(
     gen_service_resource_dhcp_options_sets_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -301,7 +301,7 @@ def test_key_pairs_return_pass(gen_service_resource_key_pairs_collection):
 
 def test_key_pairs_return_fail(gen_placement_group_instances_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -344,7 +344,7 @@ def test_network_acls_return_pass(gen_service_resource_network_acls_collection):
 
 def test_network_acls_return_fail(gen_vpc_internet_gateways_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -391,7 +391,7 @@ def test_network_interfaces_return_pass(
 
 def test_network_interfaces_return_fail(gen_service_resource_volumes_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -434,7 +434,7 @@ def test_placement_groups_return_pass(gen_service_resource_placement_groups_coll
 
 def test_placement_groups_return_fail(gen_service_resource_route_tables_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -479,7 +479,7 @@ def test_route_tables_return_fail(
     gen_service_resource_vpc_peering_connections_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -522,7 +522,7 @@ def test_security_groups_return_pass(gen_service_resource_security_groups_collec
 
 def test_security_groups_return_fail(gen_service_resource_images_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -565,7 +565,7 @@ def test_snapshots_return_pass(gen_service_resource_snapshots_collection):
 
 def test_snapshots_return_fail(gen_service_resource_route_tables_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -608,7 +608,7 @@ def test_subnets_return_pass(gen_service_resource_subnets_collection):
 
 def test_subnets_return_fail(gen_service_resource_snapshots_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -651,7 +651,7 @@ def test_volumes_return_pass(gen_service_resource_volumes_collection):
 
 def test_volumes_return_fail(gen_vpc_accepted_vpc_peering_connections_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -694,7 +694,7 @@ def test_vpc_addresses_return_pass(gen_service_resource_vpc_addresses_collection
 
 def test_vpc_addresses_return_fail(gen_volume_snapshots_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -741,7 +741,7 @@ def test_vpc_peering_connections_return_pass(
 
 def test_vpc_peering_connections_return_fail(gen_service_resource_snapshots_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -784,7 +784,7 @@ def test_vpcs_return_pass(gen_service_resource_vpcs_collection):
 
 def test_vpcs_return_fail(gen_service_resource_images_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -827,7 +827,7 @@ def test_volumes_return_pass(gen_instance_volumes_collection):
 
 def test_volumes_return_fail(gen_service_resource_network_acls_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -870,7 +870,7 @@ def test_vpc_addresses_return_pass(gen_instance_vpc_addresses_collection):
 
 def test_vpc_addresses_return_fail(gen_vpc_network_acls_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -913,7 +913,7 @@ def test_instances_return_pass(gen_placement_group_instances_collection):
 
 def test_instances_return_fail(gen_vpc_requested_vpc_peering_connections_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -956,7 +956,7 @@ def test_instances_return_pass(gen_subnet_instances_collection):
 
 def test_instances_return_fail(gen_vpc_network_acls_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -999,7 +999,7 @@ def test_network_interfaces_return_pass(gen_subnet_network_interfaces_collection
 
 def test_network_interfaces_return_fail(gen_vpc_subnets_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1042,7 +1042,7 @@ def test_snapshots_return_pass(gen_volume_snapshots_collection):
 
 def test_snapshots_return_fail(gen_vpc_subnets_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1093,7 +1093,7 @@ def test_accepted_vpc_peering_connections_return_fail(
     gen_service_resource_dhcp_options_sets_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1136,7 +1136,7 @@ def test_instances_return_pass(gen_vpc_instances_collection):
 
 def test_instances_return_fail(gen_service_resource_route_tables_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1181,7 +1181,7 @@ def test_internet_gateways_return_fail(
     gen_service_resource_internet_gateways_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1224,7 +1224,7 @@ def test_network_acls_return_pass(gen_vpc_network_acls_collection):
 
 def test_network_acls_return_fail(gen_service_resource_images_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1269,7 +1269,7 @@ def test_network_interfaces_return_fail(
     gen_service_resource_internet_gateways_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1320,7 +1320,7 @@ def test_requested_vpc_peering_connections_return_fail(
     gen_subnet_network_interfaces_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1363,7 +1363,7 @@ def test_route_tables_return_pass(gen_vpc_route_tables_collection):
 
 def test_route_tables_return_fail(gen_service_resource_dhcp_options_sets_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1406,7 +1406,7 @@ def test_security_groups_return_pass(gen_vpc_security_groups_collection):
 
 def test_security_groups_return_fail(gen_service_resource_key_pairs_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1449,7 +1449,7 @@ def test_subnets_return_pass(gen_vpc_subnets_collection):
 
 def test_subnets_return_fail(gen_vpc_route_tables_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

@@ -111,7 +111,7 @@ from bearboto3.ec2 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -153,7 +153,7 @@ def test_describe_route_tables_return_fail(
     gen_describe_transit_gateway_attachments_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -204,7 +204,7 @@ def test_describe_iam_instance_profile_associations_return_fail(
     gen_describe_vpcs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -249,7 +249,7 @@ def test_describe_instance_status_return_fail(
     gen_search_local_gateway_routes_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -294,7 +294,7 @@ def test_describe_instances_return_fail(
     gen_describe_replace_root_volume_tasks_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -345,7 +345,7 @@ def test_describe_reserved_instances_offerings_return_fail(
     gen_describe_trunk_interface_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -396,7 +396,7 @@ def test_describe_reserved_instances_modifications_return_fail(
     gen_describe_dhcp_options_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -441,7 +441,7 @@ def test_describe_security_groups_return_fail(
     gen_describe_spot_fleet_instances_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -484,7 +484,7 @@ def test_describe_snapshots_return_pass(gen_describe_snapshots_paginator):
 
 def test_describe_snapshots_return_fail(gen_describe_client_vpn_endpoints_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -535,7 +535,7 @@ def test_describe_spot_fleet_instances_return_fail(
     gen_describe_security_group_rules_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -586,7 +586,7 @@ def test_describe_spot_fleet_requests_return_fail(
     gen_describe_local_gateway_route_table_vpc_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -637,7 +637,7 @@ def test_describe_spot_price_history_return_fail(
     gen_describe_replace_root_volume_tasks_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -680,7 +680,7 @@ def test_describe_tags_return_pass(gen_describe_tags_paginator):
 
 def test_describe_tags_return_fail(gen_describe_flow_logs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -725,7 +725,7 @@ def test_describe_volume_status_return_fail(
     gen_describe_network_insights_paths_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -768,7 +768,7 @@ def test_describe_volumes_return_pass(gen_describe_volumes_paginator):
 
 def test_describe_volumes_return_fail(gen_describe_instance_event_windows_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -815,7 +815,7 @@ def test_describe_nat_gateways_return_fail(
     gen_describe_scheduled_instance_availability_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -866,7 +866,7 @@ def test_describe_network_interfaces_return_fail(
     gen_describe_client_vpn_connections_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -909,7 +909,7 @@ def test_describe_vpc_endpoints_return_pass(gen_describe_vpc_endpoints_paginator
 
 def test_describe_vpc_endpoints_return_fail(gen_describe_byoip_cidrs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -960,7 +960,7 @@ def test_describe_vpc_endpoint_services_return_fail(
     gen_describe_public_ipv4_pools_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1011,7 +1011,7 @@ def test_describe_vpc_endpoint_connections_return_fail(
     gen_describe_spot_instance_requests_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1054,7 +1054,7 @@ def test_describe_byoip_cidrs_return_pass(gen_describe_byoip_cidrs_paginator):
 
 def test_describe_byoip_cidrs_return_fail(gen_get_associated_ipv6_pool_cidrs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1105,7 +1105,7 @@ def test_describe_capacity_reservations_return_fail(
     gen_describe_transit_gateway_connects_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1156,7 +1156,7 @@ def test_describe_classic_link_instances_return_fail(
     gen_describe_vpc_endpoint_service_permissions_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1207,7 +1207,7 @@ def test_describe_client_vpn_authorization_rules_return_fail(
     gen_describe_fpga_images_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1256,7 +1256,7 @@ def test_describe_client_vpn_connections_return_fail(
     gen_describe_route_tables_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1303,7 +1303,7 @@ def test_describe_client_vpn_endpoints_return_pass(
 
 def test_describe_client_vpn_endpoints_return_fail(gen_describe_byoip_cidrs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1348,7 +1348,7 @@ def test_describe_client_vpn_routes_return_pass(
 
 def test_describe_client_vpn_routes_return_fail(gen_describe_snapshots_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1397,7 +1397,7 @@ def test_describe_client_vpn_target_networks_return_fail(
     gen_describe_subnets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1448,7 +1448,7 @@ def test_describe_egress_only_internet_gateways_return_fail(
     gen_describe_traffic_mirror_targets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1491,7 +1491,7 @@ def test_describe_fleets_return_pass(gen_describe_fleets_paginator):
 
 def test_describe_fleets_return_fail(gen_describe_security_groups_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1534,7 +1534,7 @@ def test_describe_flow_logs_return_pass(gen_describe_flow_logs_paginator):
 
 def test_describe_flow_logs_return_fail(gen_describe_coip_pools_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1577,7 +1577,7 @@ def test_describe_fpga_images_return_pass(gen_describe_fpga_images_paginator):
 
 def test_describe_fpga_images_return_fail(gen_describe_moving_addresses_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1628,7 +1628,7 @@ def test_describe_host_reservation_offerings_return_fail(
     gen_describe_client_vpn_target_networks_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1673,7 +1673,7 @@ def test_describe_host_reservations_return_pass(
 
 def test_describe_host_reservations_return_fail(gen_describe_volume_status_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1716,7 +1716,7 @@ def test_describe_hosts_return_pass(gen_describe_hosts_paginator):
 
 def test_describe_hosts_return_fail(gen_describe_store_image_tasks_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1763,7 +1763,7 @@ def test_describe_import_image_tasks_return_pass(
 
 def test_describe_import_image_tasks_return_fail(gen_describe_tags_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1814,7 +1814,7 @@ def test_describe_import_snapshot_tasks_return_fail(
     gen_describe_addresses_attribute_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1865,7 +1865,7 @@ def test_describe_instance_credit_specifications_return_fail(
     gen_describe_network_interfaces_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1916,7 +1916,7 @@ def test_describe_launch_template_versions_return_fail(
     gen_describe_spot_instance_requests_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1959,7 +1959,7 @@ def test_describe_launch_templates_return_pass(gen_describe_launch_templates_pag
 
 def test_describe_launch_templates_return_fail(gen_describe_coip_pools_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2002,7 +2002,7 @@ def test_describe_moving_addresses_return_pass(gen_describe_moving_addresses_pag
 
 def test_describe_moving_addresses_return_fail(gen_describe_fpga_images_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2053,7 +2053,7 @@ def test_describe_network_interface_permissions_return_fail(
     gen_describe_network_insights_paths_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2098,7 +2098,7 @@ def test_describe_prefix_lists_return_fail(
     gen_describe_volumes_modifications_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2149,7 +2149,7 @@ def test_describe_principal_id_format_return_fail(
     gen_get_associated_ipv6_pool_cidrs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2198,7 +2198,7 @@ def test_describe_public_ipv4_pools_return_fail(
     gen_describe_local_gateway_virtual_interfaces_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2249,7 +2249,7 @@ def test_describe_scheduled_instance_availability_return_fail(
     gen_get_vpn_connection_device_types_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2298,7 +2298,7 @@ def test_describe_scheduled_instances_return_fail(
     gen_describe_instance_status_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2349,7 +2349,7 @@ def test_describe_stale_security_groups_return_fail(
     gen_get_associated_ipv6_pool_cidrs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2400,7 +2400,7 @@ def test_describe_transit_gateway_attachments_return_fail(
     gen_describe_local_gateway_route_tables_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2451,7 +2451,7 @@ def test_describe_transit_gateway_route_tables_return_fail(
     gen_describe_launch_templates_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2502,7 +2502,7 @@ def test_describe_transit_gateway_vpc_attachments_return_fail(
     gen_get_instance_types_from_instance_requirements_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2545,7 +2545,7 @@ def test_describe_transit_gateways_return_pass(gen_describe_transit_gateways_pag
 
 def test_describe_transit_gateways_return_fail(gen_describe_route_tables_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2594,7 +2594,7 @@ def test_describe_volumes_modifications_return_fail(
     gen_describe_instance_types_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2645,7 +2645,7 @@ def test_describe_vpc_classic_link_dns_support_return_fail(
     gen_get_transit_gateway_multicast_domain_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2696,7 +2696,7 @@ def test_describe_vpc_endpoint_connection_notifications_return_fail(
     gen_describe_launch_templates_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2747,7 +2747,7 @@ def test_describe_vpc_endpoint_service_configurations_return_fail(
     gen_describe_vpcs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2798,7 +2798,7 @@ def test_describe_vpc_endpoint_service_permissions_return_fail(
     gen_describe_vpc_peering_connections_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2849,7 +2849,7 @@ def test_describe_vpc_peering_connections_return_fail(
     gen_describe_network_insights_paths_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2900,7 +2900,7 @@ def test_get_transit_gateway_attachment_propagations_return_fail(
     gen_get_managed_prefix_list_entries_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -2951,7 +2951,7 @@ def test_get_transit_gateway_route_table_associations_return_fail(
     gen_describe_classic_link_instances_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3002,7 +3002,7 @@ def test_get_transit_gateway_route_table_propagations_return_fail(
     gen_describe_ipv6_pools_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3051,7 +3051,7 @@ def test_describe_internet_gateways_return_fail(
     gen_describe_network_insights_analyses_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3096,7 +3096,7 @@ def test_describe_network_acls_return_fail(
     gen_describe_instance_type_offerings_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3139,7 +3139,7 @@ def test_describe_vpcs_return_pass(gen_describe_vpcs_paginator):
 
 def test_describe_vpcs_return_fail(gen_describe_fleets_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3190,7 +3190,7 @@ def test_describe_spot_instance_requests_return_fail(
     gen_describe_vpc_endpoint_service_permissions_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3237,7 +3237,7 @@ def test_describe_dhcp_options_return_fail(
     gen_get_transit_gateway_prefix_list_references_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3284,7 +3284,7 @@ def test_describe_subnets_return_fail(
     gen_describe_egress_only_internet_gateways_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3335,7 +3335,7 @@ def test_describe_traffic_mirror_filters_return_fail(
     gen_describe_transit_gateway_vpc_attachments_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3386,7 +3386,7 @@ def test_describe_traffic_mirror_sessions_return_fail(
     gen_describe_client_vpn_connections_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3437,7 +3437,7 @@ def test_describe_traffic_mirror_targets_return_fail(
     gen_describe_vpc_endpoint_services_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3488,7 +3488,7 @@ def test_describe_export_image_tasks_return_fail(
     gen_get_managed_prefix_list_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3539,7 +3539,7 @@ def test_describe_fast_snapshot_restores_return_fail(
     gen_describe_transit_gateway_multicast_domains_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3584,7 +3584,7 @@ def test_describe_ipv6_pools_return_fail(
     gen_describe_launch_template_versions_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3635,7 +3635,7 @@ def test_get_associated_ipv6_pool_cidrs_return_fail(
     gen_describe_spot_fleet_instances_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3678,7 +3678,7 @@ def test_describe_coip_pools_return_pass(gen_describe_coip_pools_paginator):
 
 def test_describe_coip_pools_return_fail(gen_describe_instance_event_windows_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3729,7 +3729,7 @@ def test_describe_instance_type_offerings_return_fail(
     gen_describe_traffic_mirror_targets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3772,7 +3772,7 @@ def test_describe_instance_types_return_pass(gen_describe_instance_types_paginat
 
 def test_describe_instance_types_return_fail(gen_describe_flow_logs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3829,7 +3829,7 @@ def test_describe_local_gateway_route_table_virtual_interface_group_associations
     gen_describe_security_groups_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3880,7 +3880,7 @@ def test_describe_local_gateway_route_table_vpc_associations_return_fail(
     gen_get_managed_prefix_list_entries_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3931,7 +3931,7 @@ def test_describe_local_gateway_route_tables_return_fail(
     gen_describe_managed_prefix_lists_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -3982,7 +3982,7 @@ def test_describe_local_gateway_virtual_interface_groups_return_fail(
     gen_describe_subnets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4033,7 +4033,7 @@ def test_describe_local_gateway_virtual_interfaces_return_fail(
     gen_describe_import_snapshot_tasks_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4080,7 +4080,7 @@ def test_describe_local_gateways_return_fail(
     gen_describe_classic_link_instances_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4131,7 +4131,7 @@ def test_describe_transit_gateway_multicast_domains_return_fail(
     gen_describe_vpc_endpoint_services_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4182,7 +4182,7 @@ def test_describe_transit_gateway_peering_attachments_return_fail(
     gen_describe_export_image_tasks_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4233,7 +4233,7 @@ def test_get_transit_gateway_multicast_domain_associations_return_fail(
     gen_describe_capacity_reservation_fleets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4286,7 +4286,7 @@ def test_search_local_gateway_routes_return_fail(
     gen_describe_local_gateway_route_table_virtual_interface_group_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4337,7 +4337,7 @@ def test_search_transit_gateway_multicast_groups_return_fail(
     gen_describe_subnets_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4388,7 +4388,7 @@ def test_describe_managed_prefix_lists_return_fail(
     gen_describe_transit_gateway_multicast_domains_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4439,7 +4439,7 @@ def test_get_managed_prefix_list_associations_return_fail(
     gen_get_spot_placement_scores_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4490,7 +4490,7 @@ def test_get_managed_prefix_list_entries_return_fail(
     gen_describe_host_reservation_offerings_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4541,7 +4541,7 @@ def test_get_groups_for_capacity_reservation_return_fail(
     gen_get_transit_gateway_multicast_domain_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4590,7 +4590,7 @@ def test_describe_carrier_gateways_return_fail(
     gen_describe_local_gateway_route_table_virtual_interface_group_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4641,7 +4641,7 @@ def test_get_transit_gateway_prefix_list_references_return_fail(
     gen_describe_network_acls_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4692,7 +4692,7 @@ def test_describe_network_insights_analyses_return_fail(
     gen_describe_launch_templates_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4743,7 +4743,7 @@ def test_describe_network_insights_paths_return_fail(
     gen_describe_local_gateway_route_table_vpc_associations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4794,7 +4794,7 @@ def test_describe_transit_gateway_connect_peers_return_fail(
     gen_describe_spot_fleet_requests_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4845,7 +4845,7 @@ def test_describe_transit_gateway_connects_return_fail(
     gen_describe_capacity_reservations_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4892,7 +4892,7 @@ def test_describe_addresses_attribute_return_pass(
 
 def test_describe_addresses_attribute_return_fail(gen_describe_dhcp_options_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4943,7 +4943,7 @@ def test_describe_replace_root_volume_tasks_return_fail(
     gen_describe_client_vpn_routes_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -4992,7 +4992,7 @@ def test_describe_store_image_tasks_return_fail(
     gen_describe_addresses_attribute_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5043,7 +5043,7 @@ def test_describe_security_group_rules_return_fail(
     gen_describe_instance_credit_specifications_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5094,7 +5094,7 @@ def test_describe_instance_event_windows_return_fail(
     gen_describe_instance_status_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5145,7 +5145,7 @@ def test_describe_trunk_interface_associations_return_fail(
     gen_search_transit_gateway_multicast_groups_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5192,7 +5192,7 @@ def test_get_vpn_connection_device_types_return_pass(
 
 def test_get_vpn_connection_device_types_return_fail(gen_describe_subnets_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5243,7 +5243,7 @@ def test_describe_capacity_reservation_fleets_return_fail(
     gen_describe_scheduled_instance_availability_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5294,7 +5294,7 @@ def test_get_instance_types_from_instance_requirements_return_fail(
     gen_describe_moving_addresses_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -5337,7 +5337,7 @@ def test_get_spot_placement_scores_return_pass(gen_get_spot_placement_scores_pag
 
 def test_get_spot_placement_scores_return_fail(gen_describe_prefix_lists_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

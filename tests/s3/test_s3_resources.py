@@ -22,7 +22,7 @@ from bearboto3.s3 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -60,7 +60,7 @@ def test_bucket_return_pass(gen_bucket):
 
 def test_bucket_return_fail(gen_bucket_versioning):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -103,7 +103,7 @@ def test_bucket_acl_return_pass(gen_bucket_acl):
 
 def test_bucket_acl_return_fail(gen_bucket_lifecycle_configuration):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -146,7 +146,7 @@ def test_bucket_cors_return_pass(gen_bucket_cors):
 
 def test_bucket_cors_return_fail(gen_multipart_upload):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -189,7 +189,7 @@ def test_bucket_lifecycle_return_pass(gen_bucket_lifecycle):
 
 def test_bucket_lifecycle_return_fail(gen_bucket_logging):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -232,7 +232,7 @@ def test_bucket_lifecycle_configuration_return_pass(gen_bucket_lifecycle_configu
 
 def test_bucket_lifecycle_configuration_return_fail(gen_bucket_notification):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -275,7 +275,7 @@ def test_bucket_logging_return_pass(gen_bucket_logging):
 
 def test_bucket_logging_return_fail(gen_object_acl):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -318,7 +318,7 @@ def test_bucket_notification_return_pass(gen_bucket_notification):
 
 def test_bucket_notification_return_fail(gen_bucket_tagging):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -361,7 +361,7 @@ def test_bucket_policy_return_pass(gen_bucket_policy):
 
 def test_bucket_policy_return_fail(gen_bucket):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -404,7 +404,7 @@ def test_bucket_request_payment_return_pass(gen_bucket_request_payment):
 
 def test_bucket_request_payment_return_fail(gen_bucket_cors):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -447,7 +447,7 @@ def test_bucket_tagging_return_pass(gen_bucket_tagging):
 
 def test_bucket_tagging_return_fail(gen_multipart_upload_part):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -490,7 +490,7 @@ def test_bucket_versioning_return_pass(gen_bucket_versioning):
 
 def test_bucket_versioning_return_fail(gen_object_summary):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -533,7 +533,7 @@ def test_bucket_website_return_pass(gen_bucket_website):
 
 def test_bucket_website_return_fail(gen_bucket_logging):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -576,7 +576,7 @@ def test_multipart_upload_return_pass(gen_multipart_upload):
 
 def test_multipart_upload_return_fail(gen_bucket_logging):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -619,7 +619,7 @@ def test_multipart_upload_part_return_pass(gen_multipart_upload_part):
 
 def test_multipart_upload_part_return_fail(gen_bucket_cors):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -662,7 +662,7 @@ def test_object_return_pass(gen_object):
 
 def test_object_return_fail(gen_bucket_request_payment):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -705,7 +705,7 @@ def test_object_acl_return_pass(gen_object_acl):
 
 def test_object_acl_return_fail(gen_object_summary):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -748,7 +748,7 @@ def test_object_summary_return_pass(gen_object_summary):
 
 def test_object_summary_return_fail(gen_object_acl):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -791,7 +791,7 @@ def test_object_version_return_pass(gen_object_version):
 
 def test_object_version_return_fail(gen_bucket_request_payment):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

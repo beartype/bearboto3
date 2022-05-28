@@ -6,7 +6,7 @@ from bearboto3.ec2 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -44,7 +44,7 @@ def test_ec2_client_return_pass(gen_ec2_client):
 
 def test_ec2_client_return_fail(gen_s3_client):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -87,7 +87,7 @@ def test_ec2_resource_return_pass(gen_ec2_resource):
 
 def test_ec2_resource_return_fail(gen_s3_resource):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

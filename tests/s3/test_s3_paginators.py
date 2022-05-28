@@ -9,7 +9,7 @@ from bearboto3.s3 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -47,7 +47,7 @@ def test_list_multipart_uploads_return_pass(gen_list_multipart_uploads_paginator
 
 def test_list_multipart_uploads_return_fail(gen_list_objects_v2_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -90,7 +90,7 @@ def test_list_object_versions_return_pass(gen_list_object_versions_paginator):
 
 def test_list_object_versions_return_fail(gen_list_objects_v2_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -133,7 +133,7 @@ def test_list_objects_return_pass(gen_list_objects_paginator):
 
 def test_list_objects_return_fail(gen_list_multipart_uploads_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -176,7 +176,7 @@ def test_list_objects_v2_return_pass(gen_list_objects_v2_paginator):
 
 def test_list_objects_v2_return_fail(gen_list_object_versions_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -219,7 +219,7 @@ def test_list_parts_return_pass(gen_list_parts_paginator):
 
 def test_list_parts_return_fail(gen_list_object_versions_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

@@ -6,7 +6,7 @@ from bearboto3.sqs import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -48,7 +48,7 @@ def test_list_dead_letter_source_queues_return_pass(
 
 def test_list_dead_letter_source_queues_return_fail(gen_list_queues_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -91,7 +91,7 @@ def test_list_queues_return_pass(gen_list_queues_paginator):
 
 def test_list_queues_return_fail(gen_list_dead_letter_source_queues_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

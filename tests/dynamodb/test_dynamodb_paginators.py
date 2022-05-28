@@ -9,7 +9,7 @@ from bearboto3.dynamodb import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -47,7 +47,7 @@ def test_list_backups_return_pass(gen_list_backups_paginator):
 
 def test_list_backups_return_fail(gen_list_tags_of_resource_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -90,7 +90,7 @@ def test_list_tables_return_pass(gen_list_tables_paginator):
 
 def test_list_tables_return_fail(gen_list_backups_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -133,7 +133,7 @@ def test_query_return_pass(gen_query_paginator):
 
 def test_query_return_fail(gen_scan_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -176,7 +176,7 @@ def test_scan_return_pass(gen_scan_paginator):
 
 def test_scan_return_fail(gen_query_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -219,7 +219,7 @@ def test_list_tags_of_resource_return_pass(gen_list_tags_of_resource_paginator):
 
 def test_list_tags_of_resource_return_fail(gen_query_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

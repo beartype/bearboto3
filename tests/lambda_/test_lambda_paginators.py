@@ -14,7 +14,7 @@ from bearboto3.lambda_ import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -58,7 +58,7 @@ def test_list_event_source_mappings_return_fail(
     gen_list_functions_by_code_signing_config_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -101,7 +101,7 @@ def test_list_functions_return_pass(gen_list_functions_paginator):
 
 def test_list_functions_return_fail(gen_list_code_signing_configs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -144,7 +144,7 @@ def test_list_aliases_return_pass(gen_list_aliases_paginator):
 
 def test_list_aliases_return_fail(gen_list_provisioned_concurrency_configs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -187,7 +187,7 @@ def test_list_layer_versions_return_pass(gen_list_layer_versions_paginator):
 
 def test_list_layer_versions_return_fail(gen_list_aliases_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -230,7 +230,7 @@ def test_list_layers_return_pass(gen_list_layers_paginator):
 
 def test_list_layers_return_fail(gen_list_code_signing_configs_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -277,7 +277,7 @@ def test_list_versions_by_function_return_fail(
     gen_list_function_event_invoke_configs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -328,7 +328,7 @@ def test_list_function_event_invoke_configs_return_fail(
     gen_list_code_signing_configs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -379,7 +379,7 @@ def test_list_provisioned_concurrency_configs_return_fail(
     gen_list_function_event_invoke_configs_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -422,7 +422,7 @@ def test_list_code_signing_configs_return_pass(gen_list_code_signing_configs_pag
 
 def test_list_code_signing_configs_return_fail(gen_list_functions_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -471,7 +471,7 @@ def test_list_functions_by_code_signing_config_return_fail(
     gen_list_functions_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

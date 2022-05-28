@@ -6,7 +6,7 @@ from bearboto3.sns import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -44,7 +44,7 @@ def test_sns_client_return_pass(gen_sns_client):
 
 def test_sns_client_return_fail(gen_ec2_client):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -87,7 +87,7 @@ def test_sns_resource_return_pass(gen_sns_resource):
 
 def test_sns_resource_return_fail(gen_ec2_resource):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

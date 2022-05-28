@@ -12,7 +12,7 @@ from bearboto3.sns import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -54,7 +54,7 @@ def test_list_endpoints_by_platform_application_return_pass(
 
 def test_list_endpoints_by_platform_application_return_fail(gen_list_topics_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -101,7 +101,7 @@ def test_list_platform_applications_return_fail(
     gen_list_subscriptions_by_topic_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -144,7 +144,7 @@ def test_list_subscriptions_return_pass(gen_list_subscriptions_paginator):
 
 def test_list_subscriptions_return_fail(gen_list_platform_applications_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -193,7 +193,7 @@ def test_list_subscriptions_by_topic_return_fail(
     gen_list_platform_applications_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -236,7 +236,7 @@ def test_list_topics_return_pass(gen_list_topics_paginator):
 
 def test_list_topics_return_fail(gen_list_endpoints_by_platform_application_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -287,7 +287,7 @@ def test_list_phone_numbers_opted_out_return_fail(
     gen_list_platform_applications_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -332,7 +332,7 @@ def test_list_origination_numbers_return_fail(
     gen_list_phone_numbers_opted_out_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -379,7 +379,7 @@ def test_list_sms_sandbox_phone_numbers_return_pass(
 
 def test_list_sms_sandbox_phone_numbers_return_fail(gen_list_topics_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

@@ -3,7 +3,7 @@ from bearboto3.dynamodb import ServiceResourceTablesCollection
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -40,7 +40,7 @@ def test_tables_return_pass(gen_service_resource_tables_collection):
 
 def test_tables_return_fail(gen_service_resource_buckets_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

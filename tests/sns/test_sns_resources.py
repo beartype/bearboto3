@@ -8,7 +8,7 @@ from bearboto3.sns import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -46,7 +46,7 @@ def test_platform_application_return_pass(gen_platform_application):
 
 def test_platform_application_return_fail(gen_subscription):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -89,7 +89,7 @@ def test_platform_endpoint_return_pass(gen_platform_endpoint):
 
 def test_platform_endpoint_return_fail(gen_subscription):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -132,7 +132,7 @@ def test_subscription_return_pass(gen_subscription):
 
 def test_subscription_return_fail(gen_topic):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -175,7 +175,7 @@ def test_topic_return_pass(gen_topic):
 
 def test_topic_return_fail(gen_platform_endpoint):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

@@ -36,7 +36,7 @@ from bearboto3.ec2 import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -74,7 +74,7 @@ def test_instance_exists_return_pass(gen_instance_exists_waiter):
 
 def test_instance_exists_return_fail(gen_conversion_task_completed_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -117,7 +117,7 @@ def test_bundle_task_complete_return_pass(gen_bundle_task_complete_waiter):
 
 def test_bundle_task_complete_return_fail(gen_spot_instance_request_fulfilled_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -160,7 +160,7 @@ def test_conversion_task_cancelled_return_pass(gen_conversion_task_cancelled_wai
 
 def test_conversion_task_cancelled_return_fail(gen_nat_gateway_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -203,7 +203,7 @@ def test_conversion_task_completed_return_pass(gen_conversion_task_completed_wai
 
 def test_conversion_task_completed_return_fail(gen_image_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -246,7 +246,7 @@ def test_conversion_task_deleted_return_pass(gen_conversion_task_deleted_waiter)
 
 def test_conversion_task_deleted_return_fail(gen_bundle_task_complete_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -289,7 +289,7 @@ def test_customer_gateway_available_return_pass(gen_customer_gateway_available_w
 
 def test_customer_gateway_available_return_fail(gen_bundle_task_complete_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -332,7 +332,7 @@ def test_export_task_cancelled_return_pass(gen_export_task_cancelled_waiter):
 
 def test_export_task_cancelled_return_fail(gen_subnet_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -375,7 +375,7 @@ def test_export_task_completed_return_pass(gen_export_task_completed_waiter):
 
 def test_export_task_completed_return_fail(gen_vpc_peering_connection_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -418,7 +418,7 @@ def test_image_exists_return_pass(gen_image_exists_waiter):
 
 def test_image_exists_return_fail(gen_password_data_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -461,7 +461,7 @@ def test_image_available_return_pass(gen_image_available_waiter):
 
 def test_image_available_return_fail(gen_export_task_cancelled_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -504,7 +504,7 @@ def test_instance_running_return_pass(gen_instance_running_waiter):
 
 def test_instance_running_return_fail(gen_volume_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -547,7 +547,7 @@ def test_instance_status_ok_return_pass(gen_instance_status_ok_waiter):
 
 def test_instance_status_ok_return_fail(gen_instance_stopped_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -590,7 +590,7 @@ def test_instance_stopped_return_pass(gen_instance_stopped_waiter):
 
 def test_instance_stopped_return_fail(gen_bundle_task_complete_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -633,7 +633,7 @@ def test_instance_terminated_return_pass(gen_instance_terminated_waiter):
 
 def test_instance_terminated_return_fail(gen_network_interface_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -676,7 +676,7 @@ def test_key_pair_exists_return_pass(gen_key_pair_exists_waiter):
 
 def test_key_pair_exists_return_fail(gen_snapshot_completed_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -719,7 +719,7 @@ def test_nat_gateway_available_return_pass(gen_nat_gateway_available_waiter):
 
 def test_nat_gateway_available_return_fail(gen_bundle_task_complete_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -764,7 +764,7 @@ def test_network_interface_available_return_pass(
 
 def test_network_interface_available_return_fail(gen_volume_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -807,7 +807,7 @@ def test_password_data_available_return_pass(gen_password_data_available_waiter)
 
 def test_password_data_available_return_fail(gen_key_pair_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -850,7 +850,7 @@ def test_snapshot_completed_return_pass(gen_snapshot_completed_waiter):
 
 def test_snapshot_completed_return_fail(gen_instance_running_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -893,7 +893,7 @@ def test_security_group_exists_return_pass(gen_security_group_exists_waiter):
 
 def test_security_group_exists_return_fail(gen_volume_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -940,7 +940,7 @@ def test_spot_instance_request_fulfilled_return_pass(
 
 def test_spot_instance_request_fulfilled_return_fail(gen_instance_stopped_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -983,7 +983,7 @@ def test_subnet_available_return_pass(gen_subnet_available_waiter):
 
 def test_subnet_available_return_fail(gen_vpc_peering_connection_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1026,7 +1026,7 @@ def test_system_status_ok_return_pass(gen_system_status_ok_waiter):
 
 def test_system_status_ok_return_fail(gen_export_task_cancelled_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1069,7 +1069,7 @@ def test_volume_available_return_pass(gen_volume_available_waiter):
 
 def test_volume_available_return_fail(gen_vpn_connection_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1112,7 +1112,7 @@ def test_volume_deleted_return_pass(gen_volume_deleted_waiter):
 
 def test_volume_deleted_return_fail(gen_vpc_peering_connection_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1155,7 +1155,7 @@ def test_volume_in_use_return_pass(gen_volume_in_use_waiter):
 
 def test_volume_in_use_return_fail(gen_conversion_task_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1198,7 +1198,7 @@ def test_vpc_available_return_pass(gen_vpc_available_waiter):
 
 def test_vpc_available_return_fail(gen_vpc_peering_connection_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1241,7 +1241,7 @@ def test_vpc_exists_return_pass(gen_vpc_exists_waiter):
 
 def test_vpc_exists_return_fail(gen_instance_terminated_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1284,7 +1284,7 @@ def test_vpn_connection_available_return_pass(gen_vpn_connection_available_waite
 
 def test_vpn_connection_available_return_fail(gen_customer_gateway_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1327,7 +1327,7 @@ def test_vpn_connection_deleted_return_pass(gen_vpn_connection_deleted_waiter):
 
 def test_vpn_connection_deleted_return_fail(gen_volume_available_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1374,7 +1374,7 @@ def test_vpc_peering_connection_exists_return_pass(
 
 def test_vpc_peering_connection_exists_return_fail(gen_instance_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1421,7 +1421,7 @@ def test_vpc_peering_connection_deleted_return_pass(
 
 def test_vpc_peering_connection_deleted_return_fail(gen_volume_deleted_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

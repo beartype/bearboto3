@@ -7,7 +7,7 @@ from bearboto3.lambda_ import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -45,7 +45,7 @@ def test_function_exists_return_pass(gen_function_exists_waiter):
 
 def test_function_exists_return_fail(gen_function_updated_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -88,7 +88,7 @@ def test_function_active_return_pass(gen_function_active_waiter):
 
 def test_function_active_return_fail(gen_function_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -131,7 +131,7 @@ def test_function_updated_return_pass(gen_function_updated_waiter):
 
 def test_function_updated_return_fail(gen_function_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

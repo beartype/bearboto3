@@ -31,7 +31,7 @@ from bearboto3.iam import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -75,7 +75,7 @@ def test_get_account_authorization_details_return_fail(
     gen_list_group_policies_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -118,7 +118,7 @@ def test_get_group_return_pass(gen_get_group_paginator):
 
 def test_get_group_return_fail(gen_list_roles_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -161,7 +161,7 @@ def test_list_access_keys_return_pass(gen_list_access_keys_paginator):
 
 def test_list_access_keys_return_fail(gen_list_user_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -204,7 +204,7 @@ def test_list_account_aliases_return_pass(gen_list_account_aliases_paginator):
 
 def test_list_account_aliases_return_fail(gen_list_ssh_public_keys_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -251,7 +251,7 @@ def test_list_attached_group_policies_return_pass(
 
 def test_list_attached_group_policies_return_fail(gen_list_user_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -300,7 +300,7 @@ def test_list_attached_role_policies_return_fail(
     gen_list_server_certificates_paginator,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -347,7 +347,7 @@ def test_list_attached_user_policies_return_pass(
 
 def test_list_attached_user_policies_return_fail(gen_list_roles_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -390,7 +390,7 @@ def test_list_entities_for_policy_return_pass(gen_list_entities_for_policy_pagin
 
 def test_list_entities_for_policy_return_fail(gen_get_group_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -433,7 +433,7 @@ def test_list_group_policies_return_pass(gen_list_group_policies_paginator):
 
 def test_list_group_policies_return_fail(gen_get_group_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -476,7 +476,7 @@ def test_list_groups_return_pass(gen_list_groups_paginator):
 
 def test_list_groups_return_fail(gen_list_account_aliases_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -519,7 +519,7 @@ def test_list_groups_for_user_return_pass(gen_list_groups_for_user_paginator):
 
 def test_list_groups_for_user_return_fail(gen_list_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -562,7 +562,7 @@ def test_list_instance_profiles_return_pass(gen_list_instance_profiles_paginator
 
 def test_list_instance_profiles_return_fail(gen_list_groups_for_user_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -609,7 +609,7 @@ def test_list_instance_profiles_for_role_return_pass(
 
 def test_list_instance_profiles_for_role_return_fail(gen_list_group_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -652,7 +652,7 @@ def test_list_mfa_devices_return_pass(gen_list_mfa_devices_paginator):
 
 def test_list_mfa_devices_return_fail(gen_list_instance_profiles_for_role_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -695,7 +695,7 @@ def test_list_policies_return_pass(gen_list_policies_paginator):
 
 def test_list_policies_return_fail(gen_list_role_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -738,7 +738,7 @@ def test_list_policy_versions_return_pass(gen_list_policy_versions_paginator):
 
 def test_list_policy_versions_return_fail(gen_list_account_aliases_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -781,7 +781,7 @@ def test_list_role_policies_return_pass(gen_list_role_policies_paginator):
 
 def test_list_role_policies_return_fail(gen_list_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -824,7 +824,7 @@ def test_list_roles_return_pass(gen_list_roles_paginator):
 
 def test_list_roles_return_fail(gen_list_group_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -867,7 +867,7 @@ def test_list_server_certificates_return_pass(gen_list_server_certificates_pagin
 
 def test_list_server_certificates_return_fail(gen_list_user_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -910,7 +910,7 @@ def test_list_signing_certificates_return_pass(gen_list_signing_certificates_pag
 
 def test_list_signing_certificates_return_fail(gen_list_group_policies_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -953,7 +953,7 @@ def test_list_ssh_public_keys_return_pass(gen_list_ssh_public_keys_paginator):
 
 def test_list_ssh_public_keys_return_fail(gen_list_users_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -996,7 +996,7 @@ def test_list_user_policies_return_pass(gen_list_user_policies_paginator):
 
 def test_list_user_policies_return_fail(gen_list_groups_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1039,7 +1039,7 @@ def test_list_users_return_pass(gen_list_users_paginator):
 
 def test_list_users_return_fail(gen_get_group_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1082,7 +1082,7 @@ def test_list_virtual_mfa_devices_return_pass(gen_list_virtual_mfa_devices_pagin
 
 def test_list_virtual_mfa_devices_return_fail(gen_list_policy_versions_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1125,7 +1125,7 @@ def test_simulate_custom_policy_return_pass(gen_simulate_custom_policy_paginator
 
 def test_simulate_custom_policy_return_fail(gen_list_instance_profiles_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1168,7 +1168,7 @@ def test_simulate_principal_policy_return_pass(gen_simulate_principal_policy_pag
 
 def test_simulate_principal_policy_return_fail(gen_list_policy_versions_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1211,7 +1211,7 @@ def test_list_user_tags_return_pass(gen_list_user_tags_paginator):
 
 def test_list_user_tags_return_fail(gen_get_account_authorization_details_paginator):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

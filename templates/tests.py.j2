@@ -6,7 +6,7 @@ from bearboto3.{{ service }} import (
 )
 from beartype import beartype
 from beartype.roar import (BeartypeCallHintPepParamException,
-                           BeartypeCallHintPepReturnException,
+                           BeartypeCallHintReturnViolation,
                            BeartypeDecorHintPep484585Exception)
 
 {% for item in items %}
@@ -44,7 +44,7 @@ def test_{{ item['snake_name'] }}_return_pass({{ item['fixture_name'] }}):
 
 def test_{{ item['snake_name'] }}_return_fail({{ item['fail_fixture_name'] }}):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

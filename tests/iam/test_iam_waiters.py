@@ -8,7 +8,7 @@ from bearboto3.iam import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -46,7 +46,7 @@ def test_instance_profile_exists_return_pass(gen_instance_profile_exists_waiter)
 
 def test_instance_profile_exists_return_fail(gen_user_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -89,7 +89,7 @@ def test_user_exists_return_pass(gen_user_exists_waiter):
 
 def test_user_exists_return_fail(gen_instance_profile_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -132,7 +132,7 @@ def test_role_exists_return_pass(gen_role_exists_waiter):
 
 def test_role_exists_return_fail(gen_user_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -175,7 +175,7 @@ def test_policy_exists_return_pass(gen_policy_exists_waiter):
 
 def test_policy_exists_return_fail(gen_role_exists_waiter):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype

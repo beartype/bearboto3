@@ -31,7 +31,7 @@ from bearboto3.iam import (
 from beartype import beartype
 from beartype.roar import (
     BeartypeCallHintPepParamException,
-    BeartypeCallHintPepReturnException,
+    BeartypeCallHintReturnViolation,
     BeartypeDecorHintPep484585Exception,
 )
 
@@ -69,7 +69,7 @@ def test_groups_return_pass(gen_service_resource_groups_collection):
 
 def test_groups_return_fail(gen_current_user_access_keys_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -114,7 +114,7 @@ def test_instance_profiles_return_pass(
 
 def test_instance_profiles_return_fail(gen_user_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -157,7 +157,7 @@ def test_policies_return_pass(gen_service_resource_policies_collection):
 
 def test_policies_return_fail(gen_service_resource_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -200,7 +200,7 @@ def test_roles_return_pass(gen_service_resource_roles_collection):
 
 def test_roles_return_fail(gen_group_attached_policies_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -243,7 +243,7 @@ def test_saml_providers_return_pass(gen_service_resource_saml_providers_collecti
 
 def test_saml_providers_return_fail(gen_user_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -292,7 +292,7 @@ def test_server_certificates_return_fail(
     gen_service_resource_saml_providers_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -335,7 +335,7 @@ def test_users_return_pass(gen_service_resource_users_collection):
 
 def test_users_return_fail(gen_policy_attached_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -382,7 +382,7 @@ def test_virtual_mfa_devices_return_pass(
 
 def test_virtual_mfa_devices_return_fail(gen_service_resource_users_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -425,7 +425,7 @@ def test_access_keys_return_pass(gen_current_user_access_keys_collection):
 
 def test_access_keys_return_fail(gen_user_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -468,7 +468,7 @@ def test_mfa_devices_return_pass(gen_current_user_mfa_devices_collection):
 
 def test_mfa_devices_return_fail(gen_service_resource_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -519,7 +519,7 @@ def test_signing_certificates_return_fail(
     gen_service_resource_server_certificates_collection,
 ):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -562,7 +562,7 @@ def test_attached_policies_return_pass(gen_group_attached_policies_collection):
 
 def test_attached_policies_return_fail(gen_policy_attached_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -605,7 +605,7 @@ def test_policies_return_pass(gen_group_policies_collection):
 
 def test_policies_return_fail(gen_service_resource_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -648,7 +648,7 @@ def test_users_return_pass(gen_group_users_collection):
 
 def test_users_return_fail(gen_role_instance_profiles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -691,7 +691,7 @@ def test_attached_groups_return_pass(gen_policy_attached_groups_collection):
 
 def test_attached_groups_return_fail(gen_service_resource_users_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -734,7 +734,7 @@ def test_attached_roles_return_pass(gen_policy_attached_roles_collection):
 
 def test_attached_roles_return_fail(gen_user_access_keys_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -777,7 +777,7 @@ def test_attached_users_return_pass(gen_policy_attached_users_collection):
 
 def test_attached_users_return_fail(gen_service_resource_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -820,7 +820,7 @@ def test_versions_return_pass(gen_policy_versions_collection):
 
 def test_versions_return_fail(gen_service_resource_users_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -863,7 +863,7 @@ def test_attached_policies_return_pass(gen_role_attached_policies_collection):
 
 def test_attached_policies_return_fail(gen_service_resource_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -906,7 +906,7 @@ def test_instance_profiles_return_pass(gen_role_instance_profiles_collection):
 
 def test_instance_profiles_return_fail(gen_user_access_keys_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -949,7 +949,7 @@ def test_policies_return_pass(gen_role_policies_collection):
 
 def test_policies_return_fail(gen_user_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -992,7 +992,7 @@ def test_access_keys_return_pass(gen_user_access_keys_collection):
 
 def test_access_keys_return_fail(gen_user_signing_certificates_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1035,7 +1035,7 @@ def test_attached_policies_return_pass(gen_user_attached_policies_collection):
 
 def test_attached_policies_return_fail(gen_policy_attached_roles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1078,7 +1078,7 @@ def test_groups_return_pass(gen_user_groups_collection):
 
 def test_groups_return_fail(gen_role_instance_profiles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1121,7 +1121,7 @@ def test_mfa_devices_return_pass(gen_user_mfa_devices_collection):
 
 def test_mfa_devices_return_fail(gen_service_resource_instance_profiles_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1164,7 +1164,7 @@ def test_policies_return_pass(gen_user_policies_collection):
 
 def test_policies_return_fail(gen_policy_attached_groups_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
@@ -1207,7 +1207,7 @@ def test_signing_certificates_return_pass(gen_user_signing_certificates_collecti
 
 def test_signing_certificates_return_fail(gen_user_access_keys_collection):
     with pytest.raises(
-        (BeartypeCallHintPepReturnException, BeartypeDecorHintPep484585Exception)
+        (BeartypeCallHintReturnViolation, BeartypeDecorHintPep484585Exception)
     ):
 
         @beartype
